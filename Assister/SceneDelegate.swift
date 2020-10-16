@@ -18,6 +18,50 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let _ = (scene as? UIWindowScene) else { return }
+
+        window?.rootViewController = createTabbar()
+        
+    
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let loginNavController = storyboard.instantiateViewController(identifier: "LoginNavigationController")
+        
+                // if user is logged in before
+                if let loggedUsername = UserDefaults.standard.string(forKey: "username") {
+                    // instantiate the main tab bar controller and set it as root view controller
+                    // using the storyboard identifier we set earlier
+                    let mainTabBarController = storyboard.instantiateViewController(identifier: "MainTabBarController")
+                    window?.rootViewController = mainTabBarController
+                } else {
+                    // if user isn't logged in
+                    // instantiate the navigation controller and set it as root view controller
+                    // using the storyboard identifier we set earlier
+                    window?.rootViewController = loginNavController
+                }
+        
+
+       
+    }
+
+    func createTabbar() -> UITabBarController {
+        
+        let tabbar = UITabBarController()
+        UITabBar.appearance().tintColor = .green
+        UITabBar.setTransparentTabbar()
+        tabbar.viewControllers = [createFirstVC(), createSecondVC()]
+        
+        return tabbar
+    }
+    
+    func createFirstVC() -> FirstViewController{
+        let viewController =   FirstViewController()
+        viewController.tabBarItem = UITabBarItem(tabBarSystemItem: .more, tag: 0)
+        return viewController
+    }
+    
+    func createSecondVC() -> SecondViewController{
+        let viewController =   SecondViewController()
+        viewController.tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 0)
+        return viewController
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
@@ -48,6 +92,19 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // to restore the scene back to its current state.
     }
 
+    func changeRootViewController(_ vc: UIViewController, animated: Bool = true) {
+       guard let window = self.window else {
+            return
+        }
+        
+        window.rootViewController = vc
+        window.makeKeyAndVisible()
 
+        UIView.transition(with: window,
+                          duration: 0.5,
+                          options: [.transitionFlipFromTop],
+                          animations: nil,
+                          completion: nil)
+    }
 }
 

@@ -16,6 +16,12 @@
 		2682CDFA253872BC00989A3F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2682CDF8253872BC00989A3F /* LaunchScreen.storyboard */; };
 		2682CE05253872BC00989A3F /* AssisterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2682CE04253872BC00989A3F /* AssisterTests.swift */; };
 		2682CE10253872BC00989A3F /* AssisterUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2682CE0F253872BC00989A3F /* AssisterUITests.swift */; };
+		26C2A5E2253885D30084966B /* LoginScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C2A5E1253885D30084966B /* LoginScreenController.swift */; };
+		26C2A5E42538A2C10084966B /* UITabBar+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C2A5E32538A2C10084966B /* UITabBar+Ext.swift */; };
+		26C2A5E7253905A30084966B /* RoundedCornerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C2A5E6253905A30084966B /* RoundedCornerView.swift */; };
+		26C2A5E925390ACF0084966B /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 26C2A5E825390ACF0084966B /* Colors.xcassets */; };
+		26C2A5F12539E1610084966B /* LoginNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C2A5F02539E1610084966B /* LoginNavigationController.swift */; };
+		26C2A5F32539F23D0084966B /* Setup Wizard-pana.png in Resources */ = {isa = PBXBuildFile; fileRef = 26C2A5F22539F23D0084966B /* Setup Wizard-pana.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +57,13 @@
 		2682CE0B253872BC00989A3F /* AssisterUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AssisterUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2682CE0F253872BC00989A3F /* AssisterUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssisterUITests.swift; sourceTree = "<group>"; };
 		2682CE11253872BC00989A3F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		26C2A5E1253885D30084966B /* LoginScreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreenController.swift; sourceTree = "<group>"; };
+		26C2A5E32538A2C10084966B /* UITabBar+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITabBar+Ext.swift"; sourceTree = "<group>"; };
+		26C2A5E6253905A30084966B /* RoundedCornerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCornerView.swift; sourceTree = "<group>"; };
+		26C2A5E825390ACF0084966B /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
+		26C2A5F02539E1610084966B /* LoginNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginNavigationController.swift; path = ../../../../../.Trash/LoginNavigationController.swift; sourceTree = "<group>"; };
+		26C2A5F22539F23D0084966B /* Setup Wizard-pana.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Setup Wizard-pana.png"; path = "../../../OneDrive/AssisterDesign/Setup Wizard-pana.png"; sourceTree = "<group>"; };
+		26C2A5F52539F25F0084966B /* Setup Wizard-pana.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Setup Wizard-pana.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,14 +114,20 @@
 		2682CDEA253872BA00989A3F /* Assister */ = {
 			isa = PBXGroup;
 			children = (
+				26C2A5F42539F2510084966B /* Images */,
+				26C2A5E1253885D30084966B /* LoginScreenController.swift */,
+				26C2A5EB253971660084966B /* ViewControllers */,
+				26C2A5E5253904300084966B /* Extensions */,
 				2682CDEB253872BA00989A3F /* AppDelegate.swift */,
 				2682CDED253872BA00989A3F /* SceneDelegate.swift */,
 				2682CDEF253872BA00989A3F /* FirstViewController.swift */,
 				2682CDF1253872BA00989A3F /* SecondViewController.swift */,
 				2682CDF3253872BA00989A3F /* Main.storyboard */,
+				26C2A5F22539F23D0084966B /* Setup Wizard-pana.png */,
 				2682CDF6253872BC00989A3F /* Assets.xcassets */,
 				2682CDF8253872BC00989A3F /* LaunchScreen.storyboard */,
 				2682CDFB253872BC00989A3F /* Info.plist */,
+				26C2A5E825390ACF0084966B /* Colors.xcassets */,
 			);
 			path = Assister;
 			sourceTree = "<group>";
@@ -129,6 +148,31 @@
 				2682CE11253872BC00989A3F /* Info.plist */,
 			);
 			path = AssisterUITests;
+			sourceTree = "<group>";
+		};
+		26C2A5E5253904300084966B /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				26C2A5E32538A2C10084966B /* UITabBar+Ext.swift */,
+				26C2A5E6253905A30084966B /* RoundedCornerView.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		26C2A5EB253971660084966B /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				26C2A5F02539E1610084966B /* LoginNavigationController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		26C2A5F42539F2510084966B /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				26C2A5F52539F25F0084966B /* Setup Wizard-pana.png */,
+			);
+			path = Images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -236,8 +280,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				2682CDFA253872BC00989A3F /* LaunchScreen.storyboard in Resources */,
+				26C2A5E925390ACF0084966B /* Colors.xcassets in Resources */,
 				2682CDF7253872BC00989A3F /* Assets.xcassets in Resources */,
 				2682CDF5253872BA00989A3F /* Main.storyboard in Resources */,
+				26C2A5F32539F23D0084966B /* Setup Wizard-pana.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -265,7 +311,11 @@
 				2682CDF2253872BA00989A3F /* SecondViewController.swift in Sources */,
 				2682CDF0253872BA00989A3F /* FirstViewController.swift in Sources */,
 				2682CDEC253872BA00989A3F /* AppDelegate.swift in Sources */,
+				26C2A5E42538A2C10084966B /* UITabBar+Ext.swift in Sources */,
+				26C2A5E2253885D30084966B /* LoginScreenController.swift in Sources */,
 				2682CDEE253872BA00989A3F /* SceneDelegate.swift in Sources */,
+				26C2A5E7253905A30084966B /* RoundedCornerView.swift in Sources */,
+				26C2A5F12539E1610084966B /* LoginNavigationController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
