@@ -21,7 +21,15 @@
 		26C2A5E7253905A30084966B /* RoundedCornerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C2A5E6253905A30084966B /* RoundedCornerView.swift */; };
 		26C2A5E925390ACF0084966B /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 26C2A5E825390ACF0084966B /* Colors.xcassets */; };
 		26C2A5F12539E1610084966B /* LoginNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C2A5F02539E1610084966B /* LoginNavigationController.swift */; };
-		26C2A5F32539F23D0084966B /* Setup Wizard-pana.png in Resources */ = {isa = PBXBuildFile; fileRef = 26C2A5F22539F23D0084966B /* Setup Wizard-pana.png */; };
+		26C2A5F72539F3430084966B /* icons8-login-100.png in Resources */ = {isa = PBXBuildFile; fileRef = 26C2A5F62539F3430084966B /* icons8-login-100.png */; };
+		26C2A5FF2539F7550084966B /* Nunito-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 26C2A5FD2539F5F80084966B /* Nunito-Black.ttf */; };
+		26C2A6002539F7580084966B /* Nunito-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 26C2A5FC2539F5F80084966B /* Nunito-Bold.ttf */; };
+		26C2A6012539F75B0084966B /* Nunito-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 26C2A5F92539F5F80084966B /* Nunito-ExtraBold.ttf */; };
+		26C2A6022539F75E0084966B /* Nunito-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 26C2A5FA2539F5F80084966B /* Nunito-Regular.ttf */; };
+		26C2A6032539F7610084966B /* Nunito-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 26C2A5FB2539F5F80084966B /* Nunito-SemiBold.ttf */; };
+		26C2A604253A4C930084966B /* Setup Wizard-pana.png in Resources */ = {isa = PBXBuildFile; fileRef = 26C2A5F52539F25F0084966B /* Setup Wizard-pana.png */; };
+		26C2A608253A5F300084966B /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C2A607253A5F300084966B /* DataService.swift */; };
+		26C2A60C253B8F400084966B /* UserData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 26C2A60A253B8F400084966B /* UserData.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,9 +69,16 @@
 		26C2A5E32538A2C10084966B /* UITabBar+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITabBar+Ext.swift"; sourceTree = "<group>"; };
 		26C2A5E6253905A30084966B /* RoundedCornerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCornerView.swift; sourceTree = "<group>"; };
 		26C2A5E825390ACF0084966B /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
-		26C2A5F02539E1610084966B /* LoginNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginNavigationController.swift; path = ../../../../../.Trash/LoginNavigationController.swift; sourceTree = "<group>"; };
-		26C2A5F22539F23D0084966B /* Setup Wizard-pana.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Setup Wizard-pana.png"; path = "../../../OneDrive/AssisterDesign/Setup Wizard-pana.png"; sourceTree = "<group>"; };
+		26C2A5F02539E1610084966B /* LoginNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginNavigationController.swift; sourceTree = "<group>"; };
 		26C2A5F52539F25F0084966B /* Setup Wizard-pana.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Setup Wizard-pana.png"; sourceTree = "<group>"; };
+		26C2A5F62539F3430084966B /* icons8-login-100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icons8-login-100.png"; path = "../../../../OneDrive/AssisterDesign/icons8-login-100.png"; sourceTree = "<group>"; };
+		26C2A5F92539F5F80084966B /* Nunito-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Nunito-ExtraBold.ttf"; path = "../../../../Downloads/Nunito/Nunito-ExtraBold.ttf"; sourceTree = "<group>"; };
+		26C2A5FA2539F5F80084966B /* Nunito-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Nunito-Regular.ttf"; path = "../../../../Downloads/Nunito/Nunito-Regular.ttf"; sourceTree = "<group>"; };
+		26C2A5FB2539F5F80084966B /* Nunito-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Nunito-SemiBold.ttf"; path = "../../../../Downloads/Nunito/Nunito-SemiBold.ttf"; sourceTree = "<group>"; };
+		26C2A5FC2539F5F80084966B /* Nunito-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Nunito-Bold.ttf"; path = "../../../../Downloads/Nunito/Nunito-Bold.ttf"; sourceTree = "<group>"; };
+		26C2A5FD2539F5F80084966B /* Nunito-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Nunito-Black.ttf"; path = "../../../../Downloads/Nunito/Nunito-Black.ttf"; sourceTree = "<group>"; };
+		26C2A607253A5F300084966B /* DataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
+		26C2A60B253B8F400084966B /* UserData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = UserData.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +109,7 @@
 		2682CDDF253872BA00989A3F = {
 			isa = PBXGroup;
 			children = (
+				26C2A5F82539F5CA0084966B /* fonts */,
 				2682CDEA253872BA00989A3F /* Assister */,
 				2682CE03253872BC00989A3F /* AssisterTests */,
 				2682CE0E253872BC00989A3F /* AssisterUITests */,
@@ -114,20 +130,17 @@
 		2682CDEA253872BA00989A3F /* Assister */ = {
 			isa = PBXGroup;
 			children = (
-				26C2A5F42539F2510084966B /* Images */,
-				26C2A5E1253885D30084966B /* LoginScreenController.swift */,
-				26C2A5EB253971660084966B /* ViewControllers */,
-				26C2A5E5253904300084966B /* Extensions */,
 				2682CDEB253872BA00989A3F /* AppDelegate.swift */,
 				2682CDED253872BA00989A3F /* SceneDelegate.swift */,
-				2682CDEF253872BA00989A3F /* FirstViewController.swift */,
-				2682CDF1253872BA00989A3F /* SecondViewController.swift */,
-				2682CDF3253872BA00989A3F /* Main.storyboard */,
-				26C2A5F22539F23D0084966B /* Setup Wizard-pana.png */,
-				2682CDF6253872BC00989A3F /* Assets.xcassets */,
-				2682CDF8253872BC00989A3F /* LaunchScreen.storyboard */,
-				2682CDFB253872BC00989A3F /* Info.plist */,
+				26C2A609253B4F490084966B /* Services */,
+				26C2A5E5253904300084966B /* Extensions */,
 				26C2A5E825390ACF0084966B /* Colors.xcassets */,
+				2682CDF6253872BC00989A3F /* Assets.xcassets */,
+				26C2A606253A4F100084966B /* Controllers */,
+				26C2A605253A4E270084966B /* Models */,
+				26C2A5F42539F2510084966B /* Images */,
+				26C2A5EB253971660084966B /* View */,
+				2682CDFB253872BC00989A3F /* Info.plist */,
 			);
 			path = Assister;
 			sourceTree = "<group>";
@@ -159,20 +172,61 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		26C2A5EB253971660084966B /* ViewControllers */ = {
+		26C2A5EB253971660084966B /* View */ = {
 			isa = PBXGroup;
 			children = (
-				26C2A5F02539E1610084966B /* LoginNavigationController.swift */,
+				2682CDF3253872BA00989A3F /* Main.storyboard */,
+				2682CDF8253872BC00989A3F /* LaunchScreen.storyboard */,
 			);
-			path = ViewControllers;
+			path = View;
 			sourceTree = "<group>";
 		};
 		26C2A5F42539F2510084966B /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				26C2A5F62539F3430084966B /* icons8-login-100.png */,
 				26C2A5F52539F25F0084966B /* Setup Wizard-pana.png */,
 			);
 			path = Images;
+			sourceTree = "<group>";
+		};
+		26C2A5F82539F5CA0084966B /* fonts */ = {
+			isa = PBXGroup;
+			children = (
+				26C2A5FD2539F5F80084966B /* Nunito-Black.ttf */,
+				26C2A5FC2539F5F80084966B /* Nunito-Bold.ttf */,
+				26C2A5F92539F5F80084966B /* Nunito-ExtraBold.ttf */,
+				26C2A5FA2539F5F80084966B /* Nunito-Regular.ttf */,
+				26C2A5FB2539F5F80084966B /* Nunito-SemiBold.ttf */,
+			);
+			path = fonts;
+			sourceTree = "<group>";
+		};
+		26C2A605253A4E270084966B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		26C2A606253A4F100084966B /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				2682CDF1253872BA00989A3F /* SecondViewController.swift */,
+				2682CDEF253872BA00989A3F /* FirstViewController.swift */,
+				26C2A5E1253885D30084966B /* LoginScreenController.swift */,
+				26C2A5F02539E1610084966B /* LoginNavigationController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		26C2A609253B4F490084966B /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				26C2A607253A5F300084966B /* DataService.swift */,
+				26C2A60A253B8F400084966B /* UserData.xcdatamodeld */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -279,11 +333,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				26C2A6022539F75E0084966B /* Nunito-Regular.ttf in Resources */,
 				2682CDFA253872BC00989A3F /* LaunchScreen.storyboard in Resources */,
+				26C2A5FF2539F7550084966B /* Nunito-Black.ttf in Resources */,
+				26C2A604253A4C930084966B /* Setup Wizard-pana.png in Resources */,
 				26C2A5E925390ACF0084966B /* Colors.xcassets in Resources */,
+				26C2A6012539F75B0084966B /* Nunito-ExtraBold.ttf in Resources */,
+				26C2A6032539F7610084966B /* Nunito-SemiBold.ttf in Resources */,
 				2682CDF7253872BC00989A3F /* Assets.xcassets in Resources */,
+				26C2A5F72539F3430084966B /* icons8-login-100.png in Resources */,
 				2682CDF5253872BA00989A3F /* Main.storyboard in Resources */,
-				26C2A5F32539F23D0084966B /* Setup Wizard-pana.png in Resources */,
+				26C2A6002539F7580084966B /* Nunito-Bold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -308,12 +368,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				26C2A60C253B8F400084966B /* UserData.xcdatamodeld in Sources */,
 				2682CDF2253872BA00989A3F /* SecondViewController.swift in Sources */,
 				2682CDF0253872BA00989A3F /* FirstViewController.swift in Sources */,
 				2682CDEC253872BA00989A3F /* AppDelegate.swift in Sources */,
 				26C2A5E42538A2C10084966B /* UITabBar+Ext.swift in Sources */,
 				26C2A5E2253885D30084966B /* LoginScreenController.swift in Sources */,
 				2682CDEE253872BA00989A3F /* SceneDelegate.swift in Sources */,
+				26C2A608253A5F300084966B /* DataService.swift in Sources */,
 				26C2A5E7253905A30084966B /* RoundedCornerView.swift in Sources */,
 				26C2A5F12539E1610084966B /* LoginNavigationController.swift in Sources */,
 			);
@@ -638,6 +700,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		26C2A60A253B8F400084966B /* UserData.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				26C2A60B253B8F400084966B /* UserData.xcdatamodel */,
+			);
+			currentVersion = 26C2A60B253B8F400084966B /* UserData.xcdatamodel */;
+			path = UserData.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 2682CDE0253872BA00989A3F /* Project object */;
 }

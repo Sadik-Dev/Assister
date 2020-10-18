@@ -34,11 +34,14 @@ class LoginScreenController: UIViewController {
 
     @IBAction func login(_ sender: UIButton) {
         
+      
+        
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
           let mainTabBarController = storyboard.instantiateViewController(identifier: "MainTabBarController")
           
-         
-          (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(mainTabBarController)
+        DataService.shared.login()
+
+        (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(mainTabBarController)
 
            
 

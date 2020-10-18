@@ -12,7 +12,7 @@ class SecondViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        // Do any additional setup after loading the /Users/sana/Documents/GitHub/Assister/Assister/Controllers/FirstViewController.swiftview.
     }
 
 
