@@ -7,11 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2644C1522541B4430004F979 /* icons8-login-100.png in Resources */ = {isa = PBXBuildFile; fileRef = 2644C1512541B4430004F979 /* icons8-login-100.png */; };
+		2644C1592541B51D0004F979 /* Nunito-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2644C1532541B51D0004F979 /* Nunito-SemiBold.ttf */; };
+		2644C15A2541B51D0004F979 /* Nunito-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2644C1542541B51D0004F979 /* Nunito-Regular.ttf */; };
+		2644C15B2541B51D0004F979 /* Nunito-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2644C1552541B51D0004F979 /* Nunito-Light.ttf */; };
+		2644C15C2541B51D0004F979 /* Nunito-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2644C1562541B51D0004F979 /* Nunito-ExtraBold.ttf */; };
+		2644C15D2541B51D0004F979 /* Nunito-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2644C1572541B51D0004F979 /* Nunito-Black.ttf */; };
+		2644C15E2541B51D0004F979 /* Nunito-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2644C1582541B51D0004F979 /* Nunito-Bold.ttf */; };
+		2644C16A2541C2600004F979 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2644C1692541C2600004F979 /* Main.storyboard */; };
+		2644C16D2541DB980004F979 /* female.png in Resources */ = {isa = PBXBuildFile; fileRef = 2644C16B2541DB980004F979 /* female.png */; };
+		2644C16E2541DB980004F979 /* male.png in Resources */ = {isa = PBXBuildFile; fileRef = 2644C16C2541DB980004F979 /* male.png */; };
+		2644C1702542333D0004F979 /* Consultation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2644C16F2542333D0004F979 /* Consultation.swift */; };
+		2644C1722542FAB80004F979 /* no-scheduling.png in Resources */ = {isa = PBXBuildFile; fileRef = 2644C1712542FAB80004F979 /* no-scheduling.png */; };
+		2644C17425430D770004F979 /* scheduling.png in Resources */ = {isa = PBXBuildFile; fileRef = 2644C17325430D770004F979 /* scheduling.png */; };
+		2644C17825431AF80004F979 /* options.png in Resources */ = {isa = PBXBuildFile; fileRef = 2644C17725431AF80004F979 /* options.png */; };
+		2644C17B25445AC70004F979 /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2644C17925445AC70004F979 /* HomeTableViewCell.swift */; };
 		2682CDEC253872BA00989A3F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2682CDEB253872BA00989A3F /* AppDelegate.swift */; };
 		2682CDEE253872BA00989A3F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2682CDED253872BA00989A3F /* SceneDelegate.swift */; };
-		2682CDF0253872BA00989A3F /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2682CDEF253872BA00989A3F /* FirstViewController.swift */; };
-		2682CDF2253872BA00989A3F /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2682CDF1253872BA00989A3F /* SecondViewController.swift */; };
-		2682CDF5253872BA00989A3F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2682CDF3253872BA00989A3F /* Main.storyboard */; };
+		2682CDF0253872BA00989A3F /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2682CDEF253872BA00989A3F /* HomeViewController.swift */; };
+		2682CDF2253872BA00989A3F /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2682CDF1253872BA00989A3F /* CalendarViewController.swift */; };
 		2682CDF7253872BC00989A3F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2682CDF6253872BC00989A3F /* Assets.xcassets */; };
 		2682CDFA253872BC00989A3F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2682CDF8253872BC00989A3F /* LaunchScreen.storyboard */; };
 		2682CE05253872BC00989A3F /* AssisterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2682CE04253872BC00989A3F /* AssisterTests.swift */; };
@@ -21,15 +35,8 @@
 		26C2A5E7253905A30084966B /* RoundedCornerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C2A5E6253905A30084966B /* RoundedCornerView.swift */; };
 		26C2A5E925390ACF0084966B /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 26C2A5E825390ACF0084966B /* Colors.xcassets */; };
 		26C2A5F12539E1610084966B /* LoginNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C2A5F02539E1610084966B /* LoginNavigationController.swift */; };
-		26C2A5F72539F3430084966B /* icons8-login-100.png in Resources */ = {isa = PBXBuildFile; fileRef = 26C2A5F62539F3430084966B /* icons8-login-100.png */; };
-		26C2A5FF2539F7550084966B /* Nunito-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 26C2A5FD2539F5F80084966B /* Nunito-Black.ttf */; };
-		26C2A6002539F7580084966B /* Nunito-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 26C2A5FC2539F5F80084966B /* Nunito-Bold.ttf */; };
-		26C2A6012539F75B0084966B /* Nunito-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 26C2A5F92539F5F80084966B /* Nunito-ExtraBold.ttf */; };
-		26C2A6022539F75E0084966B /* Nunito-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 26C2A5FA2539F5F80084966B /* Nunito-Regular.ttf */; };
-		26C2A6032539F7610084966B /* Nunito-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 26C2A5FB2539F5F80084966B /* Nunito-SemiBold.ttf */; };
 		26C2A604253A4C930084966B /* Setup Wizard-pana.png in Resources */ = {isa = PBXBuildFile; fileRef = 26C2A5F52539F25F0084966B /* Setup Wizard-pana.png */; };
 		26C2A608253A5F300084966B /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C2A607253A5F300084966B /* DataService.swift */; };
-		26C2A60C253B8F400084966B /* UserData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 26C2A60A253B8F400084966B /* UserData.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,12 +57,26 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2644C1512541B4430004F979 /* icons8-login-100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icons8-login-100.png"; path = "../../../../../OneDrive/AssisterDesign/icons8-login-100.png"; sourceTree = "<group>"; };
+		2644C1532541B51D0004F979 /* Nunito-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Nunito-SemiBold.ttf"; path = "../../../../../../Downloads/Nunito/Nunito-SemiBold.ttf"; sourceTree = "<group>"; };
+		2644C1542541B51D0004F979 /* Nunito-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Nunito-Regular.ttf"; path = "../../../../../../Downloads/Nunito/Nunito-Regular.ttf"; sourceTree = "<group>"; };
+		2644C1552541B51D0004F979 /* Nunito-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Nunito-Light.ttf"; path = "../../../../../../Downloads/Nunito/Nunito-Light.ttf"; sourceTree = "<group>"; };
+		2644C1562541B51D0004F979 /* Nunito-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Nunito-ExtraBold.ttf"; path = "../../../../../../Downloads/Nunito/Nunito-ExtraBold.ttf"; sourceTree = "<group>"; };
+		2644C1572541B51D0004F979 /* Nunito-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Nunito-Black.ttf"; path = "../../../../../../Downloads/Nunito/Nunito-Black.ttf"; sourceTree = "<group>"; };
+		2644C1582541B51D0004F979 /* Nunito-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Nunito-Bold.ttf"; path = "../../../../../../Downloads/Nunito/Nunito-Bold.ttf"; sourceTree = "<group>"; };
+		2644C1692541C2600004F979 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = ../../../../../.Trash/Main.storyboard; sourceTree = "<group>"; };
+		2644C16B2541DB980004F979 /* female.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = female.png; path = ../../../../../OneDrive/AssisterDesign/female.png; sourceTree = "<group>"; };
+		2644C16C2541DB980004F979 /* male.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = male.png; path = ../../../../../OneDrive/AssisterDesign/male.png; sourceTree = "<group>"; };
+		2644C16F2542333D0004F979 /* Consultation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Consultation.swift; sourceTree = "<group>"; };
+		2644C1712542FAB80004F979 /* no-scheduling.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "no-scheduling.png"; path = "../../../../../OneDrive/AssisterDesign/no-scheduling.png"; sourceTree = "<group>"; };
+		2644C17325430D770004F979 /* scheduling.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = scheduling.png; path = ../../../../../OneDrive/AssisterDesign/scheduling.png; sourceTree = "<group>"; };
+		2644C17725431AF80004F979 /* options.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = options.png; path = ../../../../../OneDrive/AssisterDesign/options.png; sourceTree = "<group>"; };
+		2644C17925445AC70004F979 /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
 		2682CDE8253872BA00989A3F /* Assister.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Assister.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2682CDEB253872BA00989A3F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2682CDED253872BA00989A3F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		2682CDEF253872BA00989A3F /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
-		2682CDF1253872BA00989A3F /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
-		2682CDF4253872BA00989A3F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		2682CDEF253872BA00989A3F /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		2682CDF1253872BA00989A3F /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		2682CDF6253872BC00989A3F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2682CDF9253872BC00989A3F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2682CDFB253872BC00989A3F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -71,14 +92,7 @@
 		26C2A5E825390ACF0084966B /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		26C2A5F02539E1610084966B /* LoginNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginNavigationController.swift; sourceTree = "<group>"; };
 		26C2A5F52539F25F0084966B /* Setup Wizard-pana.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Setup Wizard-pana.png"; sourceTree = "<group>"; };
-		26C2A5F62539F3430084966B /* icons8-login-100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icons8-login-100.png"; path = "../../../../OneDrive/AssisterDesign/icons8-login-100.png"; sourceTree = "<group>"; };
-		26C2A5F92539F5F80084966B /* Nunito-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Nunito-ExtraBold.ttf"; path = "../../../../Downloads/Nunito/Nunito-ExtraBold.ttf"; sourceTree = "<group>"; };
-		26C2A5FA2539F5F80084966B /* Nunito-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Nunito-Regular.ttf"; path = "../../../../Downloads/Nunito/Nunito-Regular.ttf"; sourceTree = "<group>"; };
-		26C2A5FB2539F5F80084966B /* Nunito-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Nunito-SemiBold.ttf"; path = "../../../../Downloads/Nunito/Nunito-SemiBold.ttf"; sourceTree = "<group>"; };
-		26C2A5FC2539F5F80084966B /* Nunito-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Nunito-Bold.ttf"; path = "../../../../Downloads/Nunito/Nunito-Bold.ttf"; sourceTree = "<group>"; };
-		26C2A5FD2539F5F80084966B /* Nunito-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Nunito-Black.ttf"; path = "../../../../Downloads/Nunito/Nunito-Black.ttf"; sourceTree = "<group>"; };
 		26C2A607253A5F300084966B /* DataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
-		26C2A60B253B8F400084966B /* UserData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = UserData.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,10 +120,37 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2644C14D2541B1ED0004F979 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				26C2A5F82539F5CA0084966B /* Fonts */,
+				26C2A5E825390ACF0084966B /* Colors.xcassets */,
+				2682CDF6253872BC00989A3F /* Assets.xcassets */,
+				26C2A5F42539F2510084966B /* Images */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		2644C14E2541B2190004F979 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				2682CDEB253872BA00989A3F /* AppDelegate.swift */,
+				2682CDED253872BA00989A3F /* SceneDelegate.swift */,
+				2682CDFB253872BC00989A3F /* Info.plist */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		2644C15F2541B5E30004F979 /* Icons */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Icons;
+			sourceTree = "<group>";
+		};
 		2682CDDF253872BA00989A3F = {
 			isa = PBXGroup;
 			children = (
-				26C2A5F82539F5CA0084966B /* fonts */,
 				2682CDEA253872BA00989A3F /* Assister */,
 				2682CE03253872BC00989A3F /* AssisterTests */,
 				2682CE0E253872BC00989A3F /* AssisterUITests */,
@@ -130,17 +171,13 @@
 		2682CDEA253872BA00989A3F /* Assister */ = {
 			isa = PBXGroup;
 			children = (
-				2682CDEB253872BA00989A3F /* AppDelegate.swift */,
-				2682CDED253872BA00989A3F /* SceneDelegate.swift */,
+				2644C14E2541B2190004F979 /* Application */,
+				2644C14D2541B1ED0004F979 /* Resources */,
 				26C2A609253B4F490084966B /* Services */,
 				26C2A5E5253904300084966B /* Extensions */,
-				26C2A5E825390ACF0084966B /* Colors.xcassets */,
-				2682CDF6253872BC00989A3F /* Assets.xcassets */,
 				26C2A606253A4F100084966B /* Controllers */,
 				26C2A605253A4E270084966B /* Models */,
-				26C2A5F42539F2510084966B /* Images */,
-				26C2A5EB253971660084966B /* View */,
-				2682CDFB253872BC00989A3F /* Info.plist */,
+				26C2A5EB253971660084966B /* Views */,
 			);
 			path = Assister;
 			sourceTree = "<group>";
@@ -168,43 +205,52 @@
 			children = (
 				26C2A5E32538A2C10084966B /* UITabBar+Ext.swift */,
 				26C2A5E6253905A30084966B /* RoundedCornerView.swift */,
+				2644C17925445AC70004F979 /* HomeTableViewCell.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		26C2A5EB253971660084966B /* View */ = {
+		26C2A5EB253971660084966B /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				2682CDF3253872BA00989A3F /* Main.storyboard */,
+				2644C1692541C2600004F979 /* Main.storyboard */,
 				2682CDF8253872BC00989A3F /* LaunchScreen.storyboard */,
 			);
-			path = View;
+			path = Views;
 			sourceTree = "<group>";
 		};
 		26C2A5F42539F2510084966B /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				26C2A5F62539F3430084966B /* icons8-login-100.png */,
+				2644C17725431AF80004F979 /* options.png */,
+				2644C17325430D770004F979 /* scheduling.png */,
+				2644C1712542FAB80004F979 /* no-scheduling.png */,
+				2644C16B2541DB980004F979 /* female.png */,
+				2644C16C2541DB980004F979 /* male.png */,
+				2644C15F2541B5E30004F979 /* Icons */,
+				2644C1512541B4430004F979 /* icons8-login-100.png */,
 				26C2A5F52539F25F0084966B /* Setup Wizard-pana.png */,
 			);
 			path = Images;
 			sourceTree = "<group>";
 		};
-		26C2A5F82539F5CA0084966B /* fonts */ = {
+		26C2A5F82539F5CA0084966B /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
-				26C2A5FD2539F5F80084966B /* Nunito-Black.ttf */,
-				26C2A5FC2539F5F80084966B /* Nunito-Bold.ttf */,
-				26C2A5F92539F5F80084966B /* Nunito-ExtraBold.ttf */,
-				26C2A5FA2539F5F80084966B /* Nunito-Regular.ttf */,
-				26C2A5FB2539F5F80084966B /* Nunito-SemiBold.ttf */,
+				2644C1572541B51D0004F979 /* Nunito-Black.ttf */,
+				2644C1582541B51D0004F979 /* Nunito-Bold.ttf */,
+				2644C1562541B51D0004F979 /* Nunito-ExtraBold.ttf */,
+				2644C1552541B51D0004F979 /* Nunito-Light.ttf */,
+				2644C1542541B51D0004F979 /* Nunito-Regular.ttf */,
+				2644C1532541B51D0004F979 /* Nunito-SemiBold.ttf */,
 			);
-			path = fonts;
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 		26C2A605253A4E270084966B /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				2644C16F2542333D0004F979 /* Consultation.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -212,8 +258,8 @@
 		26C2A606253A4F100084966B /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				2682CDF1253872BA00989A3F /* SecondViewController.swift */,
-				2682CDEF253872BA00989A3F /* FirstViewController.swift */,
+				2682CDF1253872BA00989A3F /* CalendarViewController.swift */,
+				2682CDEF253872BA00989A3F /* HomeViewController.swift */,
 				26C2A5E1253885D30084966B /* LoginScreenController.swift */,
 				26C2A5F02539E1610084966B /* LoginNavigationController.swift */,
 			);
@@ -224,7 +270,6 @@
 			isa = PBXGroup;
 			children = (
 				26C2A607253A5F300084966B /* DataService.swift */,
-				26C2A60A253B8F400084966B /* UserData.xcdatamodeld */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -333,17 +378,23 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				26C2A6022539F75E0084966B /* Nunito-Regular.ttf in Resources */,
+				2644C1592541B51D0004F979 /* Nunito-SemiBold.ttf in Resources */,
+				2644C1522541B4430004F979 /* icons8-login-100.png in Resources */,
+				2644C15B2541B51D0004F979 /* Nunito-Light.ttf in Resources */,
+				2644C16A2541C2600004F979 /* Main.storyboard in Resources */,
+				2644C1722542FAB80004F979 /* no-scheduling.png in Resources */,
+				2644C15A2541B51D0004F979 /* Nunito-Regular.ttf in Resources */,
 				2682CDFA253872BC00989A3F /* LaunchScreen.storyboard in Resources */,
-				26C2A5FF2539F7550084966B /* Nunito-Black.ttf in Resources */,
+				2644C17425430D770004F979 /* scheduling.png in Resources */,
 				26C2A604253A4C930084966B /* Setup Wizard-pana.png in Resources */,
+				2644C17825431AF80004F979 /* options.png in Resources */,
+				2644C15D2541B51D0004F979 /* Nunito-Black.ttf in Resources */,
 				26C2A5E925390ACF0084966B /* Colors.xcassets in Resources */,
-				26C2A6012539F75B0084966B /* Nunito-ExtraBold.ttf in Resources */,
-				26C2A6032539F7610084966B /* Nunito-SemiBold.ttf in Resources */,
+				2644C15C2541B51D0004F979 /* Nunito-ExtraBold.ttf in Resources */,
 				2682CDF7253872BC00989A3F /* Assets.xcassets in Resources */,
-				26C2A5F72539F3430084966B /* icons8-login-100.png in Resources */,
-				2682CDF5253872BA00989A3F /* Main.storyboard in Resources */,
-				26C2A6002539F7580084966B /* Nunito-Bold.ttf in Resources */,
+				2644C16E2541DB980004F979 /* male.png in Resources */,
+				2644C16D2541DB980004F979 /* female.png in Resources */,
+				2644C15E2541B51D0004F979 /* Nunito-Bold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -368,11 +419,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				26C2A60C253B8F400084966B /* UserData.xcdatamodeld in Sources */,
-				2682CDF2253872BA00989A3F /* SecondViewController.swift in Sources */,
-				2682CDF0253872BA00989A3F /* FirstViewController.swift in Sources */,
+				2682CDF2253872BA00989A3F /* CalendarViewController.swift in Sources */,
+				2682CDF0253872BA00989A3F /* HomeViewController.swift in Sources */,
+				2644C1702542333D0004F979 /* Consultation.swift in Sources */,
 				2682CDEC253872BA00989A3F /* AppDelegate.swift in Sources */,
 				26C2A5E42538A2C10084966B /* UITabBar+Ext.swift in Sources */,
+				2644C17B25445AC70004F979 /* HomeTableViewCell.swift in Sources */,
 				26C2A5E2253885D30084966B /* LoginScreenController.swift in Sources */,
 				2682CDEE253872BA00989A3F /* SceneDelegate.swift in Sources */,
 				26C2A608253A5F300084966B /* DataService.swift in Sources */,
@@ -413,14 +465,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		2682CDF3253872BA00989A3F /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				2682CDF4253872BA00989A3F /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		2682CDF8253872BC00989A3F /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -551,7 +595,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = Assister/Info.plist;
+				INFOPLIST_FILE = Assister/Application/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -568,7 +612,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = Assister/Info.plist;
+				INFOPLIST_FILE = Assister/Application/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -700,19 +744,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		26C2A60A253B8F400084966B /* UserData.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				26C2A60B253B8F400084966B /* UserData.xcdatamodel */,
-			);
-			currentVersion = 26C2A60B253B8F400084966B /* UserData.xcdatamodel */;
-			path = UserData.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 2682CDE0253872BA00989A3F /* Project object */;
 }

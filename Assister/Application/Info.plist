@@ -4,11 +4,11 @@
 <dict>
 	<key>UIAppFonts</key>
 	<array>
-		<string>Nunito-SemiBold.ttf</string>
-		<string>Nunito-Regluar.ttf</string>
-		<string>Nunito-ExtraBold.ttf</string>
-		<string>Nunito-Bold.ttf</string>
-		<string>Nunito-Black.ttf</string>
+		<string>Resources/Fonts/Nunito-SemiBold.ttf</string>
+		<string>Resources/Fonts/Nunito-Regluar.ttf</string>
+		<string>Resources/Fonts/Nunito-ExtraBold.ttf</string>
+		<string>Resources/Fonts/Nunito-Bold.ttf</string>
+		<string>Resources/Fonts/Nunito-Black.ttf</string>
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<true/>

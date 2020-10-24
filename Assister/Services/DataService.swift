@@ -2,43 +2,24 @@
 
 import Foundation
 import UIKit
-import CoreData
 
 class DataService{
     
     //Singleton
     static let shared = DataService()
     
-
-    //Core Data
-    
-    let appDelegate : AppDelegate
-    
-    let managedContext : NSManagedObjectContext
-              
-    var userEntity : NSEntityDescription
-    
-    var user : NSManagedObject
-    
+    //Cached Data
     let ud: UserDefaults = UserDefaults.standard
 
     //Properties
     
+    private var consultation : Consultation?
 
 
     
    private init(){
     
-    // Init Data Core
-    
-     appDelegate = UIApplication.shared.delegate as! AppDelegate
-       
-     managedContext = appDelegate.persistentContainer.viewContext
-                 
-     userEntity = NSEntityDescription.entity(forEntityName: "User", in: managedContext)!
-                 
-     user = NSManagedObject(entity: userEntity, insertInto: managedContext)
-         
+//    consultation = Consultation(name : "Aziz Low")
 
     
     }
@@ -63,7 +44,6 @@ class DataService{
         
         ud.set("efewfgew", forKey: "cookie")
 
-        print("out", getBearerToken() as Any)
 
     }
     
@@ -71,7 +51,6 @@ class DataService{
               
         ud.removeObject(forKey: "cookie")
 
-        print("out", getBearerToken() as Any)
 
     }
    
@@ -83,6 +62,24 @@ class DataService{
         
     }
     
+    func hasConsultationToday() -> Bool{
+        if(consultation != nil){
+            return true
+        }
+        else{
+            return false
+        }
+    }
+    
+    func getConsultation() -> Consultation?{
+        return consultation
+    }
+    
+    
+    func setConsultation(consul : Consultation?){
+        self.consultation = consul
+        
+    }
 
     
    

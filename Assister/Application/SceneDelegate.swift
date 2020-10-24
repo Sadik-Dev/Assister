@@ -26,7 +26,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let loginNavController = storyboard.instantiateViewController(identifier: "LoginNavigationController")
         
-        print("Start ", DataService.shared.getBearerToken())
         
         //If user is logged in
         if DataService.shared.isUserLoggedIn(){
@@ -49,21 +48,20 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func createTabbar() -> UITabBarController {
         
         let tabbar = UITabBarController()
-        UITabBar.appearance().tintColor = .green
         UITabBar.setTransparentTabbar()
-        tabbar.viewControllers = [createFirstVC(), createSecondVC()]
+        tabbar.viewControllers = [createHomeVC(), createCalendarVC()]
         
         return tabbar
     }
     
-    func createFirstVC() -> FirstViewController{
-        let viewController =   FirstViewController()
+    func createHomeVC() -> HomeViewController{
+        let viewController =   HomeViewController()
         viewController.tabBarItem = UITabBarItem(tabBarSystemItem: .more, tag: 0)
         return viewController
     }
     
-    func createSecondVC() -> SecondViewController{
-        let viewController =   SecondViewController()
+    func createCalendarVC() -> CalendarViewController{
+        let viewController =   CalendarViewController()
         viewController.tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 0)
         return viewController
     }
