@@ -20,7 +20,10 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    
+        
+        let rowHeight = UIScreen.main.traitCollection.userInterfaceIdiom == .phone ? 90 : 130
+        notificationsTable?.rowHeight = CGFloat(rowHeight)
+        
         checkNextConsutation()
         initNotificationsTable()
     }
@@ -64,7 +67,10 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         //Image
         (self.view.viewWithTag(5) as? UIImageView)?.image = UIImage(named: "male")
 
-        
+        //Clock icons
+        (self.view.viewWithTag(6) as? UIImageView)?.isHidden = false
+        (self.view.viewWithTag(7) as? UIImageView)?.isHidden = false
+
 
     }
     
@@ -74,11 +80,20 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         todaysConsultationContainer?.backgroundColor = UIColor(named: "secondary")
         (self.view.viewWithTag(1) as? UILabel)?.text = "No scheduling for the moment"
         (self.view.viewWithTag(1) as? UILabel)?.sizeToFit()
-
+        
+        //Time Label
         (self.view.viewWithTag(2) as? UILabel)?.isHidden = true
+        
+        //Consultation Label
         (self.view.viewWithTag(3) as? UILabel)?.isHidden = true
         
+        //Image
         (self.view.viewWithTag(5) as? UIImageView)?.image = UIImage(named: "no-scheduling")
+        
+        //Clock icons
+        (self.view.viewWithTag(6) as? UIImageView)?.isHidden = true
+        (self.view.viewWithTag(7) as? UIImageView)?.isHidden = true
+
 
     }
     
@@ -124,12 +139,14 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let cell = tableView.dequeueReusableCell(withIdentifier: "NotifCell") as! HomeTableViewCell
             
         let customerName = notifications[indexPath.row]
-            
+        
         cell.cellTitle.text = customerName + " has made an appointment"
         cell.cellTitle.sizeToFit()
-            
+        
         return cell
     }
+    
+  
 }
 
 

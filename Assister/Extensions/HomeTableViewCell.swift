@@ -11,7 +11,6 @@ import UIKit
 class HomeTableViewCell: UITableViewCell {
 
   
-    @IBOutlet weak var cellView: UIView!
     @IBOutlet weak var cellIcon: UIImageView!
     @IBOutlet weak var cellTitle: UILabel!
     
@@ -19,6 +18,7 @@ class HomeTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -26,5 +26,6 @@ class HomeTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+ 
     
 }

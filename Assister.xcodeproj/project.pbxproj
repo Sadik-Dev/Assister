@@ -30,6 +30,7 @@
 		2682CDFA253872BC00989A3F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2682CDF8253872BC00989A3F /* LaunchScreen.storyboard */; };
 		2682CE05253872BC00989A3F /* AssisterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2682CE04253872BC00989A3F /* AssisterTests.swift */; };
 		2682CE10253872BC00989A3F /* AssisterUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2682CE0F253872BC00989A3F /* AssisterUITests.swift */; };
+		268E11EA25461EF900E0E07B /* clock.png in Resources */ = {isa = PBXBuildFile; fileRef = 268E11E925461EF900E0E07B /* clock.png */; };
 		26C2A5E2253885D30084966B /* LoginScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C2A5E1253885D30084966B /* LoginScreenController.swift */; };
 		26C2A5E42538A2C10084966B /* UITabBar+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C2A5E32538A2C10084966B /* UITabBar+Ext.swift */; };
 		26C2A5E7253905A30084966B /* RoundedCornerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C2A5E6253905A30084966B /* RoundedCornerView.swift */; };
@@ -86,6 +87,7 @@
 		2682CE0B253872BC00989A3F /* AssisterUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AssisterUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2682CE0F253872BC00989A3F /* AssisterUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssisterUITests.swift; sourceTree = "<group>"; };
 		2682CE11253872BC00989A3F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		268E11E925461EF900E0E07B /* clock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = clock.png; path = ../../../../../../Downloads/clock.png; sourceTree = "<group>"; };
 		26C2A5E1253885D30084966B /* LoginScreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreenController.swift; sourceTree = "<group>"; };
 		26C2A5E32538A2C10084966B /* UITabBar+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITabBar+Ext.swift"; sourceTree = "<group>"; };
 		26C2A5E6253905A30084966B /* RoundedCornerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCornerView.swift; sourceTree = "<group>"; };
@@ -222,6 +224,7 @@
 		26C2A5F42539F2510084966B /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				268E11E925461EF900E0E07B /* clock.png */,
 				2644C17725431AF80004F979 /* options.png */,
 				2644C17325430D770004F979 /* scheduling.png */,
 				2644C1712542FAB80004F979 /* no-scheduling.png */,
@@ -382,6 +385,7 @@
 				2644C1522541B4430004F979 /* icons8-login-100.png in Resources */,
 				2644C15B2541B51D0004F979 /* Nunito-Light.ttf in Resources */,
 				2644C16A2541C2600004F979 /* Main.storyboard in Resources */,
+				268E11EA25461EF900E0E07B /* clock.png in Resources */,
 				2644C1722542FAB80004F979 /* no-scheduling.png in Resources */,
 				2644C15A2541B51D0004F979 /* Nunito-Regular.ttf in Resources */,
 				2682CDFA253872BC00989A3F /* LaunchScreen.storyboard in Resources */,
