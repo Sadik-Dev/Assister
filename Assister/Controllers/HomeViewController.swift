@@ -14,20 +14,45 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     @IBOutlet  var notificationsTable: UITableView?
     @IBOutlet var todaysConsultationContainer: UIView?
+    @IBOutlet  var settingsButton: UIImageView?
     
     var consultation : Consultation?
     let notifications = ["Oussama", "Azia", "Lisa", "Yumi","Azura","Yoka"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
+      
+             let tap = UITapGestureRecognizer(target: self, action: #selector(HomeViewController.openSettings(gesture:)))
+
+
+
         
-        let rowHeight = UIScreen.main.traitCollection.userInterfaceIdiom == .phone ? 90 : 130
-        notificationsTable?.rowHeight = CGFloat(rowHeight)
-        
+        settingsButton?.addGestureRecognizer(tap)
+        settingsButton?.isUserInteractionEnabled = true
+
+        initTable()
         checkNextConsutation()
         initNotificationsTable()
     }
     
+    @objc func openSettings(gesture: UIGestureRecognizer) {
+       
+        if (gesture.view as? UIImageView) != nil {
+          let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+          let SettingsViewController = storyBoard.instantiateViewController(withIdentifier: "SettingsViewController") as! SettingsViewController
+            SettingsViewController.modalPresentationStyle = .fullScreen //or .overFullScreen for transparency
+
+                  self.present(SettingsViewController, animated: true, completion: nil)
+            
+            
+        }
+    }
+    
+    func initTable(){
+        let rowHeight = UIScreen.main.traitCollection.userInterfaceIdiom == .phone ? 85 : 130
+        notificationsTable?.rowHeight = CGFloat(rowHeight)
+        
+    }
     func checkNextConsutation(){
         if(DataService.shared.hasConsultationToday()){
             loadNextConsultationView()
@@ -41,11 +66,11 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     func loadNextConsultationView(){
         consultation = DataService.shared.getConsultation()
         
-        //Style the view
+        //Style the nextConsultation View
         todaysConsultationContainer?.backgroundColor = UIColor(named: "primary")
         todaysConsultationContainer?.layer.shadowColor = UIColor.black.cgColor
-        todaysConsultationContainer?.layer.shadowOffset = CGSize(width: 0, height: 1.0)
-        todaysConsultationContainer?.layer.shadowOpacity = 0.2
+        todaysConsultationContainer?.layer.shadowOffset = CGSize(width: 0, height: 3.0)
+        todaysConsultationContainer?.layer.shadowOpacity = 0.1
         todaysConsultationContainer?.layer.shadowRadius = 4.0
         todaysConsultationContainer?.layer.masksToBounds = false
 
@@ -140,7 +165,8 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
             
         let customerName = notifications[indexPath.row]
         
-        cell.cellTitle.text = customerName + " has made an appointment"
+    
+        cell.cellTitle.text = customerName + " made an new appointment"
         cell.cellTitle.sizeToFit()
         
         return cell

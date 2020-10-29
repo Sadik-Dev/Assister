@@ -24,7 +24,7 @@ class LoginNavigationController: UINavigationController {
         
     }
     override var preferredStatusBarStyle: UIStatusBarStyle {
-        .darkContent
+        .lightContent
     }
 
   

@@ -14,11 +14,11 @@ class HomeTableViewCell: UITableViewCell {
     @IBOutlet weak var cellIcon: UIImageView!
     @IBOutlet weak var cellTitle: UILabel!
     
+    @IBOutlet weak var cellView: RoundedCornerView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

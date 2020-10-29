@@ -16,6 +16,8 @@ class LoginScreenController: UIViewController {
     
     @IBOutlet weak var button: UIButton!
     
+    @IBOutlet weak var roundedContainer: RoundedCornerView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         initTextFieldsAndButton()
@@ -54,19 +56,23 @@ class LoginScreenController: UIViewController {
     func initTextFieldsAndButton(){
         
         let fields = [emailTF, passwordTF]
-        
+
         fields.forEach { field in
-            let bottomLine = CALayer()
-                          
-                          bottomLine.frame = CGRect(x: 0.0, y: emailTF.frame.height - 1, width: emailTF.frame.width, height: 2.0)
-                          bottomLine.backgroundColor = UIColor (named:"primary")?.cgColor
-            field?.borderStyle = UITextField.BorderStyle.none
-            field?.layer.addSublayer(bottomLine)
+        
+        field?.setBottomBorder()
+        field?.frame.size.width = UIScreen.main.traitCollection.userInterfaceIdiom == .phone ? 300 : 500
+
         }
+        
+//         emailTF.centerXAnchor.constraint(equalTo: roundedContainer.centerXAnchor).isActive = true
+//        passwordTF.centerXAnchor.constraint(equalTo: roundedContainer.centerXAnchor).isActive = true
              
         passwordTF.isSecureTextEntry = true
         
-        button.layer.cornerRadius = 20
+        button.layer.cornerRadius = 18
         button.clipsToBounds = true
     }
+    
+
+    
 }
