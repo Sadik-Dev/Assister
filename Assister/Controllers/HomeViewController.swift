@@ -13,8 +13,8 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
    
     
     @IBOutlet  var notificationsTable: UITableView?
-    @IBOutlet var todaysConsultationContainer: UIView?
     @IBOutlet  var settingsButton: UIImageView?
+    
     
     var consultation : Consultation?
     let notifications = ["Oussama", "Azia", "Lisa", "Yumi","Azura","Yoka"]
@@ -22,14 +22,8 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     override func viewDidLoad() {
         super.viewDidLoad()
       
-             let tap = UITapGestureRecognizer(target: self, action: #selector(HomeViewController.openSettings(gesture:)))
-
-
-
         
-        settingsButton?.addGestureRecognizer(tap)
-        settingsButton?.isUserInteractionEnabled = true
-
+        initEventHandlers()
         initTable()
         checkNextConsutation()
         initNotificationsTable()
@@ -37,22 +31,32 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     @objc func openSettings(gesture: UIGestureRecognizer) {
        
-        if (gesture.view as? UIImageView) != nil {
-          let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-          let SettingsViewController = storyBoard.instantiateViewController(withIdentifier: "SettingsViewController") as! SettingsViewController
-            SettingsViewController.modalPresentationStyle = .fullScreen //or .overFullScreen for transparency
-
-                  self.present(SettingsViewController, animated: true, completion: nil)
-            
-            
-        }
+//        if (gesture.view as? UIImageView) != nil {
+//          let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+//          let SettingsViewController = storyBoard.instantiateViewController(withIdentifier: "SettingsViewController") as! SettingsViewController
+//            SettingsViewController.modalPresentationStyle = .fullScreen //or .overFullScreen for transparency
+//
+//                  self.present(SettingsViewController, animated: true, completion: nil)
+//
+//
+//        }
+        
+        changeConsultations()
     }
     
+    func initEventHandlers(){
+        
+        //Option Button
+        let tap = UITapGestureRecognizer(target: self, action: #selector(HomeViewController.openSettings(gesture:)))
+        settingsButton?.addGestureRecognizer(tap)
+        settingsButton?.isUserInteractionEnabled = true
+    }
     func initTable(){
-        let rowHeight = UIScreen.main.traitCollection.userInterfaceIdiom == .phone ? 85 : 130
+        let rowHeight = 90
         notificationsTable?.rowHeight = CGFloat(rowHeight)
         
     }
+    
     func checkNextConsutation(){
         if(DataService.shared.hasConsultationToday()){
             loadNextConsultationView()
@@ -66,6 +70,8 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     func loadNextConsultationView(){
         consultation = DataService.shared.getConsultation()
         
+        let todaysConsultationContainer =  (self.view.viewWithTag(7) as! RoundedCornerView?)
+
         //Style the nextConsultation View
         todaysConsultationContainer?.backgroundColor = UIColor(named: "primary")
         todaysConsultationContainer?.layer.shadowColor = UIColor.black.cgColor
@@ -94,15 +100,18 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
         //Clock icons
         (self.view.viewWithTag(6) as? UIImageView)?.isHidden = false
-        (self.view.viewWithTag(7) as? UIImageView)?.isHidden = false
+       
 
 
     }
     
     func loadNoNextConsultationView(){
         
-        //Style the view
-        todaysConsultationContainer?.backgroundColor = UIColor(named: "secondary")
+//        let todaysConsultationContainer =  (self.view.viewWithTag(7) as! RoundedCornerView?)
+//        
+//        //Style the view
+//        todaysConsultationContainer?.backgroundColor = UIColor(named: "secondary")
+        
         (self.view.viewWithTag(1) as? UILabel)?.text = "No scheduling for the moment"
         (self.view.viewWithTag(1) as? UILabel)?.sizeToFit()
         
@@ -117,12 +126,12 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         //Clock icons
         (self.view.viewWithTag(6) as? UIImageView)?.isHidden = true
-        (self.view.viewWithTag(7) as? UIImageView)?.isHidden = true
+        
 
 
     }
     
-    @IBAction func button(_ sender: Any) {
+    func changeConsultations() {
         
         if(self.consultation == nil){
             DataService.shared.setConsultation(consul: Consultation(name: "Sadikske Ouss"))
@@ -172,6 +181,10 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         return cell
     }
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+         .lightContent
+     }
+
   
 }
 
