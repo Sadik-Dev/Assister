@@ -41,7 +41,10 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
 //
 //        }
         
-        changeConsultations()
+        logout()
+        
+        
+
     }
     
     func initEventHandlers(){
@@ -152,17 +155,17 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     
-//    @IBAction func logout(_ sender: Any) {
-//
-//        DataService.shared.logout()
-//
-//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//
-//        let loginScreen = storyboard.instantiateViewController(identifier: "LoginNavigationController")
-//
-//        (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(loginScreen)
-//
-//    }
+   func logout() {
+
+        DataService.shared.logout()
+
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+
+        let loginScreen = storyboard.instantiateViewController(identifier: "LoginNavigationController")
+
+        (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(loginScreen)
+
+    }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
          return notifications.count
     }

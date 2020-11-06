@@ -101,7 +101,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         window.rootViewController = vc
         window.makeKeyAndVisible()
-        print(DataService.shared.isUserLoggedIn())
         UIView.transition(with: window,
                           duration: 0.5,
                           options: [.transitionFlipFromTop],

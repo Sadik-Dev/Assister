@@ -14,6 +14,7 @@ class LoginScreenController: UIViewController {
     
     @IBOutlet weak var passwordTF: UITextField!
     
+    @IBOutlet weak var loginErrorMessage: UILabel!
     @IBOutlet weak var button: UIButton!
     
     @IBOutlet weak var roundedContainer: RoundedCornerView!
@@ -37,13 +38,28 @@ class LoginScreenController: UIViewController {
     @IBAction func login(_ sender: UIButton) {
         
       
-        
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-          let mainTabBarController = storyboard.instantiateViewController(identifier: "MainTabBarController")
-          
-        DataService.shared.login()
 
-        (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(mainTabBarController)
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let mainTabBarController = storyboard.instantiateViewController(identifier: "MainTabBarController")
+          
+        let loginSucces = DataService.shared.login(email: emailTF.text!,password: passwordTF.text!)
+
+        if(loginSucces){
+            loginErrorMessage.isHidden = true
+        let animation = CABasicAnimation(keyPath: "position")
+        animation.duration = 0.07
+        animation.repeatCount = 4
+        animation.autoreverses = true
+        animation.fromValue = NSValue(cgPoint: CGPoint(x: loginErrorMessage.center.x - 10, y: loginErrorMessage.center.y))
+        animation.toValue = NSValue(cgPoint: CGPoint(x: loginErrorMessage.center.x + 10, y: loginErrorMessage.center.y))
+
+        loginErrorMessage.layer.add(animation, forKey: "position")
+    (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(mainTabBarController)
+            
+        }
+        else{
+            loginErrorMessage.isHidden = false
+        }
 
            
 

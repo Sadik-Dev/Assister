@@ -41,6 +41,8 @@
 		26C2A5F12539E1610084966B /* LoginNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C2A5F02539E1610084966B /* LoginNavigationController.swift */; };
 		26C2A604253A4C930084966B /* Setup Wizard-pana.png in Resources */ = {isa = PBXBuildFile; fileRef = 26C2A5F52539F25F0084966B /* Setup Wizard-pana.png */; };
 		26C2A608253A5F300084966B /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C2A607253A5F300084966B /* DataService.swift */; };
+		26C7610725554E0D0073ECA9 /* HttpRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C7610625554E0D0073ECA9 /* HttpRequests.swift */; };
+		26C761092555828B0073ECA9 /* JsonParser+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C761082555828B0073ECA9 /* JsonParser+Ext.swift */; };
 		26E48E382547781000964656 /* calednar-plus.png in Resources */ = {isa = PBXBuildFile; fileRef = 26E48E372547781000964656 /* calednar-plus.png */; };
 		26E9A713254893FA00109274 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E9A712254893FA00109274 /* SettingsViewController.swift */; };
 /* End PBXBuildFile section */
@@ -103,6 +105,8 @@
 		26C2A5F02539E1610084966B /* LoginNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginNavigationController.swift; sourceTree = "<group>"; };
 		26C2A5F52539F25F0084966B /* Setup Wizard-pana.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Setup Wizard-pana.png"; sourceTree = "<group>"; };
 		26C2A607253A5F300084966B /* DataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
+		26C7610625554E0D0073ECA9 /* HttpRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpRequests.swift; sourceTree = "<group>"; };
+		26C761082555828B0073ECA9 /* JsonParser+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JsonParser+Ext.swift"; sourceTree = "<group>"; };
 		26E48E372547781000964656 /* calednar-plus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "calednar-plus.png"; path = "../../../../../../Downloads/calednar-plus.png"; sourceTree = "<group>"; };
 		26E9A712254893FA00109274 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -183,6 +187,7 @@
 		2682CDEA253872BA00989A3F /* Assister */ = {
 			isa = PBXGroup;
 			children = (
+				26C7610525554DF00073ECA9 /* Networking */,
 				2644C14E2541B2190004F979 /* Application */,
 				2644C14D2541B1ED0004F979 /* Resources */,
 				26C2A609253B4F490084966B /* Services */,
@@ -219,6 +224,7 @@
 				26C2A5E6253905A30084966B /* RoundedCornerView.swift */,
 				2644C17925445AC70004F979 /* HomeTableViewCell.swift */,
 				26206023254826B5002C923C /* UIViewBorder+Extention.swift */,
+				26C761082555828B0073ECA9 /* JsonParser+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -290,6 +296,14 @@
 				26C2A607253A5F300084966B /* DataService.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		26C7610525554DF00073ECA9 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				26C7610625554E0D0073ECA9 /* HttpRequests.swift */,
+			);
+			path = Networking;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -440,7 +454,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				26C7610725554E0D0073ECA9 /* HttpRequests.swift in Sources */,
 				2682CDF2253872BA00989A3F /* CalendarViewController.swift in Sources */,
+				26C761092555828B0073ECA9 /* JsonParser+Ext.swift in Sources */,
 				2682CDF0253872BA00989A3F /* HomeViewController.swift in Sources */,
 				2644C1702542333D0004F979 /* Consultation.swift in Sources */,
 				26206024254826B5002C923C /* UIViewBorder+Extention.swift in Sources */,

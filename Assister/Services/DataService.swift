@@ -14,13 +14,17 @@ class DataService{
     //Properties
     
     private var consultation : Consultation?
-
+    private var loggedInUser : User?
+    //Networking
+    
+    private var networking : HttpRequests
 
     
    private init(){
     
 //    consultation = Consultation(name : "Aziz Low")
-
+    
+    networking = HttpRequests()
     
     }
     
@@ -39,17 +43,27 @@ class DataService{
     
     
     //
-    func login(){
+    func login(email : String , password : String) -> Bool{
         
-        
-        ud.set("efewfgew", forKey: "cookie")
+        let credentials = User(name: "", email: email, password: password)
+        let user = networking.login(controller: RequestController.Users, object: credentials)
+        print(user?.getName())
+        if(user == nil){
+            return false
+        }
+        else{
+            self.loggedInUser = user
+            ud.set(user?.getBearer(), forKey: "bearer")
+            return true
+        }
 
 
     }
     
     func logout(){
               
-        ud.removeObject(forKey: "cookie")
+        ud.removeObject(forKey: "bearer")
+        
 
 
     }
@@ -57,7 +71,7 @@ class DataService{
     
     func getBearerToken() -> String? {
         
-        let data = ud.string(forKey: "cookie")
+        let data = ud.string(forKey: "bearer")
         return data
         
     }
@@ -80,8 +94,8 @@ class DataService{
         self.consultation = consul
         
     }
-
     
+  
    
    
     
