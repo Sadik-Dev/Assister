@@ -46,19 +46,14 @@ class LoginScreenController: UIViewController {
 
         if(loginSucces){
             loginErrorMessage.isHidden = true
-        let animation = CABasicAnimation(keyPath: "position")
-        animation.duration = 0.07
-        animation.repeatCount = 4
-        animation.autoreverses = true
-        animation.fromValue = NSValue(cgPoint: CGPoint(x: loginErrorMessage.center.x - 10, y: loginErrorMessage.center.y))
-        animation.toValue = NSValue(cgPoint: CGPoint(x: loginErrorMessage.center.x + 10, y: loginErrorMessage.center.y))
-
-        loginErrorMessage.layer.add(animation, forKey: "position")
-    (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(mainTabBarController)
+        
+            
+        (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(mainTabBarController)
             
         }
         else{
             loginErrorMessage.isHidden = false
+            loginErrorMessage.shake()
         }
 
            

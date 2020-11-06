@@ -3,13 +3,14 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		260BBAF92555ACDD00CC4454 /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 260BBAF82555ACDD00CC4454 /* UIView+Ext.swift */; };
+		260BBAFA2555AE8400CC4454 /* RoundedCornerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C2A5E6253905A30084966B /* RoundedCornerView.swift */; };
 		262060202548132D002C923C /* home.png in Resources */ = {isa = PBXBuildFile; fileRef = 2620601F2548132D002C923C /* home.png */; };
 		2620602225481364002C923C /* calendar.png in Resources */ = {isa = PBXBuildFile; fileRef = 2620602125481364002C923C /* calendar.png */; };
-		26206024254826B5002C923C /* UIViewBorder+Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26206023254826B5002C923C /* UIViewBorder+Extention.swift */; };
 		2640BDEF2553215C009E27C4 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2640BDEE2553215C009E27C4 /* User.swift */; };
 		2640BDF2255323FE009E27C4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2640BDF0255323FE009E27C4 /* Main.storyboard */; };
 		2644C1522541B4430004F979 /* icons8-login-100.png in Resources */ = {isa = PBXBuildFile; fileRef = 2644C1512541B4430004F979 /* icons8-login-100.png */; };
@@ -25,6 +26,9 @@
 		2644C17425430D770004F979 /* scheduling.png in Resources */ = {isa = PBXBuildFile; fileRef = 2644C17325430D770004F979 /* scheduling.png */; };
 		2644C17825431AF80004F979 /* options.png in Resources */ = {isa = PBXBuildFile; fileRef = 2644C17725431AF80004F979 /* options.png */; };
 		2644C17B25445AC70004F979 /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2644C17925445AC70004F979 /* HomeTableViewCell.swift */; };
+		265EC87D2555B08300C6438D /* UITextView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265EC87C2555B08300C6438D /* UITextView+Ext.swift */; };
+		265EC8832555C3D100C6438D /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 265EC8822555C3D100C6438D /* RxSwift */; };
+		265EC8852555C3D100C6438D /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 265EC8842555C3D100C6438D /* RxCocoa */; };
 		2682CDEC253872BA00989A3F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2682CDEB253872BA00989A3F /* AppDelegate.swift */; };
 		2682CDEE253872BA00989A3F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2682CDED253872BA00989A3F /* SceneDelegate.swift */; };
 		2682CDF0253872BA00989A3F /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2682CDEF253872BA00989A3F /* HomeViewController.swift */; };
@@ -36,13 +40,11 @@
 		268E11EA25461EF900E0E07B /* clock.png in Resources */ = {isa = PBXBuildFile; fileRef = 268E11E925461EF900E0E07B /* clock.png */; };
 		26C2A5E2253885D30084966B /* LoginScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C2A5E1253885D30084966B /* LoginScreenController.swift */; };
 		26C2A5E42538A2C10084966B /* UITabBar+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C2A5E32538A2C10084966B /* UITabBar+Ext.swift */; };
-		26C2A5E7253905A30084966B /* RoundedCornerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C2A5E6253905A30084966B /* RoundedCornerView.swift */; };
 		26C2A5E925390ACF0084966B /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 26C2A5E825390ACF0084966B /* Colors.xcassets */; };
 		26C2A5F12539E1610084966B /* LoginNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C2A5F02539E1610084966B /* LoginNavigationController.swift */; };
 		26C2A604253A4C930084966B /* Setup Wizard-pana.png in Resources */ = {isa = PBXBuildFile; fileRef = 26C2A5F52539F25F0084966B /* Setup Wizard-pana.png */; };
 		26C2A608253A5F300084966B /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C2A607253A5F300084966B /* DataService.swift */; };
 		26C7610725554E0D0073ECA9 /* HttpRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C7610625554E0D0073ECA9 /* HttpRequests.swift */; };
-		26C761092555828B0073ECA9 /* JsonParser+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C761082555828B0073ECA9 /* JsonParser+Ext.swift */; };
 		26E48E382547781000964656 /* calednar-plus.png in Resources */ = {isa = PBXBuildFile; fileRef = 26E48E372547781000964656 /* calednar-plus.png */; };
 		26E9A713254893FA00109274 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E9A712254893FA00109274 /* SettingsViewController.swift */; };
 /* End PBXBuildFile section */
@@ -65,9 +67,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		260BBAF82555ACDD00CC4454 /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
 		2620601F2548132D002C923C /* home.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = home.png; path = ../../../../../OneDrive/AssisterDesign/home.png; sourceTree = "<group>"; };
 		2620602125481364002C923C /* calendar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = calendar.png; path = ../../../../../OneDrive/AssisterDesign/calendar.png; sourceTree = "<group>"; };
-		26206023254826B5002C923C /* UIViewBorder+Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewBorder+Extention.swift"; sourceTree = "<group>"; };
 		2640BDEE2553215C009E27C4 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		2640BDF1255323FE009E27C4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2644C1512541B4430004F979 /* icons8-login-100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icons8-login-100.png"; path = "../../../../../OneDrive/AssisterDesign/icons8-login-100.png"; sourceTree = "<group>"; };
@@ -83,6 +85,7 @@
 		2644C17325430D770004F979 /* scheduling.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = scheduling.png; path = ../../../../../OneDrive/AssisterDesign/scheduling.png; sourceTree = "<group>"; };
 		2644C17725431AF80004F979 /* options.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = options.png; path = ../../../../../OneDrive/AssisterDesign/options.png; sourceTree = "<group>"; };
 		2644C17925445AC70004F979 /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
+		265EC87C2555B08300C6438D /* UITextView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+Ext.swift"; sourceTree = "<group>"; };
 		2682CDE8253872BA00989A3F /* Assister.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Assister.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2682CDEB253872BA00989A3F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2682CDED253872BA00989A3F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -106,7 +109,6 @@
 		26C2A5F52539F25F0084966B /* Setup Wizard-pana.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Setup Wizard-pana.png"; sourceTree = "<group>"; };
 		26C2A607253A5F300084966B /* DataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 		26C7610625554E0D0073ECA9 /* HttpRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpRequests.swift; sourceTree = "<group>"; };
-		26C761082555828B0073ECA9 /* JsonParser+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JsonParser+Ext.swift"; sourceTree = "<group>"; };
 		26E48E372547781000964656 /* calednar-plus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "calednar-plus.png"; path = "../../../../../../Downloads/calednar-plus.png"; sourceTree = "<group>"; };
 		26E9A712254893FA00109274 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -116,6 +118,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				265EC8852555C3D100C6438D /* RxCocoa in Frameworks */,
+				265EC8832555C3D100C6438D /* RxSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -221,10 +225,8 @@
 			isa = PBXGroup;
 			children = (
 				26C2A5E32538A2C10084966B /* UITabBar+Ext.swift */,
-				26C2A5E6253905A30084966B /* RoundedCornerView.swift */,
-				2644C17925445AC70004F979 /* HomeTableViewCell.swift */,
-				26206023254826B5002C923C /* UIViewBorder+Extention.swift */,
-				26C761082555828B0073ECA9 /* JsonParser+Ext.swift */,
+				260BBAF82555ACDD00CC4454 /* UIView+Ext.swift */,
+				265EC87C2555B08300C6438D /* UITextView+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -232,6 +234,8 @@
 		26C2A5EB253971660084966B /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				26C2A5E6253905A30084966B /* RoundedCornerView.swift */,
+				2644C17925445AC70004F979 /* HomeTableViewCell.swift */,
 				2640BDF0255323FE009E27C4 /* Main.storyboard */,
 				2682CDF8253872BC00989A3F /* LaunchScreen.storyboard */,
 			);
@@ -322,6 +326,10 @@
 			dependencies = (
 			);
 			name = Assister;
+			packageProductDependencies = (
+				265EC8822555C3D100C6438D /* RxSwift */,
+				265EC8842555C3D100C6438D /* RxCocoa */,
+			);
 			productName = Assister;
 			productReference = 2682CDE8253872BA00989A3F /* Assister.app */;
 			productType = "com.apple.product-type.application";
@@ -394,6 +402,9 @@
 				Base,
 			);
 			mainGroup = 2682CDDF253872BA00989A3F;
+			packageReferences = (
+				265EC8812555C3D100C6438D /* XCRemoteSwiftPackageReference "RxSwift" */,
+			);
 			productRefGroup = 2682CDE9253872BA00989A3F /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -456,19 +467,19 @@
 			files = (
 				26C7610725554E0D0073ECA9 /* HttpRequests.swift in Sources */,
 				2682CDF2253872BA00989A3F /* CalendarViewController.swift in Sources */,
-				26C761092555828B0073ECA9 /* JsonParser+Ext.swift in Sources */,
 				2682CDF0253872BA00989A3F /* HomeViewController.swift in Sources */,
 				2644C1702542333D0004F979 /* Consultation.swift in Sources */,
-				26206024254826B5002C923C /* UIViewBorder+Extention.swift in Sources */,
+				260BBAF92555ACDD00CC4454 /* UIView+Ext.swift in Sources */,
 				2682CDEC253872BA00989A3F /* AppDelegate.swift in Sources */,
+				260BBAFA2555AE8400CC4454 /* RoundedCornerView.swift in Sources */,
 				26C2A5E42538A2C10084966B /* UITabBar+Ext.swift in Sources */,
 				2640BDEF2553215C009E27C4 /* User.swift in Sources */,
+				265EC87D2555B08300C6438D /* UITextView+Ext.swift in Sources */,
 				2644C17B25445AC70004F979 /* HomeTableViewCell.swift in Sources */,
 				26C2A5E2253885D30084966B /* LoginScreenController.swift in Sources */,
 				2682CDEE253872BA00989A3F /* SceneDelegate.swift in Sources */,
 				26C2A608253A5F300084966B /* DataService.swift in Sources */,
 				26E9A713254893FA00109274 /* SettingsViewController.swift in Sources */,
-				26C2A5E7253905A30084966B /* RoundedCornerView.swift in Sources */,
 				26C2A5F12539E1610084966B /* LoginNavigationController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -792,6 +803,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		265EC8812555C3D100C6438D /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.1.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		265EC8822555C3D100C6438D /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 265EC8812555C3D100C6438D /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
+		};
+		265EC8842555C3D100C6438D /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 265EC8812555C3D100C6438D /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 2682CDE0253872BA00989A3F /* Project object */;
 }

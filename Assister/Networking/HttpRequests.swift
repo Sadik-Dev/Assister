@@ -58,7 +58,7 @@ class HttpRequests{
     }
     
 
-    func login<T: Any & Codable>(controller : RequestController, object : T ) -> User?{
+    func login<T: Any & Codable & Decodable>(controller : RequestController, object : T ) -> User?{
            
             // Create a URLRequest for an API endpoint
             let endpoint = apiUrl + "Users/authenticate"
@@ -106,9 +106,9 @@ class HttpRequests{
                     // Serialize the data into an object
                     do {
                                         
-                        let res = try JSONDecoder().decode(User.self, from: data )
+                        let res = try JSONDecoder().decode(T.self, from: data )
                     
-                        user = res
+                        user = res as! User
                             
                         semaphore.signal()
                                                 
@@ -138,55 +138,84 @@ class HttpRequests{
             
         }
     
-        func post<T: Any & Codable>(controller : RequestController, object : T ){
-           
-            // Create a URLRequest for an API endpoint
-            let endpoint = apiUrl + controller.rawValue
-            print(endpoint)
-            let url = URL(string: endpoint)!
-            var request = URLRequest(url: url)
-            
-            // Configure request authentication
-            let accessToken = "your access token"
-            request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
-            
-            request.allHTTPHeaderFields = [
-                "Content-Type": "application/json",
-                "Accept": "application/json"
-            ]
-         
+         func post<T: Any & Codable>(controller : RequestController, object : T ) -> User?{
+                  
+                   // Create a URLRequest for an API endpoint
+                   let endpoint = apiUrl + "Users/authenticate"
+                   print(endpoint)
+                   let url = URL(string: endpoint)!
+                   var request = URLRequest(url: url)
+                   var user : User? = nil
+                   var responseCode : Int? = nil
+                   
+           //        // Configure request authentication
+           //        request.setValue(
+           //            "authToken",
+           //            forHTTPHeaderField: "Authorization"
+           //        )
+                   
+                   request.allHTTPHeaderFields = [
+                       "Content-Type": "application/json",
+                       "Accept": "application/json"
+                   ]
+                 
 
-            // Change the URLRequest to a POST request
-            request.httpMethod = "POST"
-            request.httpBody = try! JSONEncoder().encode(object)
+                   // Change the URLRequest to a POST request
+                   request.httpMethod = "POST"
+                   request.httpBody = try! JSONEncoder().encode(object)
 
+                   let semaphore = DispatchSemaphore(value: 0)  //1. create a counting semaphore
 
-           // Create the HTTP request
-            let session = URLSession.shared
-            let task = session.dataTask(with: request) { (data, response, error) in
+                  // Create the HTTP request
+                   let session = URLSession.shared
+                   let task = session.dataTask(with: request) { (data, response, error) in
 
-                if let error = error {
-                    // Handle HTTP request error
-                    print(error)
-                } else if let data = data {
-                    // Handle HTTP request response
-                    
-                    // Serialize the data into an object
-                              do {
-                                let json = try JSONDecoder().decode([User].self, from: data )
-//                                try JSONSerialization.jsonObject(with: data, options: [])
-                                print(json)
-                                
-                              } catch {
-                                  print("Error during JSON serialization: \(error)")
-                              }
-                } else {
-                    // Handle unexpected error
-                }
-            }
-            
-            task.resume()
+                       if let error = error {
+                           // Handle HTTP request error
+                           print(error)
+                           semaphore.signal()
 
-        }
+                       }
+                       
+                       else if let data = data {
+                           //Save the status code
+                            if let httpResponse = response as? HTTPURLResponse {
+                               // Handle HTTP request response
+                               responseCode = httpResponse.statusCode
+                           }
+                           // Serialize the data into an object
+                           do {
+                                               
+                               let res = try JSONDecoder().decode(User.self, from: data )
+                           
+                               user = res
+                                   
+                               semaphore.signal()
+                                                       
+                               }
+                               catch {
+                                   print("Error during JSON serialization: \(error.localizedDescription)")
+                               }
+                       } else {
+                           print("Unhandled Error")
+                           semaphore.signal()
+
+                       }
+                   }
+                   
+                   task.resume()
+                   semaphore.wait()
+                   //Handle Return Value
+                   if( responseCode != 200 ){
+                       
+                           return nil
+
+                       }
+                   else {
+                    return user
+                       
+                   }
+                   
+               }
     
 }

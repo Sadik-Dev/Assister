@@ -1,12 +1,6 @@
-//
-//  FirstViewController.swift
-//  Assister
-//
-//  Created by Sana on 15/10/2020.
-//  Copyright © 2020 Sadik-Dev. All rights reserved.
-//
-
 import UIKit
+import RxSwift
+import RxCocoa
 
 class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
@@ -17,18 +11,29 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     
     var consultation : Consultation?
-    let notifications = ["Oussama", "Azia", "Lisa", "Yumi","Azura","Yoka"]
+    var consultations : Array<Consultation>? = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
       
-        
+        DataService.shared.getConsultations().subscribe{
+            elements in
+            if let data = elements.element{
+                self.consultations = data
+                self.notificationsTable?.reloadData()
+            }
+        }
         initEventHandlers()
         initTable()
         checkNextConsutation()
         initNotificationsTable()
+        
+      
     }
     
+    @IBAction func printthat(_ sender: Any) {
+        printConsultation()
+    }
     @objc func openSettings(gesture: UIGestureRecognizer) {
        
 //        if (gesture.view as? UIImageView) != nil {
@@ -41,10 +46,15 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
 //
 //        }
         
-        logout()
+        DataService.shared.changeObservable()
         
-        
-
+       
+    }
+    
+    func printConsultation(){
+        for x in consultations!{
+            print(x.getName())
+        }
     }
     
     func initEventHandlers(){
@@ -167,7 +177,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-         return notifications.count
+        return consultations!.count
     }
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -175,7 +185,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "NotifCell") as! HomeTableViewCell
             
-        let customerName = notifications[indexPath.row]
+        let customerName = consultations![indexPath.row].getName()
         
     
         cell.cellTitle.text = customerName + " made an new appointment"
