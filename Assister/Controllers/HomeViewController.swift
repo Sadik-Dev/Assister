@@ -8,9 +8,8 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     @IBOutlet  var notificationsTable: UITableView?
     @IBOutlet  var settingsButton: UIImageView?
+    @IBOutlet  var consultationsToday: UILabel!
     
-    
-    var consultation : Consultation?
     var consultations : Array<Consultation>? = []
     
     override func viewDidLoad() {
@@ -21,6 +20,24 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
             if let data = elements.element{
                 self.consultations = data
                 self.notificationsTable?.reloadData()
+                
+                //Set Appointments today
+                
+                var count : Int = 0
+                let calendar = Calendar.current
+
+                for c in self.consultations!{
+                    
+                    let date = c.getDateTime()
+                    
+                    if calendar.isDateInToday(date){
+                        count += 1
+                    }
+                }
+                
+                self.consultationsToday?.text = String(count)
+                
+                
             }
         }
         initEventHandlers()
@@ -31,9 +48,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
       
     }
     
-    @IBAction func printthat(_ sender: Any) {
-        printConsultation()
-    }
+    
     @objc func openSettings(gesture: UIGestureRecognizer) {
        
 //        if (gesture.view as? UIImageView) != nil {
@@ -50,9 +65,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
        
     }
     
-    func printConsultation(){
-       
-    }
+   
     
     func initEventHandlers(){
         
@@ -68,7 +81,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func checkNextConsutation(){
-        if(DataService.shared.hasConsultationToday()){
+        if(consultations!.count > 0){
             loadNextConsultationView()
         }
         else{
@@ -78,7 +91,8 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     
     func loadNextConsultationView(){
-        consultation = DataService.shared.getConsultation()
+        
+        var consultation = consultations?.first
         
         let todaysConsultationContainer =  (self.view.viewWithTag(7) as! RoundedCornerView?)
 
@@ -98,11 +112,9 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         (self.view.viewWithTag(3) as? UILabel)?.isHidden = false
 
         //Time
-        let hour = Calendar.current.component(.hour, from: (consultation?.getDateTime())!)
-        let minutes =  Calendar.current.component(.hour, from: (consultation?.getDateTime())!)
         
         (self.view.viewWithTag(2) as? UILabel)?.isHidden = false
-        (self.view.viewWithTag(2) as? UILabel)?.text = "Consultation at " + String(hour) + ":" + String(minutes)
+        (self.view.viewWithTag(2) as? UILabel)?.text = "Consultation at " + (consultation?.getTime())!
         (self.view.viewWithTag(2) as? UILabel)?.sizeToFit()
 
         //Image
@@ -141,19 +153,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
     }
     
-    func changeConsultations() {
-        
-        if(self.consultation == nil){
-            self.consultation = DataService.shared.getConsultation()
-        }
-        else{
-            DataService.shared.setConsultation(consul: nil)
-            self.consultation = DataService.shared.getConsultation()
-
-        }
-        
-        checkNextConsutation()
-    }
+  
     
     func initNotificationsTable(){
         notificationsTable?.dataSource = self
@@ -172,6 +172,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(loginScreen)
 
     }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return consultations!.count
     }

@@ -11,7 +11,7 @@ import Foundation
 enum RequestController : String {
     case Users
     case Consultations
-    case east
+    case UpdateLogs
     case west
 }
 
@@ -26,11 +26,86 @@ class HttpRequests{
         bearer = token
     }
     
-    func getArray(controller : RequestController) -> [Consultation]?{
+    func isUserUpToDate() -> Bool {
+        
+        // Create a URLRequest for an API endpoint
+        let endpoint = apiUrl + RequestController.UpdateLogs.rawValue
+        let url = URL(string: endpoint)!
+        var request = URLRequest(url: url)
+        var responseCode : Int? = nil
+        var resultObject : Bool = true
+              
+        request.allHTTPHeaderFields = [
+                    "Content-Type": "application/json",
+                    "Accept": "application/json",
+                    "Authorization": "Bearer \(String(describing: bearer))"
+                    ]
+        
+        request.httpMethod = "GET"
+        let semaphore = DispatchSemaphore(value: 0)
+
+        // Create the HTTP request
+               let session = URLSession.shared
+               let task = session.dataTask(with: request) { (data, response, error) in
+
+                   if let error = error {
+                       // Handle HTTP request error
+                       print(error)
+                       semaphore.signal()
+
+                   } else if let data = data {
+                       // Handle HTTP request response
+                        if let httpResponse = response as? HTTPURLResponse {
+                           
+                                           // Handle HTTP request response
+                                           responseCode = httpResponse.statusCode
+                                          }
+                       
+                                          // Serialize the data into an object
+                                          do {
+                                               let json = try? JSONSerialization.jsonObject(with: data, options: [])
+                                   
+                                               let decoder = JSONDecoder()
+                                               let formatter = DateFormatter()
+                                               formatter.dateFormat = "yyyy/MM/dd'T'HH:mm:ss"
+                                           
+                                               decoder.dateDecodingStrategy = .formatted(formatter)
+
+                                               let res = try decoder.decode(Bool.self, from: data )
+                                          
+                                               resultObject = res
+                                                  
+                                               semaphore.signal()
+                                                                      
+                                              }
+                                              catch {
+                                               print("Error during JSON serialization: \(error.self)")
+                                              }
+                   } else {
+                       // Handle unexpected error
+                       print("Unhandled Error")
+                       semaphore.signal()
+                   }
+               }
+               
+               task.resume()
+               semaphore.wait()
+               //Handle Return Value
+               if( responseCode != 200 ){
+                   
+                   return resultObject
+
+                   }
+               else {
+                   
+                   return resultObject
+                   
+               }
+    }
+    func getConsultations(controller : RequestController) -> [Consultation]?{
        
         // Create a URLRequest for an API endpoint
         let endpoint = apiUrl + controller.rawValue
-        print(endpoint)
         let url = URL(string: endpoint)!
         var request = URLRequest(url: url)
         var responseCode : Int? = nil
@@ -44,8 +119,8 @@ class HttpRequests{
             ]
         
         request.httpMethod = "GET"
-        let semaphore = DispatchSemaphore(value: 0)  //1. create a counting semaphore
-
+        let semaphore = DispatchSemaphore(value: 0)
+        
        // Create the HTTP request
         let session = URLSession.shared
         let task = session.dataTask(with: request) { (data, response, error) in
@@ -67,6 +142,7 @@ class HttpRequests{
                                    do {
                                         let json = try? JSONSerialization.jsonObject(with: data, options: [])
                             
+                                    
                                         let decoder = JSONDecoder()
                                         let formatter = DateFormatter()
                                         formatter.dateFormat = "yyyy/MM/dd'T'HH:mm:ss"
@@ -112,7 +188,6 @@ class HttpRequests{
            
             // Create a URLRequest for an API endpoint
             let endpoint = apiUrl + "Users/authenticate"
-            print(endpoint)
             let url = URL(string: endpoint)!
             var request = URLRequest(url: url)
             var user : User? = nil

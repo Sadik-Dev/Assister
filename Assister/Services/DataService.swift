@@ -17,7 +17,9 @@ class DataService{
     private var consultation : Consultation?
     private var loggedInUser : User?
     private var consultations = BehaviorSubject<Array<Consultation>>(value: [])
-    
+    private var timer : Timer?
+    private var amountOfNotifs : Int?
+
     //Networking
     
     private var networking : HttpRequests
@@ -34,15 +36,44 @@ class DataService{
     func initData(){
         
         networking.setBearer(token: getBearerToken()!)
-           
-        consultations.onNext( networking.getArray(controller: .Consultations)!)
-           _ = Timer.scheduledTimer(timeInterval: 5.0, target: self, selector: #selector(self.sayHello), userInfo: nil, repeats: true)
+        let newConsultations = networking.getConsultations(controller: .Consultations)!
+        amountOfNotifs = newConsultations.count
+        consultations.onNext(newConsultations)
+        
+         timer = Timer.scheduledTimer(timeInterval: 5.0, target: self, selector: #selector(self.checkIfUpToDate), userInfo: nil, repeats: true)
+        
+        
 
     }
+    
+    
+    func updateData(){
+        let newConsultations = networking.getConsultations(controller: .Consultations)!
+        
+        if newConsultations.count != amountOfNotifs! {
+            print("log")
+            setNotification(title: "You have new Notifications")
+        }
+        
+        amountOfNotifs = newConsultations.count
+        consultations.onNext(newConsultations)
 
-    @objc func sayHello()
+    }
+    
+    func setNotification(title : String) -> Void {
+        let manager = LocalNotificationManager()
+        manager.requestPermission()
+        manager.addNotification(title: title)
+        manager.scheduleNotifications()
+    }
+
+    @objc func checkIfUpToDate()
     {
-        print("hello World")
+        let isAppUpToDate = networking.isUserUpToDate()
+        
+        if !isAppUpToDate {
+            updateData()
+        }
     }
     
     func getConsultations() -> Observable<Array<Consultation>>{
@@ -73,7 +104,6 @@ class DataService{
         }
         else{
             self.loggedInUser = user
-            print(self.loggedInUser?.getName())
             ud.set(user?.getBearer(), forKey: "bearer")
             initData()
             return true
@@ -85,7 +115,7 @@ class DataService{
     func logout(){
               
         ud.removeObject(forKey: "bearer")
-        
+        timer?.invalidate()
 
 
     }

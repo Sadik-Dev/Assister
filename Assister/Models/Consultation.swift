@@ -38,6 +38,19 @@ class Consultation : (Codable & Decodable){
         
        }
     
+    func getTime() -> String{
+         
+         let formatter = DateFormatter()
+         formatter.dateFormat = "HH:mm"
+
+         formatter.timeStyle = .short
+         formatter.dateStyle = .none
+         formatter.locale = Locale(identifier: "en_BE")
+         
+         return formatter.string(from: date!)
+
+         
+        }
     func getDateTime() -> Date
     {
         return date!
