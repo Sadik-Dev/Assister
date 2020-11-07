@@ -24,31 +24,25 @@ class DataService{
 
     
    private init(){
-    
-//    consultation = Consultation(name : "Aziz Low")
-    
-    networking = HttpRequests()
-    
-    var y = Array<Consultation>()
-    for _ in 1...5 {
-        let x = Consultation(name: "i")
-        y.append(x)
-    }
-    
-    consultations.onNext(y)
-    
-    
-    
-    }
-    
-    func changeObservable(){
-        var y = Array<Consultation>()
-        for _ in 1...5 {
-            let x = Consultation(name: "x")
-            y.append(x)
-        }
         
-        consultations.onNext(y)
+    networking = HttpRequests()
+    if isUserLoggedIn(){
+        initData()
+        }
+    }
+    
+    func initData(){
+        
+        networking.setBearer(token: getBearerToken()!)
+           
+        consultations.onNext( networking.getArray(controller: .Consultations)!)
+           _ = Timer.scheduledTimer(timeInterval: 5.0, target: self, selector: #selector(self.sayHello), userInfo: nil, repeats: true)
+
+    }
+
+    @objc func sayHello()
+    {
+        print("hello World")
     }
     
     func getConsultations() -> Observable<Array<Consultation>>{
@@ -81,6 +75,7 @@ class DataService{
             self.loggedInUser = user
             print(self.loggedInUser?.getName())
             ud.set(user?.getBearer(), forKey: "bearer")
+            initData()
             return true
         }
 

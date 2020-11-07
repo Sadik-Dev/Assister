@@ -46,15 +46,12 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
 //
 //        }
         
-        DataService.shared.changeObservable()
-        
+        logout()
        
     }
     
     func printConsultation(){
-        for x in consultations!{
-            print(x.getName())
-        }
+       
     }
     
     func initEventHandlers(){
@@ -95,7 +92,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
 
         //Name of patient
-        (self.view.viewWithTag(1) as? UILabel)?.text = consultation?.getName()
+        (self.view.viewWithTag(1) as? UILabel)?.text = consultation?.getCustomer()?.getName()
         
         //Show Consultation label
         (self.view.viewWithTag(3) as? UILabel)?.isHidden = false
@@ -147,7 +144,6 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     func changeConsultations() {
         
         if(self.consultation == nil){
-            DataService.shared.setConsultation(consul: Consultation(name: "Sadikske Ouss"))
             self.consultation = DataService.shared.getConsultation()
         }
         else{
@@ -185,12 +181,16 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "NotifCell") as! HomeTableViewCell
             
-        let customerName = consultations![indexPath.row].getName()
-        
+        let customerName = consultations![indexPath.row].getCustomer()?.getName()
+        let date = consultations![indexPath.row].getDateTimeString()
+
     
-        cell.cellTitle.text = customerName + " made an new appointment"
+        cell.cellTitle.text = customerName! + " made an new appointment"
         cell.cellTitle.sizeToFit()
         
+        cell.cellSubTitle.text = "Consultation on " + date
+        cell.cellSubTitle.sizeToFit()
+
         return cell
     }
     

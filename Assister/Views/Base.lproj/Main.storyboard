@@ -34,7 +34,7 @@
                                 <rect key="frame" x="0.0" y="209" width="414" height="717"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zv7-bx-RT7" customClass="RoundedCornerView" customModule="Assister" customModuleProvider="target">
-                                        <rect key="frame" x="9.5" y="144.5" width="395" height="90"/>
+                                        <rect key="frame" x="9.5" y="155.5" width="395" height="90"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="male.png" translatesAutoresizingMaskIntoConstraints="NO" id="eSf-ns-DPW">
                                                 <rect key="frame" x="5" y="10" width="70" height="70"/>
@@ -49,7 +49,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Oussama Sadik" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y1s-RO-afL">
-                                                <rect key="frame" x="83" y="30" width="120" height="20"/>
+                                                <rect key="frame" x="83" y="28.5" width="118" height="23.5"/>
                                                 <fontDescription key="fontDescription" name="Nunito-Regular" family="Nunito" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -60,7 +60,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Consultation" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YY4-x3-rPh">
-                                                <rect key="frame" x="83" y="51" width="74" height="15.5"/>
+                                                <rect key="frame" x="83" y="53" width="74" height="18"/>
                                                 <fontDescription key="fontDescription" name="Nunito-Regular" family="Nunito" pointSize="13"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -71,7 +71,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </label>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clock.png" translatesAutoresizingMaskIntoConstraints="NO" id="uyD-Y9-X51">
-                                                <rect key="frame" x="326.5" y="66" width="14" height="14"/>
+                                                <rect key="frame" x="325" y="66" width="14" height="14"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="14" id="4cX-bv-Inx"/>
                                                     <constraint firstAttribute="height" constant="14" id="O3n-hu-vJo"/>
@@ -83,7 +83,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="15:30" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pkb-yF-o3W">
-                                                <rect key="frame" x="343.5" y="68" width="30.5" height="14"/>
+                                                <rect key="frame" x="342" y="65.5" width="32" height="16.5"/>
                                                 <fontDescription key="fontDescription" name="Nunito-Regular" family="Nunito" pointSize="12"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -119,32 +119,32 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9by-Yl-lra">
-                                        <rect key="frame" x="349.5" y="36" width="30.5" height="31.5"/>
+                                        <rect key="frame" x="347.5" y="36" width="32.5" height="37"/>
                                         <fontDescription key="fontDescription" name="Nunito-SemiBold" family="Nunito" pointSize="27"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="scheduling.png" translatesAutoresizingMaskIntoConstraints="NO" id="iEd-ld-x0l">
-                                        <rect key="frame" x="318.5" y="40.5" width="23" height="23"/>
+                                        <rect key="frame" x="316.5" y="43" width="23" height="23"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="23" id="NTh-Cf-UdZ"/>
                                             <constraint firstAttribute="width" constant="23" id="Rn7-Y4-IHj"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Next Consultation" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i5e-t0-anZ">
-                                        <rect key="frame" x="11.5" y="112" width="121" height="17.5"/>
+                                        <rect key="frame" x="11.5" y="120" width="121" height="20.5"/>
                                         <fontDescription key="fontDescription" name="Nunito-Regular" family="Nunito" pointSize="15"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Appointements today" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2yR-dr-qHG">
-                                        <rect key="frame" x="299" y="68.5" width="106" height="13"/>
+                                        <rect key="frame" x="299" y="74" width="106" height="15.5"/>
                                         <fontDescription key="fontDescription" name="Nunito-Regular" family="Nunito" pointSize="11"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Zk0-qw-4ur">
-                                        <rect key="frame" x="8.5" y="300.5" width="397" height="302.5"/>
+                                        <rect key="frame" x="8.5" y="314.5" width="397" height="288.5"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
                                             <constraint firstAttribute="width" relation="lessThanOrEqual" constant="400" id="EnF-XY-FDj"/>
@@ -175,17 +175,22 @@
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="calednar-plus.png" translatesAutoresizingMaskIntoConstraints="NO" id="Q9d-XD-Nat">
+                                                            <rect key="frame" x="352" y="35" width="25" height="25"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        </imageView>
                                                     </subviews>
                                                 </tableViewCellContentView>
                                                 <connections>
                                                     <outlet property="cellIcon" destination="451-Hw-JCc" id="NzX-gj-xeC"/>
+                                                    <outlet property="cellSubTitle" destination="517-k1-7MH" id="LZv-Gc-K0Q"/>
                                                     <outlet property="cellTitle" destination="dC5-kF-I2E" id="LV9-Ie-pMh"/>
                                                 </connections>
                                             </tableViewCell>
                                         </prototypes>
                                     </tableView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notifications" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6BW-Pa-nRc">
-                                        <rect key="frame" x="8.5" y="265" width="84" height="17.5"/>
+                                        <rect key="frame" x="8.5" y="276" width="84" height="20.5"/>
                                         <fontDescription key="fontDescription" name="Nunito-Regular" family="Nunito" pointSize="15"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -219,7 +224,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Home" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aK3-vf-sFm">
-                                <rect key="frame" x="20" y="149" width="70" height="30.5"/>
+                                <rect key="frame" x="20" y="144" width="70" height="35.5"/>
                                 <fontDescription key="fontDescription" name="Nunito-Regular" family="Nunito" pointSize="26"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -531,6 +536,7 @@
     </scenes>
     <resources>
         <image name="Setup Wizard-pana.png" width="2000" height="2000"/>
+        <image name="calednar-plus.png" width="48" height="48"/>
         <image name="calendar.png" width="42" height="42"/>
         <image name="clock.png" width="48" height="48"/>
         <image name="female.png" width="100" height="100"/>

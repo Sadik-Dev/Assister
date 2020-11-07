@@ -8,29 +8,48 @@
 
 import Foundation
 
-class Consultation{
+class Consultation : (Codable & Decodable){
     
-    private let dateTime : Date
+    private var id : Int?
+    private var date : Date?
+    private var customer : Customer?
+    private var type : String?
     
-    private let name : String
     
-    public init(name : String){
-     
-      let formatter = DateFormatter()
-        formatter.dateFormat = "dd-MM-yyyy HH:mm:ss Z"
+ 
+    init(id : Int, customer : Customer, type : String){
+        
+        self.id = id
+        self.customer = customer
+        self.type = type
+        
+    }
+    func getDateTimeString() -> String{
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd HH:mm"
 
-        dateTime = formatter.date(from: "13-03-2020 13:37:00 +0100")!
+        formatter.timeStyle = .short
+        formatter.dateStyle = .long
+        formatter.locale = Locale(identifier: "en_BE")
         
-        self.name = name
+        return formatter.string(from: date!)
+
         
-     
-     }
+       }
     
-    public func getName() -> String{
-        return name
+    func getDateTime() -> Date
+    {
+        return date!
     }
     
-    public func getDateTime() -> Date{
-           return dateTime
-       }
+    func getCustomer() -> Customer?{
+        return customer
+    }
+    
+    func getType() -> String?{
+        return type
+    }
+    
+    
 }

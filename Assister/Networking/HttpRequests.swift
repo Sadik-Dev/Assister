@@ -10,7 +10,7 @@ import Foundation
 
 enum RequestController : String {
     case Users
-    case Posts
+    case Consultations
     case east
     case west
 }
@@ -19,23 +19,32 @@ class HttpRequests{
     
     let session = URLSession.shared
     let apiUrl = "http://192.168.1.8:1025/api/"
+    var bearer = ""
     
     
-    func get(controller : RequestController){
+    func setBearer(token : String){
+        bearer = token
+    }
+    
+    func getArray(controller : RequestController) -> [Consultation]?{
        
         // Create a URLRequest for an API endpoint
         let endpoint = apiUrl + controller.rawValue
         print(endpoint)
         let url = URL(string: endpoint)!
         var request = URLRequest(url: url)
-        
-//        // Configure request authentication
-//        request.setValue(
-//            "authToken",
-//            forHTTPHeaderField: "Authorization"
-//        )
+        var responseCode : Int? = nil
+        var resultObject : [Consultation]? = Array<Consultation>()
+                  
+                         
+        request.allHTTPHeaderFields = [
+            "Content-Type": "application/json",
+            "Accept": "application/json",
+            "Authorization": "Bearer \(String(describing: bearer))"
+            ]
         
         request.httpMethod = "GET"
+        let semaphore = DispatchSemaphore(value: 0)  //1. create a counting semaphore
 
        // Create the HTTP request
         let session = URLSession.shared
@@ -44,16 +53,57 @@ class HttpRequests{
             if let error = error {
                 // Handle HTTP request error
                 print(error)
+                semaphore.signal()
+
             } else if let data = data {
                 // Handle HTTP request response
-                print(data)
-                print(response as Any)
+                 if let httpResponse = response as? HTTPURLResponse {
+                    
+                                    // Handle HTTP request response
+                                    responseCode = httpResponse.statusCode
+                                   }
+                
+                                   // Serialize the data into an object
+                                   do {
+                                        let json = try? JSONSerialization.jsonObject(with: data, options: [])
+                            
+                                        let decoder = JSONDecoder()
+                                        let formatter = DateFormatter()
+                                        formatter.dateFormat = "yyyy/MM/dd'T'HH:mm:ss"
+                                    
+                                        decoder.dateDecodingStrategy = .formatted(formatter)
+
+                                        let res = try decoder.decode([Consultation].self, from: data )
+                                   
+                                        resultObject = res
+                                           
+                                        semaphore.signal()
+                                                               
+                                       }
+                                       catch {
+                                        print("Error during JSON serialization: \(error.self)")
+                                       }
             } else {
                 // Handle unexpected error
+                print("Unhandled Error")
+                semaphore.signal()
             }
         }
         
         task.resume()
+        semaphore.wait()
+        //Handle Return Value
+        if( responseCode != 200 ){
+            
+            resultObject = Array<Consultation>()
+            return resultObject
+
+            }
+        else {
+            
+            return resultObject
+            
+        }
 
     }
     
@@ -132,6 +182,7 @@ class HttpRequests{
 
                 }
             else {
+                setBearer(token: (user?.getBearer())!)
              return user
                 
             }
@@ -148,15 +199,12 @@ class HttpRequests{
                    var user : User? = nil
                    var responseCode : Int? = nil
                    
-           //        // Configure request authentication
-           //        request.setValue(
-           //            "authToken",
-           //            forHTTPHeaderField: "Authorization"
-           //        )
+            
                    
                    request.allHTTPHeaderFields = [
                        "Content-Type": "application/json",
-                       "Accept": "application/json"
+                       "Accept": "application/json",
+                       "Authorization": "Bearer \(bearer)"
                    ]
                  
 

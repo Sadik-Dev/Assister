@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		260BBAF92555ACDD00CC4454 /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 260BBAF82555ACDD00CC4454 /* UIView+Ext.swift */; };
 		260BBAFA2555AE8400CC4454 /* RoundedCornerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C2A5E6253905A30084966B /* RoundedCornerView.swift */; };
+		261AAF8D25569E73008DE207 /* Customer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261AAF8C25569E73008DE207 /* Customer.swift */; };
 		262060202548132D002C923C /* home.png in Resources */ = {isa = PBXBuildFile; fileRef = 2620601F2548132D002C923C /* home.png */; };
 		2620602225481364002C923C /* calendar.png in Resources */ = {isa = PBXBuildFile; fileRef = 2620602125481364002C923C /* calendar.png */; };
 		2640BDEF2553215C009E27C4 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2640BDEE2553215C009E27C4 /* User.swift */; };
@@ -68,6 +69,7 @@
 
 /* Begin PBXFileReference section */
 		260BBAF82555ACDD00CC4454 /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
+		261AAF8C25569E73008DE207 /* Customer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Customer.swift; sourceTree = "<group>"; };
 		2620601F2548132D002C923C /* home.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = home.png; path = ../../../../../OneDrive/AssisterDesign/home.png; sourceTree = "<group>"; };
 		2620602125481364002C923C /* calendar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = calendar.png; path = ../../../../../OneDrive/AssisterDesign/calendar.png; sourceTree = "<group>"; };
 		2640BDEE2553215C009E27C4 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -278,6 +280,7 @@
 			children = (
 				2644C16F2542333D0004F979 /* Consultation.swift */,
 				2640BDEE2553215C009E27C4 /* User.swift */,
+				261AAF8C25569E73008DE207 /* Customer.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -476,6 +479,7 @@
 				2640BDEF2553215C009E27C4 /* User.swift in Sources */,
 				265EC87D2555B08300C6438D /* UITextView+Ext.swift in Sources */,
 				2644C17B25445AC70004F979 /* HomeTableViewCell.swift in Sources */,
+				261AAF8D25569E73008DE207 /* Customer.swift in Sources */,
 				26C2A5E2253885D30084966B /* LoginScreenController.swift in Sources */,
 				2682CDEE253872BA00989A3F /* SceneDelegate.swift in Sources */,
 				26C2A608253A5F300084966B /* DataService.swift in Sources */,
