@@ -15,33 +15,8 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     override func viewDidLoad() {
         super.viewDidLoad()
       
-        DataService.shared.getConsultations().subscribe{
-            elements in
-            if let data = elements.element{
-                self.consultations = data
-                self.notificationsTable?.reloadData()
-                
-                //Set Appointments today
-                
-                var count : Int = 0
-                let calendar = Calendar.current
-
-                for c in self.consultations!{
-                    
-                    let date = c.getDateTime()
-                    
-                    if calendar.isDateInToday(date){
-                        count += 1
-                    }
-                }
-                
-                self.consultationsToday?.text = String(count)
-                
-                
-            }
-        }
+        
         initEventHandlers()
-        initTable()
         checkNextConsutation()
         initNotificationsTable()
         
@@ -74,11 +49,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         settingsButton?.addGestureRecognizer(tap)
         settingsButton?.isUserInteractionEnabled = true
     }
-    func initTable(){
-        let rowHeight = 90
-        notificationsTable?.rowHeight = CGFloat(rowHeight)
-        
-    }
+   
     
     func checkNextConsutation(){
         if(consultations!.count > 0){
@@ -156,8 +127,38 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
   
     
     func initNotificationsTable(){
+        let rowHeight = 90
+        notificationsTable?.rowHeight = CGFloat(rowHeight)
+               
         notificationsTable?.dataSource = self
-            notificationsTable?.delegate = self
+        notificationsTable?.delegate = self
+        
+        //Data
+        DataService.shared.getConsultations().subscribe{
+            elements in
+            if let data = elements.element{
+                self.consultations = data
+                self.notificationsTable?.reloadData()
+                
+                //Set Appointments today
+                
+                var count : Int = 0
+                let calendar = Calendar.current
+
+                for c in self.consultations!{
+                    
+                    let date = c.getDateTime()
+                    
+                    if calendar.isDateInToday(date){
+                        count += 1
+                    }
+                }
+                
+                self.consultationsToday?.text = String(count)
+                
+                
+            }
+        }
     }
     
     

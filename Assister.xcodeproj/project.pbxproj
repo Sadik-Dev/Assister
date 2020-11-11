@@ -30,6 +30,9 @@
 		2644C17B25445AC70004F979 /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2644C17925445AC70004F979 /* HomeTableViewCell.swift */; };
 		265A1E08255C1FBC003D4086 /* ContactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265A1E07255C1FBC003D4086 /* ContactsViewController.swift */; };
 		265A1E0A255C2401003D4086 /* contacts.png in Resources */ = {isa = PBXBuildFile; fileRef = 265A1E09255C2401003D4086 /* contacts.png */; };
+		265A1E0C255C346F003D4086 /* search.png in Resources */ = {isa = PBXBuildFile; fileRef = 265A1E0B255C346F003D4086 /* search.png */; };
+		265A1E0E255C374A003D4086 /* ContactsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265A1E0D255C374A003D4086 /* ContactsTableViewCell.swift */; };
+		265A1E10255C3970003D4086 /* schedulingP.png in Resources */ = {isa = PBXBuildFile; fileRef = 265A1E0F255C3970003D4086 /* schedulingP.png */; };
 		265EC87D2555B08300C6438D /* UITextView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265EC87C2555B08300C6438D /* UITextView+Ext.swift */; };
 		265EC8832555C3D100C6438D /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 265EC8822555C3D100C6438D /* RxSwift */; };
 		265EC8852555C3D100C6438D /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 265EC8842555C3D100C6438D /* RxCocoa */; };
@@ -93,6 +96,9 @@
 		2644C17925445AC70004F979 /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
 		265A1E07255C1FBC003D4086 /* ContactsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsViewController.swift; sourceTree = "<group>"; };
 		265A1E09255C2401003D4086 /* contacts.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = contacts.png; sourceTree = "<group>"; };
+		265A1E0B255C346F003D4086 /* search.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = search.png; sourceTree = "<group>"; };
+		265A1E0D255C374A003D4086 /* ContactsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsTableViewCell.swift; sourceTree = "<group>"; };
+		265A1E0F255C3970003D4086 /* schedulingP.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = schedulingP.png; sourceTree = "<group>"; };
 		265EC87C2555B08300C6438D /* UITextView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+Ext.swift"; sourceTree = "<group>"; };
 		2682CDE8253872BA00989A3F /* Assister.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Assister.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2682CDEB253872BA00989A3F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -247,6 +253,7 @@
 				2640BDF0255323FE009E27C4 /* Main.storyboard */,
 				2682CDF8253872BC00989A3F /* LaunchScreen.storyboard */,
 				261AAF8E2556F763008DE207 /* LocalNotificationManager.swift */,
+				265A1E0D255C374A003D4086 /* ContactsTableViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -254,6 +261,8 @@
 		26C2A5F42539F2510084966B /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				265A1E0F255C3970003D4086 /* schedulingP.png */,
+				265A1E0B255C346F003D4086 /* search.png */,
 				265A1E09255C2401003D4086 /* contacts.png */,
 				2620602125481364002C923C /* calendar.png */,
 				26E48E372547781000964656 /* calednar-plus.png */,
@@ -440,6 +449,8 @@
 				268E11EA25461EF900E0E07B /* clock.png in Resources */,
 				2644C1722542FAB80004F979 /* no-scheduling.png in Resources */,
 				2644C15A2541B51D0004F979 /* Nunito-Regular.ttf in Resources */,
+				265A1E0C255C346F003D4086 /* search.png in Resources */,
+				265A1E10255C3970003D4086 /* schedulingP.png in Resources */,
 				2620602225481364002C923C /* calendar.png in Resources */,
 				2682CDFA253872BC00989A3F /* LaunchScreen.storyboard in Resources */,
 				2644C17425430D770004F979 /* scheduling.png in Resources */,
@@ -478,6 +489,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				265A1E0E255C374A003D4086 /* ContactsTableViewCell.swift in Sources */,
 				26C7610725554E0D0073ECA9 /* HttpRequests.swift in Sources */,
 				2682CDF2253872BA00989A3F /* CalendarViewController.swift in Sources */,
 				2682CDF0253872BA00989A3F /* HomeViewController.swift in Sources */,

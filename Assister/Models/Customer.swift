@@ -10,16 +10,25 @@ import Foundation
 
 class Customer : (Codable & Decodable){
     
-    var id : Int?
-    var appointments : Array<Consultation>?
-    var name : String?
-    var email : String?
+    private var id : Int?
+    private var appointments : Array<Consultation>?
+    private var name : String?
+    private var email : String?
+    private var gender : String?
     
-    init(name : String, email : String){
+    init(name : String, email : String, gender: String? = "Male", appointments: [Consultation]? = []){
+        
+        self.gender = gender
         self.name = name
         self.email = email
+        self.appointments = appointments
+        
+        
     }
     
+    func getGender() -> String?{
+        return gender
+    }
     
     func getName() -> String?{
         return name
@@ -27,5 +36,9 @@ class Customer : (Codable & Decodable){
     
     func getEmail() -> String?{
         return email
+    }
+    
+    func getConsultations() -> [Consultation]?{
+        return appointments
     }
 }
