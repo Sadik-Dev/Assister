@@ -339,11 +339,12 @@
                     <connections>
                         <segue destination="9pv-A4-QxB" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
                         <segue destination="8rJ-Kc-sve" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
+                        <segue destination="Zf9-uf-Mkm" kind="relationship" relationship="viewControllers" id="V9J-el-ygV"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="0.0" y="0.0"/>
+            <point key="canvasLocation" x="-152" y="-34"/>
         </scene>
         <!--Login Navigation Controller-->
         <scene sceneID="WRk-KZ-z1g">
@@ -531,12 +532,112 @@
             </objects>
             <point key="canvasLocation" x="2518.840579710145" y="150.66964285714286"/>
         </scene>
+        <!--Contacts View Controller-->
+        <scene sceneID="jrV-DL-DZY">
+            <objects>
+                <viewController id="Zf9-uf-Mkm" customClass="ContactsViewController" customModule="Assister" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="6Uc-Oj-5k3">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="xak-sf-HiE">
+                                <rect key="frame" x="12.5" y="91.5" width="389" height="713"/>
+                                <subviews>
+                                    <view tag="7" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pYd-n8-DAF" customClass="RoundedCornerView" customModule="Assister" customModuleProvider="target">
+                                        <rect key="frame" x="14.5" y="0.0" width="360" height="50"/>
+                                        <color key="backgroundColor" name="primary"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="Sw7-GR-IBQ"/>
+                                            <constraint firstAttribute="width" relation="lessThanOrEqual" constant="400" id="TsL-6u-8eT"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <integer key="value" value="15"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ckb-fC-BnZ">
+                                        <rect key="frame" x="0.0" y="50" width="389" height="64"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total Patients:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vO1-c4-34l">
+                                                <rect key="frame" x="24.5" y="22" width="107.5" height="20"/>
+                                                <fontDescription key="fontDescription" name="Nunito-Regular" family="Nunito" pointSize="17"/>
+                                                <color key="textColor" name="third"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="334" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WyA-Dh-tD9">
+                                                <rect key="frame" x="140" y="22" width="28.5" height="20"/>
+                                                <fontDescription key="fontDescription" name="Nunito-Regular" family="Nunito" pointSize="17"/>
+                                                <color key="textColor" name="third"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="64" id="6yP-Hk-fmM"/>
+                                            <constraint firstItem="vO1-c4-34l" firstAttribute="centerY" secondItem="ckb-fC-BnZ" secondAttribute="centerY" id="CKi-W5-ZPR"/>
+                                            <constraint firstItem="WyA-Dh-tD9" firstAttribute="centerY" secondItem="ckb-fC-BnZ" secondAttribute="centerY" id="QCd-5l-Pbb"/>
+                                            <constraint firstItem="WyA-Dh-tD9" firstAttribute="leading" secondItem="vO1-c4-34l" secondAttribute="trailing" constant="8" id="spp-Vq-evJ"/>
+                                        </constraints>
+                                    </view>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="aHw-OV-t3Q">
+                                        <rect key="frame" x="14.5" y="114" width="360" height="599"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" relation="lessThanOrEqual" constant="400" id="4cc-i4-2lv"/>
+                                        </constraints>
+                                        <color key="sectionIndexColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <prototypes>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="OC3-zg-nr6">
+                                                <rect key="frame" x="0.0" y="28" width="360" height="43.5"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="OC3-zg-nr6" id="6X6-Xq-3ZG">
+                                                    <rect key="frame" x="0.0" y="0.0" width="360" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="iNX-tU-orK">
+                                                            <rect key="frame" x="0.0" y="-1" width="240" height="44"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </tableViewCellContentView>
+                                            </tableViewCell>
+                                        </prototypes>
+                                    </tableView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="vO1-c4-34l" firstAttribute="leading" secondItem="pYd-n8-DAF" secondAttribute="leading" constant="10" id="IHq-30-FQq"/>
+                                    <constraint firstAttribute="trailing" secondItem="ckb-fC-BnZ" secondAttribute="trailing" id="RS7-sZ-DFU"/>
+                                    <constraint firstItem="ckb-fC-BnZ" firstAttribute="leading" secondItem="xak-sf-HiE" secondAttribute="leading" id="nsc-v7-aUs"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="xak-sf-HiE" firstAttribute="centerY" secondItem="6Uc-Oj-5k3" secondAttribute="centerY" id="0a5-0p-95s"/>
+                            <constraint firstItem="pYd-n8-DAF" firstAttribute="width" secondItem="6Uc-Oj-5k3" secondAttribute="width" multiplier="0.869565" priority="999" id="Hi4-Ng-UjV"/>
+                            <constraint firstItem="xak-sf-HiE" firstAttribute="centerX" secondItem="6Uc-Oj-5k3" secondAttribute="centerX" id="ITc-pV-yf1"/>
+                            <constraint firstItem="aHw-OV-t3Q" firstAttribute="height" secondItem="6Uc-Oj-5k3" secondAttribute="height" multiplier="0.668527" id="SOz-om-pXn"/>
+                            <constraint firstItem="aHw-OV-t3Q" firstAttribute="width" secondItem="6Uc-Oj-5k3" secondAttribute="width" multiplier="0.869565" priority="999" id="a7A-RI-rdN"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="GGU-Kj-FZh"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="" image="contacts.png" id="ecl-Bq-woA"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="i9J-uU-2bX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1453.6231884057972" y="-9.375"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Setup Wizard-pana.png" width="2000" height="2000"/>
         <image name="calednar-plus.png" width="48" height="48"/>
         <image name="calendar.png" width="42" height="42"/>
         <image name="clock.png" width="48" height="48"/>
+        <image name="contacts.png" width="50" height="50"/>
         <image name="female.png" width="100" height="100"/>
         <image name="home.png" width="42" height="42"/>
         <image name="icons8-login-100.png" width="100" height="100"/>

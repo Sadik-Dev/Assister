@@ -48,7 +48,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let tabbar = UITabBarController()
         UITabBar.setTransparentTabbar()
-        tabbar.viewControllers = [createHomeVC(), createCalendarVC()]
+        tabbar.viewControllers = [createHomeVC(), createCalendarVC(), createContactsVC()]
         
         return tabbar
     }
@@ -65,6 +65,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         return viewController
     }
 
+    func createContactsVC() -> ContactsViewController{
+          let viewController =   ContactsViewController()
+          viewController.tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 0)
+          return viewController
+      }
+    
     func sceneDidDisconnect(_ scene: UIScene) {
         // Called as the scene is being released by the system.
         // This occurs shortly after the scene enters the background, or when its session is discarded.

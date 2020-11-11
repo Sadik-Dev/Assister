@@ -9,6 +9,7 @@ class DataService{
     //Singleton
     static let shared = DataService()
     
+    
     //Cached Data
     let ud: UserDefaults = UserDefaults.standard
 
@@ -19,6 +20,8 @@ class DataService{
     private var consultations = BehaviorSubject<Array<Consultation>>(value: [])
     private var timer : Timer?
     private var amountOfNotifs : Int?
+    
+    private var isOnline : Bool = true
 
     //Networking
     
@@ -28,6 +31,8 @@ class DataService{
    private init(){
         
     networking = HttpRequests()
+    isOnline = false
+    
     if isUserLoggedIn(){
         initData()
         }
@@ -35,13 +40,20 @@ class DataService{
     
     func initData(){
         
-        networking.setBearer(token: getBearerToken()!)
-        let newConsultations = networking.getConsultations(controller: .Consultations)!
-        amountOfNotifs = newConsultations.count
-        consultations.onNext(newConsultations)
-        
-         timer = Timer.scheduledTimer(timeInterval: 5.0, target: self, selector: #selector(self.checkIfUpToDate), userInfo: nil, repeats: true)
-        
+        if isOnline {
+            networking.setBearer(token: getBearerToken()!)
+            let newConsultations = networking.getConsultations(controller: .Consultations)!
+            amountOfNotifs = newConsultations.count
+            consultations.onNext(newConsultations)
+            
+            timer = Timer.scheduledTimer(timeInterval: 5.0, target: self, selector: #selector(self.checkIfUpToDate), userInfo: nil, repeats: true)
+                  
+        }
+        else{
+            let consultations = Array<Consultation>()
+            self.consultations.onNext(consultations)
+
+        }
         
 
     }
@@ -97,17 +109,26 @@ class DataService{
     //
     func login(email : String , password : String) -> Bool{
         
-        let credentials = User(name: "", email: email, password: password)
-        let user = networking.login(controller: RequestController.Users, object: credentials)
-        if(user == nil){
-            return false
+        if(isOnline){
+            let credentials = User(name: "", email: email, password: password)
+            let user = networking.login(controller: RequestController.Users, object: credentials)
+            if(user == nil){
+                return false
+            }
+            else{
+                self.loggedInUser = user
+                ud.set(user?.getBearer(), forKey: "bearer")
+                initData()
+                return true
+            }
         }
+        
         else{
-            self.loggedInUser = user
-            ud.set(user?.getBearer(), forKey: "bearer")
+            ud.set("offline", forKey: "bearer")
             initData()
             return true
         }
+        
 
 
     }
