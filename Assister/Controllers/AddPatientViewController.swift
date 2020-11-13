@@ -10,12 +10,32 @@ import UIKit
 
 class AddPatientViewController: UIViewController {
 
+    @IBOutlet weak var nameTF: UITextField!
+    @IBOutlet weak var emailTF: UITextField!
+    @IBOutlet weak var passwordTF: UITextField!
+    @IBOutlet weak var rijksRegisterTF: UITextField!
+    @IBOutlet weak var submitButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        initTextFieldsAndButton()
     }
     
+      func initTextFieldsAndButton(){
+            
+            let fields = [emailTF, passwordTF,nameTF,rijksRegisterTF]
+
+            fields.forEach { field in
+            
+            field?.setBottomBorder()
+            }
+         
+            passwordTF.isSecureTextEntry = true
+            
+            submitButton.layer.cornerRadius = 18
+            submitButton.clipsToBounds = true
+        }
 
     /*
     // MARK: - Navigation
