@@ -17,9 +17,9 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
       
         
         initEventHandlers()
-        checkNextConsutation()
         initNotificationsTable()
-        
+        checkNextConsutation()
+
       
     }
     
@@ -127,7 +127,9 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
   
     
     func initNotificationsTable(){
-        let rowHeight = 90
+        
+        let rowHeight = UIDevice.current.userInterfaceIdiom == .pad ? 120 : 90
+
         notificationsTable?.rowHeight = CGFloat(rowHeight)
                
         notificationsTable?.dataSource = self

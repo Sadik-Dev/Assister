@@ -17,13 +17,7 @@ class Consultation : (Codable & Decodable){
     
     
  
-    init(id : Int, customer : Customer, type : String){
-        
-        self.id = id
-        self.customer = customer
-        self.type = type
-        
-    }
+   
     func getDateTimeString() -> String{
         
         let formatter = DateFormatter()

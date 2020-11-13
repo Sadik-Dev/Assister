@@ -12,31 +12,54 @@ class ContactsViewController: UIViewController , UITableViewDataSource, UITableV
 
     @IBOutlet var contactsTable: UITableView!
     
+    @IBOutlet weak var addButton: UIImageView!
     var contacts : Array<Customer>? = []
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         styleViews()
         initTable()
-
+        initEventHandlers()
+    }
+    
+    func initEventHandlers(){
+        //Option Button
+        let tap = UITapGestureRecognizer(target: self, action: #selector(ContactsViewController.openForm(gesture:)))
+        addButton?.addGestureRecognizer(tap)
+        addButton?.isUserInteractionEnabled = true
+    }
+    
+    @objc func openForm(gesture: UIGestureRecognizer){
+        
+           if (gesture.view as? UIImageView) != nil {
+            let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let SettingsViewController = storyBoard.instantiateViewController(withIdentifier: "AddPatientViewController") as! AddPatientViewController
+           SettingsViewController.modalPresentationStyle = .fullScreen //or .overFullScreen for transparency
+        
+           self.present(SettingsViewController, animated: true, completion: nil)
+            
+        }
     }
     
     func initTable(){
         
-        let rowHeight = 100
+        let rowHeight = UIDevice.current.userInterfaceIdiom == .pad ? 130 : 100
         contactsTable?.rowHeight = CGFloat(rowHeight)
             
         contactsTable?.dataSource = self
         contactsTable?.delegate = self
             
           
-        let o = Customer(name: "Oussama Sadik", email: "String", gender: "Male")
-    
-        let x = Customer(name: "Xena Oporisto", email: "String", gender: "Female")
-        
-        contacts?.append(o)
-        contacts?.append(x)
+        //Data
+        DataService.shared.getContacts().subscribe{
+            elements in
+            if let data = elements.element{
+                self.contacts = data
+                self.contactsTable?.reloadData()
+            }
+        }
 
           
       }
@@ -51,6 +74,13 @@ class ContactsViewController: UIViewController , UITableViewDataSource, UITableV
         todaysConsultationContainer?.layer.shadowOpacity = 0.1
         todaysConsultationContainer?.layer.shadowRadius = 4.0
         todaysConsultationContainer?.layer.masksToBounds = false
+        
+        //Style the add Button
+        addButton?.layer.shadowOffset = CGSize(width: 0, height: 2.0)
+        addButton?.layer.shadowOpacity = 0.1
+        addButton?.layer.shadowRadius = 4.0
+        addButton?.layer.masksToBounds = false
+        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -75,7 +105,7 @@ class ContactsViewController: UIViewController , UITableViewDataSource, UITableV
         let customerName = customer.getName()
         cell.cellTitle.text = customerName!
         
-        if (customer.getGender() == "Female") {
+        if (customer.getGender() == "female") {
             
             var image: UIImage = UIImage(named: "female")!
 
@@ -87,9 +117,9 @@ class ContactsViewController: UIViewController , UITableViewDataSource, UITableV
             cell.cellIcon.image = image
         }
         
-        let amount = customer.getConsultations()?.count
-        cell.numberOfConsultations.text =
-            String(amount!)
+//        let amount = customer.getConsultations()?.count
+//        cell.numberOfConsultations.text =
+//            String(amount!)
         
         
         

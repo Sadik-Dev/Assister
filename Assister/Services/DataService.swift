@@ -18,6 +18,8 @@ class DataService{
     private var consultation : Consultation?
     private var loggedInUser : User?
     private var consultations = BehaviorSubject<Array<Consultation>>(value: [])
+    private var contacts = BehaviorSubject<Array<Customer>>(value: [])
+    private var amountOfContacts : Int?
     private var timer : Timer?
     private var amountOfNotifs : Int?
     
@@ -31,7 +33,6 @@ class DataService{
    private init(){
         
     networking = HttpRequests()
-    isOnline = false
     
     if isUserLoggedIn(){
         initData()
@@ -42,9 +43,14 @@ class DataService{
         
         if isOnline {
             networking.setBearer(token: getBearerToken()!)
-            let newConsultations = networking.getConsultations(controller: .Consultations)!
+            
+            let newConsultations = networking.getArray(controller: .Consultations, object: Consultation())!
             amountOfNotifs = newConsultations.count
             consultations.onNext(newConsultations)
+            
+            let newContacts = networking.getArray(controller: .Customers, object: Customer())!
+            amountOfContacts = newContacts.count
+            contacts.onNext(newContacts)
             
             timer = Timer.scheduledTimer(timeInterval: 5.0, target: self, selector: #selector(self.checkIfUpToDate), userInfo: nil, repeats: true)
                   
@@ -60,15 +66,22 @@ class DataService{
     
     
     func updateData(){
-        let newConsultations = networking.getConsultations(controller: .Consultations)!
         
+        setNotification(title: "You have new Notifications")
+
+        let newConsultations = networking.getArray(controller: .Consultations, object: Consultation())!
         if newConsultations.count != amountOfNotifs! {
-            print("log")
-            setNotification(title: "You have new Notifications")
+            amountOfNotifs = newConsultations.count
+            consultations.onNext(newConsultations)
         }
         
-        amountOfNotifs = newConsultations.count
-        consultations.onNext(newConsultations)
+        let newContacts = networking.getArray(controller: .Customers, object: Customer())!
+        if newContacts.count != amountOfContacts! {
+                   amountOfContacts = newContacts.count
+                   contacts.onNext(newContacts)
+               }
+        
+        
 
     }
     
@@ -90,6 +103,10 @@ class DataService{
     
     func getConsultations() -> Observable<Array<Consultation>>{
         return consultations
+    }
+    
+    func getContacts() -> Observable<Array<Customer>>{
+        return contacts
     }
     
     //Check if user is logged in

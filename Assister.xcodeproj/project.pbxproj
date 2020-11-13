@@ -52,6 +52,10 @@
 		26C2A604253A4C930084966B /* Setup Wizard-pana.png in Resources */ = {isa = PBXBuildFile; fileRef = 26C2A5F52539F25F0084966B /* Setup Wizard-pana.png */; };
 		26C2A608253A5F300084966B /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C2A607253A5F300084966B /* DataService.swift */; };
 		26C7610725554E0D0073ECA9 /* HttpRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C7610625554E0D0073ECA9 /* HttpRequests.swift */; };
+		26E1867F255EBD1000C7FF51 /* add.png in Resources */ = {isa = PBXBuildFile; fileRef = 26E1867E255EBD1000C7FF51 /* add.png */; };
+		26E18681255EBF9E00C7FF51 /* schedulingG.png in Resources */ = {isa = PBXBuildFile; fileRef = 26E18680255EBF9E00C7FF51 /* schedulingG.png */; };
+		26E18683255EDE1E00C7FF51 /* back.png in Resources */ = {isa = PBXBuildFile; fileRef = 26E18682255EDE1E00C7FF51 /* back.png */; };
+		26E18685255EE00700C7FF51 /* AddPatientViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E18684255EE00700C7FF51 /* AddPatientViewController.swift */; };
 		26E48E382547781000964656 /* calednar-plus.png in Resources */ = {isa = PBXBuildFile; fileRef = 26E48E372547781000964656 /* calednar-plus.png */; };
 		26E9A713254893FA00109274 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E9A712254893FA00109274 /* SettingsViewController.swift */; };
 /* End PBXBuildFile section */
@@ -123,6 +127,10 @@
 		26C2A5F52539F25F0084966B /* Setup Wizard-pana.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Setup Wizard-pana.png"; sourceTree = "<group>"; };
 		26C2A607253A5F300084966B /* DataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 		26C7610625554E0D0073ECA9 /* HttpRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpRequests.swift; sourceTree = "<group>"; };
+		26E1867E255EBD1000C7FF51 /* add.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = add.png; sourceTree = "<group>"; };
+		26E18680255EBF9E00C7FF51 /* schedulingG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = schedulingG.png; sourceTree = "<group>"; };
+		26E18682255EDE1E00C7FF51 /* back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back.png; sourceTree = "<group>"; };
+		26E18684255EE00700C7FF51 /* AddPatientViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPatientViewController.swift; sourceTree = "<group>"; };
 		26E48E372547781000964656 /* calednar-plus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "calednar-plus.png"; path = "../../../../../../Downloads/calednar-plus.png"; sourceTree = "<group>"; };
 		26E9A712254893FA00109274 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -261,6 +269,9 @@
 		26C2A5F42539F2510084966B /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				26E18682255EDE1E00C7FF51 /* back.png */,
+				26E18680255EBF9E00C7FF51 /* schedulingG.png */,
+				26E1867E255EBD1000C7FF51 /* add.png */,
 				265A1E0F255C3970003D4086 /* schedulingP.png */,
 				265A1E0B255C346F003D4086 /* search.png */,
 				265A1E09255C2401003D4086 /* contacts.png */,
@@ -311,6 +322,7 @@
 				26C2A5F02539E1610084966B /* LoginNavigationController.swift */,
 				26E9A712254893FA00109274 /* SettingsViewController.swift */,
 				265A1E07255C1FBC003D4086 /* ContactsViewController.swift */,
+				26E18684255EE00700C7FF51 /* AddPatientViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -442,10 +454,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				26E18681255EBF9E00C7FF51 /* schedulingG.png in Resources */,
 				265A1E0A255C2401003D4086 /* contacts.png in Resources */,
 				2640BDF2255323FE009E27C4 /* Main.storyboard in Resources */,
 				2644C1592541B51D0004F979 /* Nunito-SemiBold.ttf in Resources */,
+				26E1867F255EBD1000C7FF51 /* add.png in Resources */,
 				2644C1522541B4430004F979 /* icons8-login-100.png in Resources */,
+				26E18683255EDE1E00C7FF51 /* back.png in Resources */,
 				268E11EA25461EF900E0E07B /* clock.png in Resources */,
 				2644C1722542FAB80004F979 /* no-scheduling.png in Resources */,
 				2644C15A2541B51D0004F979 /* Nunito-Regular.ttf in Resources */,
@@ -495,6 +510,7 @@
 				2682CDF0253872BA00989A3F /* HomeViewController.swift in Sources */,
 				265A1E08255C1FBC003D4086 /* ContactsViewController.swift in Sources */,
 				2644C1702542333D0004F979 /* Consultation.swift in Sources */,
+				26E18685255EE00700C7FF51 /* AddPatientViewController.swift in Sources */,
 				260BBAF92555ACDD00CC4454 /* UIView+Ext.swift in Sources */,
 				2682CDEC253872BA00989A3F /* AppDelegate.swift in Sources */,
 				261AAF8F2556F763008DE207 /* LocalNotificationManager.swift in Sources */,

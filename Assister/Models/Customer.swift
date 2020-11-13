@@ -16,16 +16,10 @@ class Customer : (Codable & Decodable){
     private var email : String?
     private var gender : String?
     
-    init(name : String, email : String, gender: String? = "Male", appointments: [Consultation]? = []){
-        
-        self.gender = gender
-        self.name = name
-        self.email = email
-        self.appointments = appointments
-        
-        
+  
+    init(){
+        appointments = []
     }
-    
     func getGender() -> String?{
         return gender
     }

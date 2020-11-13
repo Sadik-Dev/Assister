@@ -12,7 +12,7 @@ enum RequestController : String {
     case Users
     case Consultations
     case UpdateLogs
-    case west
+    case Customers
 }
 
 class HttpRequests{
@@ -102,14 +102,14 @@ class HttpRequests{
                    
                }
     }
-    func getConsultations(controller : RequestController) -> [Consultation]?{
+    func getArray<T: Any & Codable & Decodable>(controller : RequestController, object: T) -> [T]?{
        
         // Create a URLRequest for an API endpoint
         let endpoint = apiUrl + controller.rawValue
         let url = URL(string: endpoint)!
         var request = URLRequest(url: url)
         var responseCode : Int? = nil
-        var resultObject : [Consultation]? = Array<Consultation>()
+        var resultObject : [T]? = Array<T>()
                   
                          
         request.allHTTPHeaderFields = [
@@ -134,31 +134,30 @@ class HttpRequests{
                 // Handle HTTP request response
                  if let httpResponse = response as? HTTPURLResponse {
                     
-                                    // Handle HTTP request response
-                                    responseCode = httpResponse.statusCode
-                                   }
+                        // Handle HTTP request response
+                        responseCode = httpResponse.statusCode
+                        }
                 
-                                   // Serialize the data into an object
-                                   do {
-                                        let json = try? JSONSerialization.jsonObject(with: data, options: [])
-                            
+                        // Serialize the data into an object
+                        do {
                                     
-                                        let decoder = JSONDecoder()
-                                        let formatter = DateFormatter()
-                                        formatter.dateFormat = "yyyy/MM/dd'T'HH:mm:ss"
-                                    
-                                        decoder.dateDecodingStrategy = .formatted(formatter)
+                            let decoder = JSONDecoder()
+                            let formatter = DateFormatter()
+                            formatter.dateFormat = "yyyy/MM/dd'T'HH:mm:ss"
+                                
+                            decoder.dateDecodingStrategy = .formatted(formatter)
 
-                                        let res = try decoder.decode([Consultation].self, from: data )
-                                   
-                                        resultObject = res
+                            let res = try decoder.decode([T].self, from: data )
+                            
+                            resultObject = res
                                            
-                                        semaphore.signal()
+                            semaphore.signal()
                                                                
-                                       }
-                                       catch {
-                                        print("Error during JSON serialization: \(error.self)")
-                                       }
+                            }
+                            catch {
+                            print("Error during JSON serialization: \(error.self)")
+                            }
+                
             } else {
                 // Handle unexpected error
                 print("Unhandled Error")
@@ -171,7 +170,7 @@ class HttpRequests{
         //Handle Return Value
         if( responseCode != 200 ){
             
-            resultObject = Array<Consultation>()
+            resultObject = Array<T>()
             return resultObject
 
             }
