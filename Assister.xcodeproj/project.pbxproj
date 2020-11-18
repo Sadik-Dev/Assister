@@ -45,6 +45,7 @@
 		2682CE05253872BC00989A3F /* AssisterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2682CE04253872BC00989A3F /* AssisterTests.swift */; };
 		2682CE10253872BC00989A3F /* AssisterUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2682CE0F253872BC00989A3F /* AssisterUITests.swift */; };
 		268E11EA25461EF900E0E07B /* clock.png in Resources */ = {isa = PBXBuildFile; fileRef = 268E11E925461EF900E0E07B /* clock.png */; };
+		269D67042565852200B6ED48 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269D67032565852200B6ED48 /* String+Ext.swift */; };
 		26C2A5E2253885D30084966B /* LoginScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C2A5E1253885D30084966B /* LoginScreenController.swift */; };
 		26C2A5E42538A2C10084966B /* UITabBar+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C2A5E32538A2C10084966B /* UITabBar+Ext.swift */; };
 		26C2A5E925390ACF0084966B /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 26C2A5E825390ACF0084966B /* Colors.xcassets */; };
@@ -119,6 +120,7 @@
 		2682CE0F253872BC00989A3F /* AssisterUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssisterUITests.swift; sourceTree = "<group>"; };
 		2682CE11253872BC00989A3F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		268E11E925461EF900E0E07B /* clock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = clock.png; path = ../../../../../../Downloads/clock.png; sourceTree = "<group>"; };
+		269D67032565852200B6ED48 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
 		26C2A5E1253885D30084966B /* LoginScreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreenController.swift; sourceTree = "<group>"; };
 		26C2A5E32538A2C10084966B /* UITabBar+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITabBar+Ext.swift"; sourceTree = "<group>"; };
 		26C2A5E6253905A30084966B /* RoundedCornerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCornerView.swift; sourceTree = "<group>"; };
@@ -249,6 +251,7 @@
 				26C2A5E32538A2C10084966B /* UITabBar+Ext.swift */,
 				260BBAF82555ACDD00CC4454 /* UIView+Ext.swift */,
 				265EC87C2555B08300C6438D /* UITextView+Ext.swift */,
+				269D67032565852200B6ED48 /* String+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -514,6 +517,7 @@
 				260BBAF92555ACDD00CC4454 /* UIView+Ext.swift in Sources */,
 				2682CDEC253872BA00989A3F /* AppDelegate.swift in Sources */,
 				261AAF8F2556F763008DE207 /* LocalNotificationManager.swift in Sources */,
+				269D67042565852200B6ED48 /* String+Ext.swift in Sources */,
 				260BBAFA2555AE8400CC4454 /* RoundedCornerView.swift in Sources */,
 				26C2A5E42538A2C10084966B /* UITabBar+Ext.swift in Sources */,
 				2640BDEF2553215C009E27C4 /* User.swift in Sources */,

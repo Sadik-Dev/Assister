@@ -89,7 +89,17 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         (self.view.viewWithTag(2) as? UILabel)?.sizeToFit()
 
         //Image
-        (self.view.viewWithTag(5) as? UIImageView)?.image = UIImage(named: "male")
+        if (consultation?.getCustomer()?.getGender() == "female") {
+                 
+                 var image: UIImage = UIImage(named: "female")!
+
+                  (self.view.viewWithTag(5) as? UIImageView)?.image = image
+        }
+        else{
+                 var image: UIImage = UIImage(named: "male")!
+
+                (self.view.viewWithTag(5) as? UIImageView)?.image = image
+        }
 
         //Clock icons
         (self.view.viewWithTag(6) as? UIImageView)?.isHidden = false
@@ -168,12 +178,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
         DataService.shared.logout()
 
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-
-        let loginScreen = storyboard.instantiateViewController(identifier: "LoginNavigationController")
-
-        (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(loginScreen)
-
+     
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -187,13 +192,26 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
             
         let customerName = consultations![indexPath.row].getCustomer()?.getName()
         let date = consultations![indexPath.row].getDateTimeString()
-
+        let gender = consultations![indexPath.row].getCustomer()?.getGender()
     
         cell.cellTitle.text = customerName! + " made an new appointment"
         cell.cellTitle.sizeToFit()
         
         cell.cellSubTitle.text = "Consultation on " + date
         cell.cellSubTitle.sizeToFit()
+        
+        if (gender == "female") {
+                 
+                 var image: UIImage = UIImage(named: "female")!
+
+                 cell.cellIcon.image = image
+        }
+        else{
+                 var image: UIImage = UIImage(named: "male")!
+
+                 cell.cellIcon.image = image
+        }
+             
 
         return cell
     }

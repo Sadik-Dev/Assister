@@ -136,27 +136,38 @@ class HttpRequests{
                     
                         // Handle HTTP request response
                         responseCode = httpResponse.statusCode
-                        }
-                
-                        // Serialize the data into an object
-                        do {
-                                    
-                            let decoder = JSONDecoder()
-                            let formatter = DateFormatter()
-                            formatter.dateFormat = "yyyy/MM/dd'T'HH:mm:ss"
-                                
-                            decoder.dateDecodingStrategy = .formatted(formatter)
 
-                            let res = try decoder.decode([T].self, from: data )
+                }
+                if responseCode! <= 200 || responseCode! < 300 {
+
+                // Serialize the data into an object
+             do {
+                       
+                let decoder = JSONDecoder()
+                let formatter = DateFormatter()
+                formatter.dateFormat = "yyyy/MM/dd'T'HH:mm:ss"
                             
-                            resultObject = res
-                                           
-                            semaphore.signal()
-                                                               
-                            }
-                            catch {
-                            print("Error during JSON serialization: \(error.self)")
-                            }
+                decoder.dateDecodingStrategy = .formatted(formatter)
+
+                let res = try decoder.decode([T].self, from: data )
+                            
+                resultObject = res
+                                             
+                semaphore.signal()
+                                                                 
+                }
+                catch {
+                    print(type(of: T.self))
+
+                    print("getArray")
+
+                    print("Error during JSON serialization: \(error.self)")
+                    }
+                }
+                else if (responseCode! >= 400){
+                    DataService.shared.logout()
+                    semaphore.signal()
+                }
                 
             } else {
                 // Handle unexpected error
@@ -238,6 +249,7 @@ class HttpRequests{
                                                 
                         }
                         catch {
+                            print("login")
                             print("Error during JSON serialization: \(error.localizedDescription)")
                         }
                 } else {
@@ -316,6 +328,7 @@ class HttpRequests{
                                                        
                                }
                                catch {
+                                    print("post")
                                    print("Error during JSON serialization: \(error.localizedDescription)")
                                }
                        } else {

@@ -117,6 +117,10 @@ class ContactsViewController: UIViewController , UITableViewDataSource, UITableV
             cell.cellIcon.image = image
         }
         
+        let c : Int = customer.getConsultations()!.count
+        
+        cell.numberOfConsultations.text = String(c)
+        
 //        let amount = customer.getConsultations()?.count
 //        cell.numberOfConsultations.text =
 //            String(amount!)

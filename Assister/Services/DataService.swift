@@ -33,7 +33,7 @@ class DataService{
    private init(){
         
     networking = HttpRequests()
-    
+    isOnline = false
     if isUserLoggedIn(){
         initData()
         }
@@ -68,15 +68,17 @@ class DataService{
     func updateData(){
         
         setNotification(title: "You have new Notifications")
-
+        var flagForce = false;
+        
         let newConsultations = networking.getArray(controller: .Consultations, object: Consultation())!
         if newConsultations.count != amountOfNotifs! {
             amountOfNotifs = newConsultations.count
             consultations.onNext(newConsultations)
+            flagForce = true
         }
         
         let newContacts = networking.getArray(controller: .Customers, object: Customer())!
-        if newContacts.count != amountOfContacts! {
+        if newContacts.count != amountOfContacts! || flagForce {
                    amountOfContacts = newContacts.count
                    contacts.onNext(newContacts)
                }
@@ -154,6 +156,12 @@ class DataService{
               
         ud.removeObject(forKey: "bearer")
         timer?.invalidate()
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+
+             let loginScreen = storyboard.instantiateViewController(identifier: "LoginNavigationController")
+
+             (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(loginScreen)
 
 
     }
