@@ -46,6 +46,7 @@
 		2682CE10253872BC00989A3F /* AssisterUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2682CE0F253872BC00989A3F /* AssisterUITests.swift */; };
 		268E11EA25461EF900E0E07B /* clock.png in Resources */ = {isa = PBXBuildFile; fileRef = 268E11E925461EF900E0E07B /* clock.png */; };
 		269D67042565852200B6ED48 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269D67032565852200B6ED48 /* String+Ext.swift */; };
+		269D67082566D56800B6ED48 /* PatientViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269D67072566D56800B6ED48 /* PatientViewController.swift */; };
 		26C2A5E2253885D30084966B /* LoginScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C2A5E1253885D30084966B /* LoginScreenController.swift */; };
 		26C2A5E42538A2C10084966B /* UITabBar+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C2A5E32538A2C10084966B /* UITabBar+Ext.swift */; };
 		26C2A5E925390ACF0084966B /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 26C2A5E825390ACF0084966B /* Colors.xcassets */; };
@@ -121,6 +122,7 @@
 		2682CE11253872BC00989A3F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		268E11E925461EF900E0E07B /* clock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = clock.png; path = ../../../../../../Downloads/clock.png; sourceTree = "<group>"; };
 		269D67032565852200B6ED48 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
+		269D67072566D56800B6ED48 /* PatientViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientViewController.swift; sourceTree = "<group>"; };
 		26C2A5E1253885D30084966B /* LoginScreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreenController.swift; sourceTree = "<group>"; };
 		26C2A5E32538A2C10084966B /* UITabBar+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITabBar+Ext.swift"; sourceTree = "<group>"; };
 		26C2A5E6253905A30084966B /* RoundedCornerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCornerView.swift; sourceTree = "<group>"; };
@@ -326,6 +328,7 @@
 				26E9A712254893FA00109274 /* SettingsViewController.swift */,
 				265A1E07255C1FBC003D4086 /* ContactsViewController.swift */,
 				26E18684255EE00700C7FF51 /* AddPatientViewController.swift */,
+				269D67072566D56800B6ED48 /* PatientViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -524,6 +527,7 @@
 				265EC87D2555B08300C6438D /* UITextView+Ext.swift in Sources */,
 				2644C17B25445AC70004F979 /* HomeTableViewCell.swift in Sources */,
 				261AAF8D25569E73008DE207 /* Customer.swift in Sources */,
+				269D67082566D56800B6ED48 /* PatientViewController.swift in Sources */,
 				26C2A5E2253885D30084966B /* LoginScreenController.swift in Sources */,
 				2682CDEE253872BA00989A3F /* SceneDelegate.swift in Sources */,
 				26C2A608253A5F300084966B /* DataService.swift in Sources */,

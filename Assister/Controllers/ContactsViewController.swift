@@ -52,15 +52,21 @@ class ContactsViewController: UIViewController , UITableViewDataSource, UITableV
         contactsTable?.delegate = self
             
           
-        //Data
-        DataService.shared.getContacts().subscribe{
-            elements in
-            if let data = elements.element{
-                self.contacts = data
-                self.contactsTable?.reloadData()
-            }
-        }
-
+//        //Data
+//        DataService.shared.getContacts().subscribe{
+//            elements in
+//            if let data = elements.element{
+//                self.contacts = data
+//                self.contactsTable?.reloadData()
+//            }
+//        }
+        
+        let contact = Customer()
+        contact.setEmail(email: "dsk0@live.fr")
+        contact.setName(name: "Oussama")
+        contact.setGender(gender: "male")
+        
+        contacts?.append(contact)
           
       }
 
@@ -89,6 +95,8 @@ class ContactsViewController: UIViewController , UITableViewDataSource, UITableV
       func numberOfSections(in tableView: UITableView) -> Int {
           return 1
       }
+ 
+
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
@@ -131,6 +139,16 @@ class ContactsViewController: UIViewController , UITableViewDataSource, UITableV
 
         return cell
     }
+    
+      func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let patientView = storyBoard.instantiateViewController(withIdentifier: "PatientViewController") as! PatientViewController
+        patientView.modalPresentationStyle = .fullScreen //or .overFullScreen for transparency
+                          
+        self.present(patientView, animated: true, completion: nil)
+            
+     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
          .lightContent

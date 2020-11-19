@@ -58,5 +58,12 @@ class Consultation : (Codable & Decodable){
         return type
     }
     
+    func setCustomer(customer: Customer){
+        self.customer = customer
+    }
+    
+    func setDate(date: Date){
+           self.date = date
+       }
     
 }

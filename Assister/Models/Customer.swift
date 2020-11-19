@@ -35,4 +35,14 @@ class Customer : (Codable & Decodable){
     func getConsultations() -> [Consultation]?{
         return appointments
     }
+    
+    func setName(name: String){
+        self.name = name
+    }
+    func setGender(gender: String){
+        self.gender = gender
+    }
+    func setEmail(email: String){
+        self.email = email
+    }
 }
