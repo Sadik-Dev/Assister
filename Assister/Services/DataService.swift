@@ -33,7 +33,6 @@ class DataService{
    private init(){
         
     networking = HttpRequests()
-    isOnline = false
     if isUserLoggedIn(){
         initData()
         }
@@ -67,21 +66,16 @@ class DataService{
     
     func updateData(){
         
-        setNotification(title: "You have new Notifications")
-        var flagForce = false;
         
         let newConsultations = networking.getArray(controller: .Consultations, object: Consultation())!
-        if newConsultations.count != amountOfNotifs! {
-            amountOfNotifs = newConsultations.count
-            consultations.onNext(newConsultations)
-            flagForce = true
-        }
+        amountOfNotifs = newConsultations.count
+        consultations.onNext(newConsultations)
+          
         
         let newContacts = networking.getArray(controller: .Customers, object: Customer())!
-        if newContacts.count != amountOfContacts! || flagForce {
-                   amountOfContacts = newContacts.count
-                   contacts.onNext(newContacts)
-               }
+        amountOfContacts = newContacts.count
+        contacts.onNext(newContacts)
+        
         
         
 
@@ -151,6 +145,26 @@ class DataService{
 
 
     }
+    
+    func createPatient(patient: Customer) -> Bool{
+        
+        let customer = networking.post(controller: RequestController.Customers, object: patient)
+                
+        if customer == nil {
+            return false
+        }
+        else{
+            updateData()
+            return true
+        }
+    }
+    
+    func modifyPatient(patient: Customer) -> Bool{
+         
+        let flag =  networking.put(controller: RequestController.Customers, object: patient)!
+        updateData()
+        return flag
+     }
     
     func logout(){
               

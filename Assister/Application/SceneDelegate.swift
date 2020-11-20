@@ -31,6 +31,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
             let mainTabBarController = storyboard.instantiateViewController(identifier: "MainTabBarController")
             window?.rootViewController = mainTabBarController
+            print(DataService.shared.getBearerToken())
             
         }
         //If user is not logged in

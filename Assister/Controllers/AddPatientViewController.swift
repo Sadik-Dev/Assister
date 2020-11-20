@@ -27,6 +27,9 @@ class AddPatientViewController: UIViewController {
     
     @IBOutlet weak var segmentGender: UISegmentedControl!
     
+    var modifyPatient = false
+    var idOfPatient = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -79,41 +82,68 @@ class AddPatientViewController: UIViewController {
 
         }
         
-        let password = passwordTF.text
+        var password = passwordTF.text
         if password!.isEmpty {
+            
+            if modifyPatient{
+                password = ""
+            }
+            else{
+                passwordError.isHidden = false
+                passwordError.shake()
+                flag = true
+
+            }
                  
-            passwordError.isHidden = false
-            passwordError.shake()
-            flag = true
+           
+        }
+        else{
+            passwordError.isHidden = true
 
-             }
-             else{
-                 passwordError.isHidden = true
-
-             }
+        }
         
         let rijkregisterNummer = rijksRegisterTF.text
         if rijkregisterNummer?.range(of: "[0-9]{11}", options: .regularExpression, range: nil, locale: nil) == nil {
                    
-                   rijkRegisterNummerError.isHidden = false
-                   rijkRegisterNummerError.shake()
+            rijkRegisterNummerError.isHidden = false
+            rijkRegisterNummerError.shake()
             flag = true
+            
 
-               }
-               else{
-                   rijkRegisterNummerError.isHidden = true
+        }
+        else{
+            rijkRegisterNummerError.isHidden = true
 
-               }
+        }
         
         // Date
         var dateFormatter = DateFormatter()
-         dateFormatter.dateFormat = "yyyy/MM/dd'T'HH:mm:ss"
-        let birthdate = dateFormatter.string(from: birthDatePicker.date)
-        
+        dateFormatter.dateFormat = "yyyy/MM/dd'T'HH:mm:ss"
+        let birthdate = birthDatePicker.date
+
         let gender = segmentGender.titleForSegment(at: segmentGender.selectedSegmentIndex)
         
         if(!flag){
-            print("valid")
+            
+            let patient = Customer()
+            patient.createPatient(name: fullname!, email: email!, gender: gender!, birthdate: birthdate, password: password!, rijkregisternummer: Int64(rijkregisterNummer!)!)
+            patient.setId(id: idOfPatient)
+            
+            var succes : Bool
+            if modifyPatient{
+              succes = DataService.shared.modifyPatient(patient: patient)
+            }
+            else{
+              succes = DataService.shared.createPatient(patient: patient)
+            }
+            
+            
+            if(succes){
+                
+                    self.dismiss(animated: true, completion: {
+                self.presentingViewController?.dismiss(animated: true, completion: nil)
+                    })
+            }
         }
             
     }
@@ -123,7 +153,8 @@ class AddPatientViewController: UIViewController {
             self.presentingViewController?.dismiss(animated: true, completion: nil)
             })
      }
-      func initTextFieldsAndButton(){
+    
+    func initTextFieldsAndButton(){
             
             let fields = [emailTF, passwordTF,nameTF,rijksRegisterTF]
 
@@ -136,16 +167,26 @@ class AddPatientViewController: UIViewController {
             
             submitButton.layer.cornerRadius = 18
             submitButton.clipsToBounds = true
-        }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
     }
-    */
+    
+    func editPatient(patient: Customer){
+        
+        nameTF.text = patient.getName()
+        emailTF.text = patient.getEmail()
+        rijksRegisterTF.text = patient.getRijkRegisterNummer()?.description
+        birthDatePicker.date = patient.getBirthDate()!
+
+        let i = segmentGender.titleForSegment(at: 0)
+        if i == patient.getGender(){
+            segmentGender.selectedSegmentIndex = 0
+        }
+        else{
+            segmentGender.selectedSegmentIndex = 1
+        }
+        
+        modifyPatient = true
+        idOfPatient = patient.getId()!
+    }
 
 }
+

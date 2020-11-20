@@ -14,16 +14,35 @@ class PatientViewController: UIViewController, UITableViewDataSource, UITableVie
     @IBOutlet weak var consultationsTable: UITableView!
     
     @IBOutlet weak var closeView: UIImageView!
+    var patient : Customer?
     
-    var consultations : Array<Consultation>? = []
-
+    @IBOutlet weak var noConsultations: UIImageView!
+    //Labels
+    
+    @IBOutlet weak var fullNameLabel: UILabel!
+    @IBOutlet weak var emailLabel: UILabel!
+    @IBOutlet weak var birthDateLabel: UILabel!
+    @IBOutlet weak var rijkRegisterLabel: UILabel!
+    @IBOutlet weak var genderLabel: UILabel!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         initEventHandlers()
         initTable()
- 
+        setLabels()
     }
+    
+    func setLabels(){
+        
+        fullNameLabel.text = patient?.getName()
+        emailLabel.text = patient?.getEmail()
+        genderLabel.text = patient?.getGender()
+        rijkRegisterLabel.text = patient?.getRijkRegisterNummer()?.description
+        birthDateLabel.text  = patient?.getBirthDateStringified()
+    }
+    
     
     func initEventHandlers(){
         
@@ -43,38 +62,32 @@ class PatientViewController: UIViewController, UITableViewDataSource, UITableVie
         
         consultationsTable?.dataSource = self
         consultationsTable?.delegate = self
-        let contact = Customer()
-        contact.setEmail(email: "dsk0@live.fr")
-        contact.setName(name: "Oussama")
-        contact.setGender(gender: "male")
-                 
-        let consultation = Consultation()
-                 
-        consultation.setDate(date: Date())
-        consultation.setCustomer(customer: contact)
-                 
-        consultations?.append(consultation)
-        consultationsTable.reloadData()
-              
+        
+        if((patient?.getConsultations()!.count)! > 0){
+            noConsultations.isHidden = true
+        }
+        else{
+            noConsultations.isHidden = false
+        }
     }
     
     
       func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-          return consultations!.count
+        return (patient?.getConsultations()!.count)!
 
       }
       
       func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "consultCell") as! HomeTableViewCell
                 
-            let customerName = consultations![indexPath.row].getCustomer()?.getName()
-            let date = consultations![indexPath.row].getDateTimeString()
-            let gender = consultations![indexPath.row].getCustomer()?.getGender()
+        let customerName = patient?.getName()
+        let date = patient?.getConsultations()?[indexPath.row].getDateTimeString()
+        let gender = patient?.getGender()
         
-            cell.cellTitle.text = customerName! + " made an new appointment"
-            cell.cellTitle.sizeToFit()
+        cell.cellTitle.text = "Consultation"
+        cell.cellTitle.sizeToFit()
             
-            cell.cellSubTitle.text = "Consultation on " + date
+        cell.cellSubTitle.text = "On " + date!
             cell.cellSubTitle.sizeToFit()
             
             if (gender == "female") {

@@ -11,10 +11,15 @@ import UIKit
 class ContactsViewController: UIViewController , UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet var contactsTable: UITableView!
-    
     @IBOutlet weak var addButton: UIImageView!
+    @IBOutlet weak var searchBox: UITextField!
+        
     var contacts : Array<Customer>? = []
-
+    var filteredContacts = Array<Customer>() {
+        didSet{
+            self.contactsTable.reloadData()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,16 +34,33 @@ class ContactsViewController: UIViewController , UITableViewDataSource, UITableV
         let tap = UITapGestureRecognizer(target: self, action: #selector(ContactsViewController.openForm(gesture:)))
         addButton?.addGestureRecognizer(tap)
         addButton?.isUserInteractionEnabled = true
+        
+        searchBox.addTarget(self, action: #selector(filterTable), for: .editingChanged)
+
+    }
+    
+    @objc func filterTable(){
+        self.filteredContacts = (self.contacts?.filter {
+            contact in
+            if searchBox.text!.isEmpty{
+                return true
+            }
+            else{
+                return (contact.getName()?.containsIgnoringCase(find: searchBox.text!))!
+
+            }
+            })!
+
     }
     
     @objc func openForm(gesture: UIGestureRecognizer){
         
            if (gesture.view as? UIImageView) != nil {
             let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-            let SettingsViewController = storyBoard.instantiateViewController(withIdentifier: "AddPatientViewController") as! AddPatientViewController
-           SettingsViewController.modalPresentationStyle = .fullScreen //or .overFullScreen for transparency
+            let PatientVC = storyBoard.instantiateViewController(withIdentifier: "AddPatientViewController") as! AddPatientViewController
+           PatientVC.modalPresentationStyle = .fullScreen
         
-           self.present(SettingsViewController, animated: true, completion: nil)
+           self.present(PatientVC, animated: true, completion: nil)
             
         }
     }
@@ -51,23 +73,22 @@ class ContactsViewController: UIViewController , UITableViewDataSource, UITableV
         contactsTable?.dataSource = self
         contactsTable?.delegate = self
             
-          
-//        //Data
-//        DataService.shared.getContacts().subscribe{
-//            elements in
-//            if let data = elements.element{
-//                self.contacts = data
-//                self.contactsTable?.reloadData()
-//            }
-//        }
+
+        //Data
+        DataService.shared.getContacts().subscribe{
+            elements in
+            if let data = elements.element{
+                self.contacts = data
+                self.filteredContacts = self.contacts!
+
+                self.contactsTable?.reloadData()
+            }
+        }
         
-        let contact = Customer()
-        contact.setEmail(email: "dsk0@live.fr")
-        contact.setName(name: "Oussama")
-        contact.setGender(gender: "male")
+     
         
-        contacts?.append(contact)
-          
+
+        
       }
 
     func styleViews(){
@@ -90,7 +111,7 @@ class ContactsViewController: UIViewController , UITableViewDataSource, UITableV
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-          return contacts!.count
+        return self.filteredContacts.count
       }
       func numberOfSections(in tableView: UITableView) -> Int {
           return 1
@@ -108,7 +129,7 @@ class ContactsViewController: UIViewController , UITableViewDataSource, UITableV
         cell.container.layer.shadowRadius = 4.0
         cell.container.layer.masksToBounds = false
         
-        let customer = contacts![indexPath.row]
+        let customer = filteredContacts[indexPath.row]
         
         let customerName = customer.getName()
         cell.cellTitle.text = customerName!
@@ -129,25 +150,41 @@ class ContactsViewController: UIViewController , UITableViewDataSource, UITableV
         
         cell.numberOfConsultations.text = String(c)
         
-//        let amount = customer.getConsultations()?.count
-//        cell.numberOfConsultations.text =
-//            String(amount!)
-        
-        
-        
-       
+        //Edit event handler
+        cell.editButton?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.editUser(sender:))))
 
+        cell.editButton?.isUserInteractionEnabled = true
+        
         return cell
     }
     
       func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        let customer = contacts![indexPath.row]
+
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let patientView = storyBoard.instantiateViewController(withIdentifier: "PatientViewController") as! PatientViewController
-        patientView.modalPresentationStyle = .fullScreen //or .overFullScreen for transparency
-                          
+        patientView.modalPresentationStyle = .fullScreen
+        patientView.patient = customer
         self.present(patientView, animated: true, completion: nil)
             
+     }
+    
+    @objc func editUser( sender: UITapGestureRecognizer){
+         
+            //using sender, we can get the point in respect to the table view
+            let tapLocation = sender.location(in: self.contactsTable)
+
+            //using the tapLocation, we retrieve the corresponding indexPath
+            let indexPath = self.contactsTable.indexPathForRow(at: tapLocation)
+            let contact = filteredContacts[indexPath!.row]
+                     
+            let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let PatientVC = storyBoard.instantiateViewController(withIdentifier: "AddPatientViewController") as! AddPatientViewController
+            PatientVC.modalPresentationStyle = .fullScreen
+            self.present(PatientVC, animated: true, completion: nil)
+            PatientVC.editPatient(patient: contact)
+
+         
      }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {

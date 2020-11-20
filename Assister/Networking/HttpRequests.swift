@@ -138,7 +138,7 @@ class HttpRequests{
                         responseCode = httpResponse.statusCode
 
                 }
-                if responseCode! <= 200 || responseCode! < 300 {
+                if responseCode! <= 200 && responseCode! < 300 {
 
                 // Serialize the data into an object
              do {
@@ -275,82 +275,169 @@ class HttpRequests{
             
         }
     
-         func post<T: Any & Codable>(controller : RequestController, object : T ) -> User?{
+         func post<T: Any & Codable>(controller : RequestController, object : T ) -> T?{
                   
-                   // Create a URLRequest for an API endpoint
-                   let endpoint = apiUrl + "Users/authenticate"
-                   print(endpoint)
-                   let url = URL(string: endpoint)!
-                   var request = URLRequest(url: url)
-                   var user : User? = nil
-                   var responseCode : Int? = nil
-                   
+            // Create a URLRequest for an API endpoint
+            let endpoint = apiUrl + controller.rawValue
+            let url = URL(string: endpoint)!
+            var request = URLRequest(url: url)
+            var resObject : T? = nil
+            var responseCode : Int? = nil
+        
+            request.allHTTPHeaderFields = [
+                "Content-Type": "application/json",
+                "Accept": "application/json",
+                "Authorization": "Bearer \(bearer)"
+                ]
             
-                   
-                   request.allHTTPHeaderFields = [
-                       "Content-Type": "application/json",
-                       "Accept": "application/json",
-                       "Authorization": "Bearer \(bearer)"
-                   ]
-                 
+            // Change the URLRequest to a POST request
+            request.httpMethod = "POST"
+            let encoder = JSONEncoder()
+            let formatter = DateFormatter()
+            formatter.dateFormat = "yyyy/MM/dd'T'HH:mm:ss"
+                                      
+            encoder.dateEncodingStrategy = .formatted(formatter)
+            let jsObj = try! encoder.encode(object)
+            request.httpBody = jsObj
 
-                   // Change the URLRequest to a POST request
-                   request.httpMethod = "POST"
-                   request.httpBody = try! JSONEncoder().encode(object)
+            let semaphore = DispatchSemaphore(value: 0)  //1. create a counting semaphore
 
-                   let semaphore = DispatchSemaphore(value: 0)  //1. create a counting semaphore
+            // Create the HTTP request
+            let session = URLSession.shared
+            let task = session.dataTask(with: request) { (data, response, error) in
 
-                  // Create the HTTP request
-                   let session = URLSession.shared
-                   let task = session.dataTask(with: request) { (data, response, error) in
+            if let error = error {
+                // Handle HTTP request error
+                print(error)
+                semaphore.signal()
 
-                       if let error = error {
-                           // Handle HTTP request error
-                           print(error)
-                           semaphore.signal()
-
-                       }
+                }
                        
-                       else if let data = data {
-                           //Save the status code
-                            if let httpResponse = response as? HTTPURLResponse {
-                               // Handle HTTP request response
-                               responseCode = httpResponse.statusCode
-                           }
-                           // Serialize the data into an object
-                           do {
+                else if let data = data {
+                    //Save the status code
+                    if let httpResponse = response as? HTTPURLResponse {
+                    // Handle HTTP request response
+                    responseCode = httpResponse.statusCode
+
+                    }
+                    // Serialize the data into an object
+                    do {
                                                
-                               let res = try JSONDecoder().decode(User.self, from: data )
-                           
-                               user = res
-                                   
-                               semaphore.signal()
+                        let decoder = JSONDecoder()
+                        let formatter = DateFormatter()
+                        formatter.dateFormat = "yyyy/MM/dd'T'HH:mm:ss"
+                                                    
+                        decoder.dateDecodingStrategy = .formatted(formatter)
+
+                        let res = try decoder.decode(T.self, from: data )
+                        resObject = res
+                             
+                        semaphore.signal()
                                                        
-                               }
-                               catch {
-                                    print("post")
-                                   print("Error during JSON serialization: \(error.localizedDescription)")
-                               }
-                       } else {
-                           print("Unhandled Error")
-                           semaphore.signal()
+                        }
+                        catch {
+                            print("Error during JSON serialization: \(error.localizedDescription)")
+                        }
+                } else {
+                    print("Unhandled Error")
+                    semaphore.signal()
 
-                       }
-                   }
+                    }
+                }
                    
-                   task.resume()
-                   semaphore.wait()
-                   //Handle Return Value
-                   if( responseCode != 200 ){
-                       
-                           return nil
+                task.resume()
+                semaphore.wait()
+            
+                //Handle Return Value
+                if( responseCode! >= 200 && responseCode! < 300 ){
+                        
+                    return resObject
 
-                       }
-                   else {
-                    return user
+                }
+                else {
+                    
+                    return nil
                        
-                   }
+                }
                    
-               }
+            }
+    
+        func put<T: Any & Codable>(controller : RequestController, object : T ) -> Bool?{
+                  
+            // Create a URLRequest for an API endpoint
+            let endpoint = apiUrl + controller.rawValue
+            let url = URL(string: endpoint)!
+            var request = URLRequest(url: url)
+            var responseCode : Int? = nil
+        
+            request.allHTTPHeaderFields = [
+                "Content-Type": "application/json",
+                "Accept": "application/json",
+                "Authorization": "Bearer \(bearer)"
+                ]
+            
+            // Change the URLRequest to a POST request
+            request.httpMethod = "PUT"
+            let encoder = JSONEncoder()
+            let formatter = DateFormatter()
+            formatter.dateFormat = "yyyy/MM/dd'T'HH:mm:ss"
+                                      
+            encoder.dateEncodingStrategy = .formatted(formatter)
+            let jsObj = try! encoder.encode(object)
+            
+            print(String(decoding: jsObj, as: UTF8.self))
+
+            request.httpBody = jsObj
+
+            let semaphore = DispatchSemaphore(value: 0) 
+
+            // Create the HTTP request
+            let session = URLSession.shared
+            let task = session.dataTask(with: request) { (data, response, error) in
+
+            if let error = error {
+                // Handle HTTP request error
+                print(error)
+                semaphore.signal()
+
+                }
+                       
+                else if let data = data {
+                    //Save the status code
+                    if let httpResponse = response as? HTTPURLResponse {
+                    // Handle HTTP request response
+                    responseCode = httpResponse.statusCode
+                    semaphore.signal()
+
+                    }
+           
+                                            
+                                                                      
+                
+                } else {
+                    print("Unhandled Error")
+                    semaphore.signal()
+
+                    }
+                }
+                   
+                task.resume()
+                semaphore.wait()
+
+                //Handle Return Value
+                if( responseCode! >= 200 && responseCode! < 300 ){
+                        
+                    return true
+
+                }
+                else {
+                    
+                    return false
+                       
+                }
+                   
+            }
+
+    
     
 }
