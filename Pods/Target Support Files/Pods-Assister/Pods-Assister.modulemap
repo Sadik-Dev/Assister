@@ -1,0 +1,6 @@
+framework module Pods_Assister {
+  umbrella header "Pods-Assister-umbrella.h"
+
+  export *
+  module * { export * }
+}

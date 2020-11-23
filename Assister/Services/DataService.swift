@@ -33,6 +33,7 @@ class DataService{
    private init(){
         
     networking = HttpRequests()
+    
     if isUserLoggedIn(){
         initData()
         }
