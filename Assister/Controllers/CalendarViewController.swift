@@ -17,7 +17,7 @@ class CalendarViewController: UIViewController, FSCalendarDelegate, UITableViewD
     @IBOutlet  var consultationsTable: UITableView?
     @IBOutlet weak var addButton: UIImageView!
     @IBOutlet weak var noConsultations: UIImageView!
-    
+        
     var consultations : Array<Consultation>? = []
     var filteredConsultations = Array<Consultation>() {
           didSet{
@@ -45,6 +45,11 @@ class CalendarViewController: UIViewController, FSCalendarDelegate, UITableViewD
 
       }
     
+    func setCalendarDate(date: Date){
+        print(date)
+        calendar.select(date)
+    }
+    
     @objc func openForm(gesture: UIGestureRecognizer){
            
               if (gesture.view as? UIImageView) != nil {
@@ -53,7 +58,9 @@ class CalendarViewController: UIViewController, FSCalendarDelegate, UITableViewD
               PatientVC.modalPresentationStyle = .fullScreen
            
               self.present(PatientVC, animated: true, completion: nil)
-               
+              let today = self.calendar.today
+
+                setCalendarDate(date: today!)
            }
        }
     
@@ -117,23 +124,13 @@ class CalendarViewController: UIViewController, FSCalendarDelegate, UITableViewD
                 self.consultations = data
                 self.consultationsTable?.reloadData()
                 
-                //Set Appointments today
-                
-                var count : Int = 0
-                let calendar = Calendar.current
-
-                for c in self.consultations!{
-                    
-                    let date = c.getDateTime()
-                    
-                    if calendar.isDateInToday(date){
-                        count += 1
-                    }
-                }
-                                
-                
             }
+            //Update selected date consultations
+            let today = self.calendar.today
+            self.filterConsultations(date: today!)
         }
+        
+    
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -145,9 +142,10 @@ class CalendarViewController: UIViewController, FSCalendarDelegate, UITableViewD
         
          let cell = tableView.dequeueReusableCell(withIdentifier: "NotifCell") as! HomeTableViewCell
                  
-             let customerName = consultations![indexPath.row].getCustomer()?.getName()
-             let date = consultations![indexPath.row].getDateTimeString()
-             let gender = consultations![indexPath.row].getCustomer()?.getGender()
+             let customerName = filteredConsultations[indexPath.row].getCustomer()?.getName()
+             let date = filteredConsultations[indexPath.row].getDateTimeString()
+        
+             let gender = filteredConsultations[indexPath.row].getCustomer()?.getGender()
          
              cell.cellTitle.text = customerName!
              cell.cellTitle.sizeToFit()
@@ -167,9 +165,34 @@ class CalendarViewController: UIViewController, FSCalendarDelegate, UITableViewD
                       cell.cellIcon.image = image
              }
                   
+            //Edit event handler
+        cell.editButton?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.editConsultation(sender:))))
 
+            cell.editButton?.isUserInteractionEnabled = true
+        
              return cell
      }
+    
+    @objc func editConsultation( sender: UITapGestureRecognizer){
+            
+        //using sender, we can get the point in respect to the table view
+        let tapLocation = sender.location(in: self.consultationsTable)
+
+        //using the tapLocation, we retrieve the corresponding indexPath
+        let indexPath = self.consultationsTable!.indexPathForRow(at: tapLocation)
+        let consult = filteredConsultations[indexPath!.row]
+                        
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let form = storyBoard.instantiateViewController(withIdentifier: "ConsultationFormViewController") as! ConsultationFormViewController
+               form.modalPresentationStyle = .fullScreen
+        self.present(form, animated: true, completion: nil)
+
+        form.editConsultation(consultation: consult)
+        let today = self.calendar.today
+
+        setCalendarDate(date: today!)
+
+        }
 
 }
 

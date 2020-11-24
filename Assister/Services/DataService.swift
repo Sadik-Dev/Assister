@@ -23,6 +23,8 @@ class DataService{
     private var timer : Timer?
     private var amountOfNotifs : Int?
     
+    private var lastModifiedConsultation : Consultation?
+    
     private var isOnline : Bool = true
 
     //Networking
@@ -160,12 +162,34 @@ class DataService{
         }
     }
     
+    func createConsultation(consultation: Consultation) -> Bool{
+           
+           let consult = networking.post(controller: RequestController.Consultations, object: consultation)
+                   
+           if consult == nil {
+               return false
+           }
+           else{
+               updateData()
+               lastModifiedConsultation = consult
+               return true
+           }
+       }
+    
     func modifyPatient(patient: Customer) -> Bool{
          
         let flag =  networking.put(controller: RequestController.Customers, object: patient)!
         updateData()
         return flag
      }
+    
+    func editConsultation(consultation: Consultation) -> Bool{
+        let flag =  networking.put(controller: RequestController.Consultations, object: consultation)!
+        updateData()
+        lastModifiedConsultation = consultation
+
+        return flag
+    }
     
     func logout(){
               

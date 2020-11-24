@@ -16,8 +16,20 @@ class Consultation : (Codable & Decodable){
     private var type : String?
     
     
+    func createConsultation(date: Date, customer: Customer){
+        self.date = date
+        self.customer = customer
+        
+    }
  
-   
+    func setId(id: Int){
+        self.id = id
+    }
+    
+    func getId()-> Int?{
+        return self.id
+    }
+    
     func getDateTimeString() -> String{
         
         let formatter = DateFormatter()

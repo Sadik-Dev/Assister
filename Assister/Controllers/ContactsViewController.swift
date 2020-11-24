@@ -72,7 +72,8 @@ class ContactsViewController: UIViewController , UITableViewDataSource, UITableV
             
         contactsTable?.dataSource = self
         contactsTable?.delegate = self
-            
+        
+        contactsTable.resignFirstResponder()
 
         //Data
         DataService.shared.getContacts().subscribe{
