@@ -13,7 +13,8 @@ class ContactsViewController: UIViewController , UITableViewDataSource, UITableV
     @IBOutlet var contactsTable: UITableView!
     @IBOutlet weak var addButton: UIImageView!
     @IBOutlet weak var searchBox: UITextField!
-        
+    @IBOutlet weak var totalOfContacts: UILabel!
+    
     var contacts : Array<Customer>? = []
     var filteredContacts = Array<Customer>() {
         didSet{
@@ -81,8 +82,8 @@ class ContactsViewController: UIViewController , UITableViewDataSource, UITableV
             if let data = elements.element{
                 self.contacts = data
                 self.filteredContacts = self.contacts!
-
                 self.contactsTable?.reloadData()
+                self.totalOfContacts.text = String(data.count)
             }
         }
         

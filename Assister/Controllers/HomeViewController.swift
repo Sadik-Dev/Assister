@@ -52,18 +52,43 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
    
     
     func checkNextConsutation(){
-        if(consultations!.count > 0){
-            loadNextConsultationView()
+        
+        let nextConsultation = getNextConsultation()
+        
+        if(nextConsultation != nil){
+            loadNextConsultationView(consultation: nextConsultation!)
         }
         else{
             loadNoNextConsultationView()
         }
     }
     
-    
-    func loadNextConsultationView(){
+    func getNextConsultation() -> Consultation?{
+        var nextConsultation : Consultation? = nil
+         
+         for consultation in consultations! {
+             
+             let currentDateTime = Date()
+             
+             if(currentDateTime < consultation.getDateTime()){
+                 if(nextConsultation == nil){
+                     nextConsultation = consultation
+                 }
+                 else{
+                     if(consultation.getDateTime() < (nextConsultation?.getDateTime())!){
+                         nextConsultation = consultation
+                     }
+                 }
+             }
+         }
         
-        var consultation = consultations?.first
+        return nextConsultation
+    }
+    
+    
+    func loadNextConsultationView(consultation: Consultation){
+        
+        
         
         let todaysConsultationContainer =  (self.view.viewWithTag(7) as! RoundedCornerView?)
 
@@ -77,7 +102,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
 
         //Name of patient
-        (self.view.viewWithTag(1) as? UILabel)?.text = consultation?.getCustomer()?.getName()
+        (self.view.viewWithTag(1) as? UILabel)?.text = consultation.getCustomer()?.getName()
         
         //Show Consultation label
         (self.view.viewWithTag(3) as? UILabel)?.isHidden = false
@@ -85,11 +110,11 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         //Time
         
         (self.view.viewWithTag(2) as? UILabel)?.isHidden = false
-        (self.view.viewWithTag(2) as? UILabel)?.text = "Consultation at " + (consultation?.getTime())!
+        (self.view.viewWithTag(2) as? UILabel)?.text =  (consultation.getDateTimeString())
         (self.view.viewWithTag(2) as? UILabel)?.sizeToFit()
 
         //Image
-        if (consultation?.getCustomer()?.getGender() == "female") {
+        if (consultation.getCustomer()?.getGender() == "female") {
                  
                  var image: UIImage = UIImage(named: "female")!
 
@@ -149,7 +174,9 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         DataService.shared.getConsultations().subscribe{
             elements in
             if let data = elements.element{
+                
                 self.consultations = data
+                self.consultations?.reverse()
                 self.notificationsTable?.reloadData()
                 
                 //Set Appointments today
@@ -167,7 +194,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 }
                 
                 self.consultationsToday?.text = String(count)
-                
+                self.checkNextConsutation()
                 
             }
         }
