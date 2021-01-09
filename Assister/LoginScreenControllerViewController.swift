@@ -15,7 +15,6 @@ class LoginScreenController: UIViewController {
 
         // Do any additional setup after loading the view.
     }
-    
 
     /*
     // MARK: - Navigation
@@ -26,17 +25,16 @@ class LoginScreenController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-    
- 
+
     @IBAction func loginUser(_ sender: UIButton) {
-        
+
         // ...
         // after login is done, maybe put this in the login web service completion block
             print("lo")
 
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let mainTabBarController = storyboard.instantiateViewController(identifier: "MainTabBarController")
-        
+
         // This is to get the SceneDelegate object from your view controller
         // then call the change root view controller function to change to main tab bar
         (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(mainTabBarController)

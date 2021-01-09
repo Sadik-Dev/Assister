@@ -9,15 +9,13 @@
 import UIKit
 
 class ContactsTableViewCell: UITableViewCell {
-    
+
     @IBOutlet weak var cellIcon: UIImageView!
     @IBOutlet weak var cellTitle: UILabel!
     @IBOutlet weak var numberOfConsultations: UILabel!
     @IBOutlet weak var container: UIView!
     @IBOutlet weak var editButton: UIImageView!
 
-
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

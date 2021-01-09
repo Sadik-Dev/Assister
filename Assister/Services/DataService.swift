@@ -4,276 +4,240 @@ import RxSwift
 import Foundation
 import UIKit
 
-class DataService{
-    
-    //Singleton
+class DataService {
+
+    // Singleton
     static let shared = DataService()
-    
-    
-    //Cached Data
+
+    // Cached Data
     let ud: UserDefaults = UserDefaults.standard
 
-    //Properties
-    
-    private var consultation : Consultation?
-    private var loggedInUser : User?
-    private var consultations = BehaviorSubject<Array<Consultation>>(value: [])
-    private var contacts = BehaviorSubject<Array<Customer>>(value: [])
-    private var timer : Timer?
-    
-    private var lastModifiedConsultation : Consultation?
-    
-    private var isOnline : Bool = true
+    // Properties
 
-    //Networking
-    
-    private var networking : HttpRequests
+    private var consultation: Consultation?
+    private var loggedInUser: User?
+    private var consultations = BehaviorSubject<[Consultation]>(value: [])
+    private var contacts = BehaviorSubject<[Customer]>(value: [])
+    private var timer: Timer?
 
-    
-   private init(){
-        
+    private var lastModifiedConsultation: Consultation?
+
+    private var isOnline: Bool = true
+
+    // Networking
+
+    private var networking: HttpRequests
+
+   private init() {
+
     networking = HttpRequests()
-    
-    if isUserLoggedIn(){
+
+    if isUserLoggedIn() {
         initData()
         }
     }
-    
-    func initData(){
-        
+
+    func initData() {
+
         if isOnline {
             networking.setBearer(token: getBearerToken()!)
-            
+
             let newConsultations = networking.getArray(controller: .Consultations, object: Consultation())!
             consultations.onNext(newConsultations)
-            
+
             let newContacts = networking.getArray(controller: .Customers, object: Customer())!
             contacts.onNext(newContacts)
-            
+
             timer = Timer.scheduledTimer(timeInterval: 5.0, target: self, selector: #selector(self.checkIfUpToDate), userInfo: nil, repeats: true)
-                  
-        }
-        else{
-            let consultations = Array<Consultation>()
+
+        } else {
+            let consultations = [Consultation]()
             self.consultations.onNext(consultations)
 
         }
-        
 
     }
-    
-    
-    func updateData(){
-        
-        
+
+    func updateData() {
+
         let newConsultations = networking.getArray(controller: .Consultations, object: Consultation())!
         consultations.onNext(newConsultations)
-     
+
         let newContacts = networking.getArray(controller: .Customers, object: Customer())!
         contacts.onNext(newContacts)
 
-
     }
-    
-    func setNotification(title : String) -> Void {
+
+    func setNotification(title: String) {
         let manager = LocalNotificationManager()
         manager.requestPermission()
         manager.addNotification(title: title)
         manager.scheduleNotifications()
     }
 
-    @objc func checkIfUpToDate()
-    {
+    @objc func checkIfUpToDate() {
         let isAppUpToDate = networking.isUserUpToDate()
-        
+
         if !isAppUpToDate {
             updateData()
         }
     }
-    
-    func getConsultations() -> Observable<Array<Consultation>>{
+
+    func getConsultations() -> Observable<[Consultation]> {
         return consultations
     }
-    
-    func getContacts() -> Observable<Array<Customer>>{
+
+    func getContacts() -> Observable<[Customer]> {
         return contacts
     }
-    
-   
-    //Check if user is logged in
-    //By checking if a jwt bearer key is registred
+
+    // Check if user is logged in
+    // By checking if a jwt bearer key is registred
      func isUserLoggedIn() -> Bool {
-        
-        if getBearerToken() != nil{
+
+        if getBearerToken() != nil {
             return true
-        }
-        else {
+        } else {
             return false
         }
-        
+
     }
-    
-    
+
     //
-    func login(email : String , password : String) -> Bool{
-        
-        if(isOnline){
+    func login(email: String, password: String) -> Bool {
+
+        if isOnline {
             let credentials = User(name: "", email: email, password: password)
             let user = networking.login(controller: RequestController.Users, object: credentials)
-            if(user == nil){
+            if user == nil {
                 return false
-            }
-            else{
+            } else {
                 self.loggedInUser = user
                 ud.set(user?.getBearer(), forKey: "bearer")
                 initData()
                 return true
             }
-        }
-        
-        else{
+        } else {
             ud.set("offline", forKey: "bearer")
             initData()
             return true
         }
-        
-
 
     }
-    
-    func deleteConsultation(id: Int) -> Bool{
+
+    func deleteConsultation(id: Int) -> Bool {
         let success = networking.delete(controller: RequestController.Consultations, id: id)
-        
+
         if success {
-            
-            do{
+
+            do {
                 var listOfConsultations = try consultations.value()
                 listOfConsultations.removeAll(where: { $0.getId() == id })
-                
+
                 consultations.onNext(listOfConsultations)
-                       
-            }
-            catch{
+
+            } catch {
                 print(error)
             }
-        
-         
 
         }
         return success
     }
-    
-    func deletePatient(id: Int) -> Bool{
+
+    func deletePatient(id: Int) -> Bool {
         let success = networking.delete(controller: RequestController.Customers, id: id)
-        
+
         if success {
-            
-            do{
+
+            do {
                 var listOfContacts = try contacts.value()
                 listOfContacts.removeAll(where: { $0.getId() == id })
-                
+
                 contacts.onNext(listOfContacts)
-                       
-            }
-            catch{
+
+            } catch {
                 print(error)
             }
-        
-         
 
         }
         return success
     }
-       
-    
-    func createPatient(patient: Customer) -> Bool{
-        
+
+    func createPatient(patient: Customer) -> Bool {
+
         let customer = networking.post(controller: RequestController.Customers, object: patient)
-                
+
         if customer == nil {
             return false
-        }
-        else{
+        } else {
             updateData()
             return true
         }
     }
-    
-    func createConsultation(consultation: Consultation) -> Bool{
-           
+
+    func createConsultation(consultation: Consultation) -> Bool {
+
            let consult = networking.post(controller: RequestController.Consultations, object: consultation)
-                   
+
            if consult == nil {
                return false
-           }
-           else{
+           } else {
                updateData()
                lastModifiedConsultation = consult
                return true
            }
        }
-    
-    func modifyPatient(patient: Customer) -> Bool{
-         
+
+    func modifyPatient(patient: Customer) -> Bool {
+
         let flag =  networking.put(controller: RequestController.Customers, object: patient)!
         updateData()
         return flag
      }
-    
-    func editConsultation(consultation: Consultation) -> Bool{
+
+    func editConsultation(consultation: Consultation) -> Bool {
         let flag =  networking.put(controller: RequestController.Consultations, object: consultation)!
         updateData()
         lastModifiedConsultation = consultation
 
         return flag
     }
-    
-    func logout(){
-              
+
+    func logout() {
+
         ud.removeObject(forKey: "bearer")
         timer?.invalidate()
-        
+
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
 
              let loginScreen = storyboard.instantiateViewController(identifier: "LoginNavigationController")
 
              (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(loginScreen)
 
-
     }
-   
-    
+
     func getBearerToken() -> String? {
-        
+
         let data = ud.string(forKey: "bearer")
         return data
-        
+
     }
-    
-    func hasConsultationToday() -> Bool{
-        if(consultation != nil){
+
+    func hasConsultationToday() -> Bool {
+        if consultation != nil {
             return true
-        }
-        else{
+        } else {
             return false
         }
     }
-    
-    func getConsultation() -> Consultation?{
+
+    func getConsultation() -> Consultation? {
         return consultation
     }
-    
-    
-    func setConsultation(consul : Consultation?){
+
+    func setConsultation(consul: Consultation?) {
         self.consultation = consul
-        
+
     }
-    
-  
-   
-   
-    
-    
-    
 
 }

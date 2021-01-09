@@ -12,13 +12,11 @@ import CoreData
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        
-        //Show notifications also when app is in foreground
+
+        // Show notifications also when app is in foreground
         UNUserNotificationCenter.current().delegate = self as! UNUserNotificationCenterDelegate
-        
-     
+
         return true
     }
 
@@ -31,20 +29,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     }
 
     func application(_ application: UIApplication, didDiscardSceneSessions sceneSessions: Set<UISceneSession>) {
-       
+
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
-    
 
-  
-    
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         application.registerUserNotificationSettings(UIUserNotificationSettings(types: UIUserNotificationType(rawValue: UIUserNotificationType.sound.rawValue | UIUserNotificationType.badge.rawValue | UIUserNotificationType.alert.rawValue), categories: nil))
 
         return true
     }
-    
+
     func userNotificationCenter(
            _ center: UNUserNotificationCenter,
            willPresent notification: UNNotification,
@@ -52,7 +47,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
            -> Void) {
            completionHandler([.alert, .badge, .sound])
        }
-    
-    
-}
 
+}

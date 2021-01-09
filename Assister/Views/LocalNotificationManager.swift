@@ -1,4 +1,3 @@
-
 import Foundation
 import UserNotifications
 
@@ -9,8 +8,8 @@ struct Notification {
 
 class LocalNotificationManager {
     var notifications = [Notification]()
-    
-    func requestPermission() -> Void {
+
+    func requestPermission() {
         UNUserNotificationCenter
             .current()
             .requestAuthorization(options: [.alert, .badge, .alert]) { granted, error in
@@ -19,20 +18,19 @@ class LocalNotificationManager {
                 }
         }
     }
-    
-    func addNotification(title: String) -> Void {
+
+    func addNotification(title: String) {
         notifications.append(Notification(id: UUID().uuidString, title: title))
     }
-    
-    
-    func scheduleNotifications() -> Void {
+
+    func scheduleNotifications() {
         for notification in notifications {
             let content = UNMutableNotificationContent()
             content.title = notification.title
-            
+
             let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
             let request = UNNotificationRequest(identifier: notification.id, content: content, trigger: trigger)
-            
+
             UNUserNotificationCenter.current().add(request) { error in
                 guard error == nil else { return }
                 print("Scheduling notification with id: \(notification.id)")

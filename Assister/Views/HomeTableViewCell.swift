@@ -10,15 +10,13 @@ import UIKit
 
 class HomeTableViewCell: UITableViewCell {
 
-  
     @IBOutlet weak var cellIcon: UIImageView!
     @IBOutlet weak var cellTitle: UILabel!
     @IBOutlet weak var cellSubTitle: UILabel!
     @IBOutlet weak var editButton: UIImageView!
 
-    
     @IBOutlet weak var cellView: RoundedCornerView!
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -29,6 +27,5 @@ class HomeTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
- 
-    
+
 }

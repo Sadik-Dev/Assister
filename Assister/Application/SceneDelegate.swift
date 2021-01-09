@@ -12,66 +12,61 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
 
-
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let _ = (scene as? UIWindowScene) else { return }
-        
-        window?.rootViewController = createTabbar()
-        
 
-    
+        window?.rootViewController = createTabbar()
+
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let loginNavController = storyboard.instantiateViewController(identifier: "LoginNavigationController")
-        
-        //If user is logged in
-        if DataService.shared.isUserLoggedIn(){
+
+        // If user is logged in
+        if DataService.shared.isUserLoggedIn() {
 
             let mainTabBarController = storyboard.instantiateViewController(identifier: "MainTabBarController")
             window?.rootViewController = mainTabBarController
             print(DataService.shared.getBearerToken())
-            
-        }
-        //If user is not logged in
-        else {
-            
-            window?.rootViewController = loginNavController
-            
-        }
-        
 
-       
+        }
+        // If user is not logged in
+        else {
+
+            window?.rootViewController = loginNavController
+
+        }
+
     }
 
     func createTabbar() -> UITabBarController {
-        
+
         let tabbar = UITabBarController()
         UITabBar.setTransparentTabbar()
         tabbar.viewControllers = [createHomeVC(), createCalendarVC(), createContactsVC()]
-        
+
         return tabbar
     }
-    
-    func createHomeVC() -> HomeViewController{
+
+    func createHomeVC() -> HomeViewController {
         let viewController =   HomeViewController()
         viewController.tabBarItem = UITabBarItem(tabBarSystemItem: .more, tag: 0)
         return viewController
     }
-    
-    func createCalendarVC() -> CalendarViewController{
+
+    func createCalendarVC() -> CalendarViewController {
         let viewController =   CalendarViewController()
         viewController.tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 0)
         return viewController
     }
 
-    func createContactsVC() -> ContactsViewController{
+    func createContactsVC() -> ContactsViewController {
           let viewController =   ContactsViewController()
           viewController.tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 0)
           return viewController
       }
-    
+
     func sceneDidDisconnect(_ scene: UIScene) {
         // Called as the scene is being released by the system.
         // This occurs shortly after the scene enters the background, or when its session is discarded.
@@ -104,7 +99,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
        guard let window = self.window else {
             return
         }
-        
+
         window.rootViewController = vc
         window.makeKeyAndVisible()
         UIView.transition(with: window,
@@ -112,7 +107,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                           options: [.transitionFlipFromTop],
                           animations: nil,
                           completion: nil)
-        
+
     }
 }
-
