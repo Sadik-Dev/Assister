@@ -19,9 +19,7 @@ class DataService{
     private var loggedInUser : User?
     private var consultations = BehaviorSubject<Array<Consultation>>(value: [])
     private var contacts = BehaviorSubject<Array<Customer>>(value: [])
-    private var amountOfContacts : Int?
     private var timer : Timer?
-    private var amountOfNotifs : Int?
     
     private var lastModifiedConsultation : Consultation?
     
@@ -47,11 +45,9 @@ class DataService{
             networking.setBearer(token: getBearerToken()!)
             
             let newConsultations = networking.getArray(controller: .Consultations, object: Consultation())!
-            amountOfNotifs = newConsultations.count
             consultations.onNext(newConsultations)
             
             let newContacts = networking.getArray(controller: .Customers, object: Customer())!
-            amountOfContacts = newContacts.count
             contacts.onNext(newContacts)
             
             timer = Timer.scheduledTimer(timeInterval: 5.0, target: self, selector: #selector(self.checkIfUpToDate), userInfo: nil, repeats: true)
@@ -71,16 +67,11 @@ class DataService{
         
         
         let newConsultations = networking.getArray(controller: .Consultations, object: Consultation())!
-        amountOfNotifs = newConsultations.count
         consultations.onNext(newConsultations)
-          
-        
+     
         let newContacts = networking.getArray(controller: .Customers, object: Customer())!
-        amountOfContacts = newContacts.count
         contacts.onNext(newContacts)
-        
-        
-        
+
 
     }
     
@@ -108,6 +99,7 @@ class DataService{
         return contacts
     }
     
+   
     //Check if user is logged in
     //By checking if a jwt bearer key is registred
      func isUserLoggedIn() -> Bool {
@@ -148,6 +140,51 @@ class DataService{
 
 
     }
+    
+    func deleteConsultation(id: Int) -> Bool{
+        let success = networking.delete(controller: RequestController.Consultations, id: id)
+        
+        if success {
+            
+            do{
+                var listOfConsultations = try consultations.value()
+                listOfConsultations.removeAll(where: { $0.getId() == id })
+                
+                consultations.onNext(listOfConsultations)
+                       
+            }
+            catch{
+                print(error)
+            }
+        
+         
+
+        }
+        return success
+    }
+    
+    func deletePatient(id: Int) -> Bool{
+        let success = networking.delete(controller: RequestController.Customers, id: id)
+        
+        if success {
+            
+            do{
+                var listOfContacts = try contacts.value()
+                listOfContacts.removeAll(where: { $0.getId() == id })
+                
+                contacts.onNext(listOfContacts)
+                       
+            }
+            catch{
+                print(error)
+            }
+        
+         
+
+        }
+        return success
+    }
+       
     
     func createPatient(patient: Customer) -> Bool{
         

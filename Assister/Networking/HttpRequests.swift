@@ -376,7 +376,6 @@ class HttpRequests{
                 "Authorization": "Bearer \(bearer)"
                 ]
             
-            // Change the URLRequest to a POST request
             request.httpMethod = "PUT"
             let encoder = JSONEncoder()
             let formatter = DateFormatter()
@@ -385,8 +384,6 @@ class HttpRequests{
             encoder.dateEncodingStrategy = .formatted(formatter)
             let jsObj = try! encoder.encode(object)
             
-            print(String(decoding: jsObj, as: UTF8.self))
-
             request.httpBody = jsObj
 
             let semaphore = DispatchSemaphore(value: 0) 
@@ -437,6 +434,66 @@ class HttpRequests{
                 }
                    
             }
+    
+    func delete(controller : RequestController, id : Int ) -> Bool{
+        let endpoint = apiUrl + controller.rawValue + "/" + String(id)
+            let url = URL(string: endpoint)!
+            var request = URLRequest(url: url)
+            var responseCode : Int? = nil
+            print(endpoint)
+            request.allHTTPHeaderFields = [
+                        "Content-Type": "application/json",
+                        "Accept": "application/json",
+                        "Authorization": "Bearer \(String(describing: bearer))"
+                        ]
+            
+            request.httpMethod = "DELETE"
+        
+        let semaphore = DispatchSemaphore(value: 0)
+           
+          // Create the HTTP request
+           let session = URLSession.shared
+           let task = session.dataTask(with: request) { (data, response, error) in
+
+               if let error = error {
+                   // Handle HTTP request error
+                   print(error)
+                   semaphore.signal()
+
+               } else if data != nil {
+                   // Handle HTTP request response
+                    if let httpResponse = response as? HTTPURLResponse {
+                       
+                           // Handle HTTP request response
+                           responseCode = httpResponse.statusCode
+                            semaphore.signal()
+
+                   }
+              
+                   else if (responseCode! >= 400 ){
+                       DataService.shared.logout()
+                       semaphore.signal()
+                   }
+                   
+               } else {
+                   // Handle unexpected error
+                   print("Unhandled Error")
+                   semaphore.signal()
+               }
+           }
+           
+           task.resume()
+           semaphore.wait()
+        
+           //Handle Return Value
+        if (responseCode == 204){
+            return true
+        }
+        else {
+            return false
+        }
+    }
+
 
     
     

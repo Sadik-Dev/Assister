@@ -17,6 +17,7 @@ class AddPatientViewController: UIViewController {
     @IBOutlet weak var submitButton: UIButton!
     @IBOutlet weak var closeView: UIImageView!
     
+    @IBOutlet weak var deleteBtn: UIImageView!
     @IBOutlet weak var fullNameError: UILabel!
     @IBOutlet weak var emailError: UILabel!
     @IBOutlet weak var birthError: UILabel!
@@ -35,24 +36,64 @@ class AddPatientViewController: UIViewController {
 
         initTextFieldsAndButton()
         
-        let tap = UITapGestureRecognizer(target: self, action: #selector(AddPatientViewController.close(gesture:)))
-               closeView?.addGestureRecognizer(tap)
+        let closeTap = UITapGestureRecognizer(target: self, action: #selector(AddPatientViewController.close(gesture:)))
+               closeView?.addGestureRecognizer(closeTap)
                closeView?.isUserInteractionEnabled = true
         
-        let tap2 = UITapGestureRecognizer(target: self, action: #selector(handleTap))
-              view.addGestureRecognizer(tap2)
+        let focusTap = UITapGestureRecognizer(target: self, action: #selector(handleTap))
+              view.addGestureRecognizer(focusTap)
         
+        let deleteTap = UITapGestureRecognizer(target: self, action: #selector(AddPatientViewController.deletePatient(gesture:)))
+                      deleteBtn?.addGestureRecognizer(deleteTap)
+                      deleteBtn?.isUserInteractionEnabled = true
+        
+        deleteBtn.isHidden = true
     }
+    
+    @objc func deletePatient(gesture: UIGestureRecognizer){
+            
+        let alert = UIAlertController(title: "Do you want to delete " + nameTF.text!, message: "", preferredStyle: .alert)
+
+           alert.addAction(UIAlertAction(title: "Yes", style: .destructive, handler: { action in
+            
+            let success = DataService.shared.deletePatient(id: self.idOfPatient)
+            
+                if success{
+                    //Close the view
+                     self.dismiss(animated: true, completion: {
+                               self.presentingViewController?.dismiss(animated: true, completion: nil)
+                     })
+                }
+                else{
+                    // Create new Alert
+                    var dialogMessage = UIAlertController(title: "Error", message: "Could not delete this patient", preferredStyle: .alert)
+                    
+                    // Create OK button with action handler
+                    let ok = UIAlertAction(title: "OK", style: .default, handler: { (action) -> Void in
+                     })
+                    
+                    //Add OK button to a dialog message
+                    dialogMessage.addAction(ok)
+                    // Present Alert to
+                    self.present(dialogMessage, animated: true, completion: nil)
+            }
+           }))
+        
+        alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: { action in
+                      print("delete canceled")
+                  }))
+        
+
+           self.present(alert, animated: true)
+        }
     
     @objc func handleTap() {
         let fields = [emailTF, passwordTF, rijksRegisterTF, nameTF]
-
                fields.forEach { field in
-               
                 field!.resignFirstResponder()
-
-        }
+            }
        }
+    
     
     @IBAction func createPatient(_ sender: Any) {
         
@@ -170,7 +211,8 @@ class AddPatientViewController: UIViewController {
     }
     
     func editPatient(patient: Customer){
-        
+    
+        deleteBtn.isHidden = false
         nameTF.text = patient.getName()
         emailTF.text = patient.getEmail()
         rijksRegisterTF.text = patient.getRijkRegisterNummer()?.description

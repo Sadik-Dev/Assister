@@ -16,8 +16,10 @@ class ConsultationFormViewController: UIViewController, UIPickerViewDelegate, UI
     @IBOutlet weak var closeView: UIImageView!
     @IBOutlet weak var submitButton: UIButton!
 
+    @IBOutlet weak var viewTitle: UILabel!
     @IBOutlet weak var datePicker: UIDatePicker!
 
+    @IBOutlet weak var deleteBtn: UIImageView!
     @IBOutlet weak var patient: UIPickerView!
     
     var editingConsultation: Bool = false
@@ -33,7 +35,50 @@ class ConsultationFormViewController: UIViewController, UIPickerViewDelegate, UI
         let tap = UITapGestureRecognizer(target: self, action: #selector(ConsultationFormViewController.close(gesture:)))
                      closeView?.addGestureRecognizer(tap)
                      closeView?.isUserInteractionEnabled = true
+        
+        
+        let deleteTap = UITapGestureRecognizer(target: self, action: #selector(ConsultationFormViewController.deletePatient(gesture:)))
+                      deleteBtn?.addGestureRecognizer(deleteTap)
+                      deleteBtn?.isUserInteractionEnabled = true
+        
+        deleteBtn.isHidden = true
     
+    }
+    @objc func deletePatient(gesture: UIGestureRecognizer){
+        
+    let alert = UIAlertController(title: "Confirm", message: "Do you want to delete this consultation ?", preferredStyle: .alert)
+
+       alert.addAction(UIAlertAction(title: "Yes", style: .destructive, handler: { action in
+        
+        let success = DataService.shared.deleteConsultation(id: self.editingConsultationId)
+        
+            if success{
+                //Close the view
+                 self.dismiss(animated: true, completion: {
+                           self.presentingViewController?.dismiss(animated: true, completion: nil)
+                 })
+            }
+            else{
+                // Create new Alert
+                var dialogMessage = UIAlertController(title: "Error", message: "Could not delete this patient", preferredStyle: .alert)
+                
+                // Create OK button with action handler
+                let ok = UIAlertAction(title: "OK", style: .default, handler: { (action) -> Void in
+                 })
+                
+                //Add OK button to a dialog message
+                dialogMessage.addAction(ok)
+                // Present Alert to
+                self.present(dialogMessage, animated: true, completion: nil)
+        }
+       }))
+    
+    alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: { action in
+                  print("delete canceled")
+              }))
+    
+
+       self.present(alert, animated: true)
     }
     
    
@@ -111,6 +156,8 @@ class ConsultationFormViewController: UIViewController, UIPickerViewDelegate, UI
               }
         
         editingConsultation = true
+        deleteBtn.isHidden = false
+        viewTitle.text = "Edit a consultation"
         editingConsultationId = consultation.getId()!
         
         

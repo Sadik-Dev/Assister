@@ -24,18 +24,8 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     
-    @objc func openSettings(gesture: UIGestureRecognizer) {
-       
-//        if (gesture.view as? UIImageView) != nil {
-//          let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-//          let SettingsViewController = storyBoard.instantiateViewController(withIdentifier: "SettingsViewController") as! SettingsViewController
-//            SettingsViewController.modalPresentationStyle = .fullScreen //or .overFullScreen for transparency
-//
-//                  self.present(SettingsViewController, animated: true, completion: nil)
-//
-//
-//        }
-        
+    @objc func logout(gesture: UIGestureRecognizer) {
+               
         logout()
        
     }
@@ -45,7 +35,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     func initEventHandlers(){
         
         //Option Button
-        let tap = UITapGestureRecognizer(target: self, action: #selector(HomeViewController.openSettings(gesture:)))
+        let tap = UITapGestureRecognizer(target: self, action: #selector(HomeViewController.logout(gesture:)))
         settingsButton?.addGestureRecognizer(tap)
         settingsButton?.isUserInteractionEnabled = true
     }

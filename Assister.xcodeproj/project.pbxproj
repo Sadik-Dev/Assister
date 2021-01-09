@@ -36,6 +36,7 @@
 		265EC87D2555B08300C6438D /* UITextView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265EC87C2555B08300C6438D /* UITextView+Ext.swift */; };
 		265EC8832555C3D100C6438D /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 265EC8822555C3D100C6438D /* RxSwift */; };
 		265EC8852555C3D100C6438D /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 265EC8842555C3D100C6438D /* RxCocoa */; };
+		2663BFCD25A765940005E77F /* logout.png in Resources */ = {isa = PBXBuildFile; fileRef = 2663BFCC25A765940005E77F /* logout.png */; };
 		2682CDEC253872BA00989A3F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2682CDEB253872BA00989A3F /* AppDelegate.swift */; };
 		2682CDEE253872BA00989A3F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2682CDED253872BA00989A3F /* SceneDelegate.swift */; };
 		2682CDF0253872BA00989A3F /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2682CDEF253872BA00989A3F /* HomeViewController.swift */; };
@@ -46,6 +47,7 @@
 		2682CE10253872BC00989A3F /* AssisterUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2682CE0F253872BC00989A3F /* AssisterUITests.swift */; };
 		268E11EA25461EF900E0E07B /* clock.png in Resources */ = {isa = PBXBuildFile; fileRef = 268E11E925461EF900E0E07B /* clock.png */; };
 		26928FF3256C265F006CF710 /* ConsultationFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26928FF2256C265F006CF710 /* ConsultationFormViewController.swift */; };
+		269B522125AA028A004D8A7F /* delete.png in Resources */ = {isa = PBXBuildFile; fileRef = 269B522025AA028A004D8A7F /* delete.png */; };
 		269D67042565852200B6ED48 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269D67032565852200B6ED48 /* String+Ext.swift */; };
 		269D67082566D56800B6ED48 /* PatientViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269D67072566D56800B6ED48 /* PatientViewController.swift */; };
 		26C2A5E2253885D30084966B /* LoginScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C2A5E1253885D30084966B /* LoginScreenController.swift */; };
@@ -116,6 +118,7 @@
 		265A1E0D255C374A003D4086 /* ContactsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsTableViewCell.swift; sourceTree = "<group>"; };
 		265A1E0F255C3970003D4086 /* schedulingP.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = schedulingP.png; sourceTree = "<group>"; };
 		265EC87C2555B08300C6438D /* UITextView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+Ext.swift"; sourceTree = "<group>"; };
+		2663BFCC25A765940005E77F /* logout.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logout.png; sourceTree = "<group>"; };
 		2682CDE8253872BA00989A3F /* Assister.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Assister.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2682CDEB253872BA00989A3F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2682CDED253872BA00989A3F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -132,6 +135,7 @@
 		2682CE11253872BC00989A3F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		268E11E925461EF900E0E07B /* clock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = clock.png; path = ../../../../../../Downloads/clock.png; sourceTree = "<group>"; };
 		26928FF2256C265F006CF710 /* ConsultationFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsultationFormViewController.swift; sourceTree = "<group>"; };
+		269B522025AA028A004D8A7F /* delete.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = delete.png; sourceTree = "<group>"; };
 		269D67032565852200B6ED48 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
 		269D67072566D56800B6ED48 /* PatientViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientViewController.swift; sourceTree = "<group>"; };
 		26C2A5E1253885D30084966B /* LoginScreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreenController.swift; sourceTree = "<group>"; };
@@ -215,6 +219,8 @@
 		2644C15F2541B5E30004F979 /* Icons */ = {
 			isa = PBXGroup;
 			children = (
+				269B522025AA028A004D8A7F /* delete.png */,
+				2663BFCC25A765940005E77F /* logout.png */,
 				26F5DC3C2567C94300EE0F11 /* icons8-edit-24.png */,
 				26F5DC3A2567C8B200EE0F11 /* editPen.png */,
 				26F5DC382567C73000EE0F11 /* edit.png */,
@@ -525,6 +531,7 @@
 				26F5DC392567C73000EE0F11 /* edit.png in Resources */,
 				2640BDF2255323FE009E27C4 /* Main.storyboard in Resources */,
 				2644C1592541B51D0004F979 /* Nunito-SemiBold.ttf in Resources */,
+				2663BFCD25A765940005E77F /* logout.png in Resources */,
 				26F5DC3F2567DC5A00EE0F11 /* Person with medical mask-rafiki.png in Resources */,
 				26E1867F255EBD1000C7FF51 /* add.png in Resources */,
 				26F5DC3D2567C94300EE0F11 /* icons8-edit-24.png in Resources */,
@@ -535,6 +542,7 @@
 				2644C15A2541B51D0004F979 /* Nunito-Regular.ttf in Resources */,
 				265A1E0C255C346F003D4086 /* search.png in Resources */,
 				265A1E10255C3970003D4086 /* schedulingP.png in Resources */,
+				269B522125AA028A004D8A7F /* delete.png in Resources */,
 				2620602225481364002C923C /* calendar.png in Resources */,
 				2682CDFA253872BC00989A3F /* LaunchScreen.storyboard in Resources */,
 				2644C17425430D770004F979 /* scheduling.png in Resources */,

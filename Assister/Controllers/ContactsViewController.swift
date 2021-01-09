@@ -51,6 +51,8 @@ class ContactsViewController: UIViewController , UITableViewDataSource, UITableV
 
             }
             })!
+        
+
 
     }
     
@@ -87,9 +89,6 @@ class ContactsViewController: UIViewController , UITableViewDataSource, UITableV
             }
         }
         
-     
-        
-
         
       }
 
@@ -161,7 +160,7 @@ class ContactsViewController: UIViewController , UITableViewDataSource, UITableV
     }
     
       func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let customer = contacts![indexPath.row]
+        let customer = filteredContacts[indexPath.row]
 
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let patientView = storyBoard.instantiateViewController(withIdentifier: "PatientViewController") as! PatientViewController
